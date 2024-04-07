@@ -16,6 +16,6 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public string Nombre { get; set; }
         [Required]
         public int Nivel { get; set; }
-        //public List<Palabra> Palabras { get; set; }
+        public List<Palabra> Palabras { get; set; }
     }
 }

@@ -23,8 +23,14 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         [Required]
         public int Rol { get; set;}
         [Required]
-        public string Teleforno { get; set; }
+        public string Telefono { get; set; }
         [Required]
-        public int puntaje { get; set; }
+        public int Puntaje { get; set; }
+
+        [InverseProperty("JugadorAnfitrion")]
+        public List<Partida> PartidasAnfitrion { get; set; }
+        [InverseProperty("JugadorInvitado")]
+        public List<Partida> PartidasInvitado { get; set; }
+
     }
 }
