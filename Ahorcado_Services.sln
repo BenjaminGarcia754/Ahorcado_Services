@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahorcado_Services", "Ahorcado_Services\Ahorcado_Services.csproj", "{4858A7C8-172A-4D8B-8A9D-8346BD522BCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4858A7C8-172A-4D8B-8A9D-8346BD522BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4858A7C8-172A-4D8B-8A9D-8346BD522BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4858A7C8-172A-4D8B-8A9D-8346BD522BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4858A7C8-172A-4D8B-8A9D-8346BD522BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F52D1B12-417A-4DAA-9F35-EC1DB8963D85}
+	EndGlobalSection
+EndGlobal
