@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Ahorcado_Services.Aplicacion.Subcategoria" CodeBehind="Subcategoria.svc.cs" %>

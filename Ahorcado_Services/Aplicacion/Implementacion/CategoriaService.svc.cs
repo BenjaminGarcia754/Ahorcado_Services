@@ -10,19 +10,19 @@ using System.Text;
 
 namespace Ahorcado_Services.Aplicacion
 {
-    public class DificultadService : IDificultadService
+    public class CategoriaService : ICategoriaService
     {
         private AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
         public IMapper mapper = AutoMapperHelper.ObtenerMapper();
-        public Dificultad GetDificultad(int id)
+
+        public Categoria GetCategoria(int id)
         {
-            return ahorcadoDbContext.Dificultades.Find(id);
+            return ahorcadoDbContext.Categorias.Find(id);
         }
 
-        public List<Dificultad> GetDificultades()
+        public List<Categoria> GetCategorias()
         {
-            List<Dificultad> dificultades = ahorcadoDbContext.Dificultades.ToList();
-            return dificultades;
+            return ahorcadoDbContext.Categorias.ToList();
         }
     }
 }
