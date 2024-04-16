@@ -24,5 +24,19 @@ namespace Ahorcado_Services.Aplicacion
         {
             return ahorcadoDbContext.Categorias.ToList();
         }
+
+        public bool AddCategoria(Categoria categoria)
+        {
+            try
+            {
+                ahorcadoDbContext.Categorias.Add(categoria);
+                ahorcadoDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

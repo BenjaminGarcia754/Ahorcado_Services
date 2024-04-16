@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Web;
 
 namespace Ahorcado_Services.Modelo.EntityFramework
 {
@@ -20,10 +20,15 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public DbSet<Palabra> Palabras { get; set; }
         public DbSet<Subcategoria> Subcategorias { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Partida> Partidas { get; set; }
+        public DbSet<EstadoPartida> EstadosPartida { get; set; }
+
+        public AhorcadoDbContext() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("");
+            string connectionString = ConfigurationManager.ConnectionStrings["ConexionLocal"].ConnectionString;
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

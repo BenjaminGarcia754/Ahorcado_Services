@@ -18,16 +18,16 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         [Required]
         public int IntentosRestantes { get; set; }
         [Required]
-        public String PalabraSelecionada { get; set; }
+        public int IdPalabraSelecionada { get; set; }
         [Required]
         public String EstadoPalabra { get; set; }
         [Required]
-        public String EstadoPartida { get; set; }/*Creada, Aceptada ,En curso, Ganada, Perdida*/
+        public int IdEstadoPartida { get; set; }
+        
+        public bool PartidaGanada { get; set; }
 
-        [ForeignKey("IdJugadorAnfitrion")]
-        public Jugador JugadorAnfitrion { get; set; }
-        [ForeignKey("IdJugadorInvitado")]
-        public Jugador JugadorInvitado { get; set; }
+        public EstadoPartida EstadoPartida { get; set; }
+
         public Palabra Palabra { get; set; }
 
     }

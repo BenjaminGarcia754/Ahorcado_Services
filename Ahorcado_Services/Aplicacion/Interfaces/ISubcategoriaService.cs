@@ -8,15 +8,14 @@ using System.Text;
 
 namespace Ahorcado_Services.Aplicacion
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "ICategoriaService" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface ICategoriaService
+    public interface ISubcategoriaService
     {
         [OperationContract]
-        List<Categoria> GetCategorias();
+        Subcategoria GetSubcategoria(int id);
         [OperationContract]
-        Categoria GetCategoria(int id);
+        List<Subcategoria> GetSubcategorias();
         [OperationContract]
-        bool AddCategoria(Categoria categoria);
+        bool AddSubcategoria(Subcategoria subcategoria);
     }
 }
