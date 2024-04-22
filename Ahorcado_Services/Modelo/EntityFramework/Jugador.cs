@@ -9,8 +9,6 @@ namespace Ahorcado_Services.Modelo.EntityFramework
 {
     public class Jugador
     {
-        //TODO: Modificar el mapeo en la bd de modo que solo se guarden los ID mas no la relacion entre las tablas como llaves foraneas
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -19,15 +17,15 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         [Required]
         public string Apellidos { get; set; }
         [Required]
+        [EmailAddress]
         public string Correo { get; set; }
         [Required]
         public string Contrasena { get; set; }
-        [Required]
         public int Rol { get; set;}
         [Required]
         public string Telefono { get; set; }
-        [Required]
         public int Puntaje { get; set; }
-
+        [Required]
+        public string Username { get; set; }
     }
 }

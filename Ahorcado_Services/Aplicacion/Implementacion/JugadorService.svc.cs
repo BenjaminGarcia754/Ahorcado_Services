@@ -18,12 +18,11 @@ namespace Ahorcado_Services.Aplicacion.Implementacion
         public IMapper mapper = AutoMapperHelper.ObtenerMapper();
         AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
 
-        public bool ActualizarInformacionJugador(JugadorDTO jugador)
+        public bool ActualizarInformacionJugador(Jugador jugador)
         {
-            var jugadorEntity = mapper.Map<Jugador>(jugador);
             try
             {
-                ahorcadoDbContext.Jugadores.Update(jugadorEntity);
+                ahorcadoDbContext.Jugadores.Update(jugador);
                 ahorcadoDbContext.SaveChanges();
             }
             catch (DbUpdateException ex)
@@ -39,22 +38,23 @@ namespace Ahorcado_Services.Aplicacion.Implementacion
             return true;
         }
 
-        public JugadorDTO IniciarSesion(string nombre, string contrasena)
+        public Jugador IniciarSesion(string correo, string contrasena)
         {
-            var jugador = ahorcadoDbContext.Jugadores.Where(j => j.Nombre == nombre && j.Contrasena == contrasena).FirstOrDefault();
+            var jugador = ahorcadoDbContext.Jugadores.Where(j => j.Correo == correo && j.Contrasena == contrasena).FirstOrDefault();
             if (jugador != null)
             {
-                return mapper.Map<JugadorDTO>(jugador);
+                return jugador;
             }
             return null;
         }
 
-        public bool RegistrarJugador(JugadorDTO jugador)
+        public bool RegistrarJugador(Jugador jugador)
         {
-            var jugadorEntity = mapper.Map<Jugador>(jugador);
+            //TODO: Agregar una entidad que indique el tipo de respuesta 
             try
             {
-                ahorcadoDbContext.Jugadores.Add(jugadorEntity);
+                ahorcadoDbContext.Jugadores.Add(jugador);
+                ahorcadoDbContext.SaveChanges();
             }
             catch (DbUpdateException ex)
             {

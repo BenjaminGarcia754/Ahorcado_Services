@@ -34,6 +34,9 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Aqui podemos agregar las palabras iniciales :)
+            modelBuilder.Entity<Jugador>()
+                .HasIndex(j => j.Correo)
+                .IsUnique();
         }
     }
 }

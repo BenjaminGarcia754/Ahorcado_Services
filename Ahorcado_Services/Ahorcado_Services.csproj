@@ -215,6 +215,18 @@
     <Compile Include="Migrations\20240415194231_MigracionInicial.Designer.cs">
       <DependentUpon>20240415194231_MigracionInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240421034212_ActualizacionUsuario.cs" />
+    <Compile Include="Migrations\20240421034212_ActualizacionUsuario.Designer.cs">
+      <DependentUpon>20240421034212_ActualizacionUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240421034629_ActualizacionUsuario2.cs" />
+    <Compile Include="Migrations\20240421034629_ActualizacionUsuario2.Designer.cs">
+      <DependentUpon>20240421034629_ActualizacionUsuario2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240421034932_ActualizacionUsuario3.cs" />
+    <Compile Include="Migrations\20240421034932_ActualizacionUsuario3.Designer.cs">
+      <DependentUpon>20240421034932_ActualizacionUsuario3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />

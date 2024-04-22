@@ -1,4 +1,5 @@
 ﻿using Ahorcado_Services.Modelo.DTO_s;
+using Ahorcado_Services.Modelo.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace Ahorcado_Services.Aplicacion
     internal interface IJugadorService
     {
         [OperationContract]
-        bool RegistrarJugador(JugadorDTO jugador);
+        bool RegistrarJugador(Jugador jugador);
         [OperationContract]
-        JugadorDTO IniciarSesion(string nombre, string contrasena);
+        Jugador IniciarSesion(string correo, string contrasena);
         [OperationContract]
-        bool ActualizarInformacionJugador(JugadorDTO jugador);
+        bool ActualizarInformacionJugador(Jugador jugador);
         [OperationContract]
         bool ExisteJugador(string correo);
     }

@@ -4,14 +4,16 @@ using Ahorcado_Services.Modelo.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ahorcado_Services.Migrations
 {
     [DbContext(typeof(AhorcadoDbContext))]
-    partial class AhorcadoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240421034212_ActualizacionUsuario")]
+    partial class ActualizacionUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,10 +102,6 @@ namespace Ahorcado_Services.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
