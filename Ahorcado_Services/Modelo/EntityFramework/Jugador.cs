@@ -27,5 +27,7 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public int Puntaje { get; set; }
         [Required]
         public string Username { get; set; }
+        [Required]
+        public DateTime fechaDeNacimiento { get; set; }
     }
 }
