@@ -9,8 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
+    <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
+    <None Remove="Aplicacion\Resources\RGQOm2J.png" />
+    <None Remove="ImagenInicioSesion.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Modelo\" />
     <Folder Include="Infraestructura\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Aplicacion\Resources\InicioSesionImagen.png" />
+    <Resource Include="Aplicacion\Resources\RGQOm2J.png" />
   </ItemGroup>
 
 </Project>

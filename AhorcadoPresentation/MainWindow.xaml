@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AhorcadoPresentation"
-        mc:Ignorable="d"
-        Title="Iniciar Sesion" Height="732" Width="1280">
-    <Grid>
+        xmlns:vistas ="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
         
-    </Grid>
+        mc:Ignorable="d"
+        Title="Iniciar Sesion" Height="832" Width="1280"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <vistas:IniciarSesion MouseDown="moverVentana"/>
 </Window>

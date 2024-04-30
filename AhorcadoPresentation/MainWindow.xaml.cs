@@ -20,5 +20,12 @@ namespace AhorcadoPresentation
         {
             InitializeComponent();
         }
+        private void moverVentana(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
     }
 }
