@@ -26,7 +26,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ClickIniciarSesion(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickRegistrarse(object sender, RoutedEventArgs e)
         {
 
         }
