@@ -54,7 +54,7 @@
         </Setter>
     </Style>
     <!--Boton inicio de sesion-->
-    <ImageBrush x:Key="ButtonBackgroundBrush" ImageSource="/Resources/ButtonBackgroundLogin.png"/>
+    <ImageBrush x:Key="ButtonBackgroundBrush" ImageSource="/Aplicacion/Resources/ButtonBackgroundLogin.png"/>
 
     <!-- Define el estilo del botón -->
     <Style x:Key="ImageButtonStyle" TargetType="Button">

@@ -7,10 +7,10 @@
         xmlns:vistas ="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
         
         mc:Ignorable="d"
-        Title="Iniciar Sesion" Height="832" Width="1280"
+        Title="Iniciar Sesion" Height="666" Width="1024"
         WindowStyle="None" 
         AllowsTransparency="True" 
         Background="Transparent"
         WindowStartupLocation="CenterScreen">
-    <vistas:IniciarSesion MouseDown="moverVentana"/>
+    <vistas:MenuPrincipal MouseDown="moverVentana"/>
 </Window>

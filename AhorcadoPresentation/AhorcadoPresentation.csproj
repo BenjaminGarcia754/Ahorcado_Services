@@ -9,8 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
+    <None Remove="Aplicacion\Resources\MenuImagen.png" />
     <None Remove="Aplicacion\Resources\RGQOm2J.png" />
     <None Remove="ImagenInicioSesion.png" />
   </ItemGroup>
@@ -29,7 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Aplicacion\Resources\ButtonBackgroundLogin.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Aplicacion\Resources\InicioSesionImagen.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\MenuImagen.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\RGQOm2J.png" />
