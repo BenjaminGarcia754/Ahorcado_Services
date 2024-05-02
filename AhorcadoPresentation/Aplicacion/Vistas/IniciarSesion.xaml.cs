@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JugadorServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,12 +29,36 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void ClickIniciarSesion(object sender, RoutedEventArgs e)
         {
-
+            if (camposValidos())
+            {
+                var JugadorCliente = new JugadorServiceClient();
+                var jugador =  JugadorCliente.IniciarSesionAsync(TbCorreo.Text, PfContrasenia.Password).Result;
+                if (jugador != null)
+                {
+                    GenericGuiController.MostrarMensajeBox("Bienvenido " + jugador.Nombre);
+                }
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox("Correo o contraseña incorrectos");
+                }
+            }
         }
 
         private void ClickRegistrarse(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private bool camposValidos()
+        {
+            if(string.IsNullOrEmpty(TbCorreo.Text) || string.IsNullOrEmpty(PfContrasenia.Password))
+            {
+                GenericGuiController.MostrarMensajeBox("Debe completar todos los campos");
+                return false;
+            }else
+            {
+                return true;
+            }
         }
     }
 }

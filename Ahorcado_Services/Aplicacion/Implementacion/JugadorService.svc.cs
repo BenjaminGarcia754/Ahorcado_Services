@@ -40,10 +40,17 @@ namespace Ahorcado_Services.Aplicacion.Implementacion
 
         public Jugador IniciarSesion(string correo, string contrasena)
         {
-            var jugador = ahorcadoDbContext.Jugadores.Where(j => j.Correo == correo && j.Contrasena == contrasena).FirstOrDefault();
-            if (jugador != null)
+            try
             {
-                return jugador;
+                var jugador = ahorcadoDbContext.Jugadores.Where(j => j.Correo == correo && j.Contrasena == contrasena).FirstOrDefault();
+                if (jugador != null)
+                {
+                    return jugador;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al iniciar sesión");
             }
             return null;
         }
@@ -59,12 +66,12 @@ namespace Ahorcado_Services.Aplicacion.Implementacion
             catch (DbUpdateException ex)
             {
                 ex.Source = "Error al registrar el jugador";
-                return false;
+                throw;
             }
             catch(EntityException ex)
             {
                 ex.Source = "Error al registrar el jugador";
-                return false;
+                throw;
             }
             return true;
         }

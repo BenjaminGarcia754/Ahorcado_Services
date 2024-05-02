@@ -227,6 +227,10 @@
     <Compile Include="Migrations\20240421034932_ActualizacionUsuario3.Designer.cs">
       <DependentUpon>20240421034932_ActualizacionUsuario3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240502005815_FechaDeNacimientoUsuario.cs" />
+    <Compile Include="Migrations\20240502005815_FechaDeNacimientoUsuario.Designer.cs">
+      <DependentUpon>20240502005815_FechaDeNacimientoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />
@@ -255,6 +259,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
