@@ -188,6 +188,16 @@
     <Content Include="Aplicacion\Implementacion\DificultadService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
     <Content Include="Aplicacion\Implementacion\SubcategoriaService.svc" />
+    <Content Include="Connected Services\JugadorService\Ahorcado_Services.JugadorService.Jugador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\JugadorService\JugadorService.disco" />
+    <None Include="Connected Services\JugadorService\configuration91.svcinfo" />
+    <None Include="Connected Services\JugadorService\configuration.svcinfo" />
+    <None Include="Connected Services\JugadorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -208,6 +218,11 @@
     <Compile Include="Aplicacion\Interfaces\ISubcategoriaService.cs" />
     <Compile Include="Aplicacion\Implementacion\SubcategoriaService.svc.cs">
       <DependentUpon>SubcategoriaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\JugadorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Infraestructura\Utilidades\AutoMapper.cs" />
     <Compile Include="Infraestructura\Utilidades\AutoMapperHelper.cs" />
@@ -248,6 +263,16 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\JugadorService\JugadorService.wsdl" />
+    <None Include="Connected Services\JugadorService\JugadorService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\JugadorService\JugadorService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\JugadorService\JugadorService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -255,6 +280,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\JugadorService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
