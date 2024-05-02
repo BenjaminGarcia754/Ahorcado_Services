@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Aplicacion\Resources\BotonSVG.svg" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
@@ -31,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Aplicacion\Resources\BotonSVG.svg" />
     <Resource Include="Aplicacion\Resources\ButtonBackgroundLogin.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

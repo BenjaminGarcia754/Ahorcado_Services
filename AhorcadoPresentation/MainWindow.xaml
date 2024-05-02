@@ -12,5 +12,5 @@
         AllowsTransparency="True" 
         Background="Transparent"
         WindowStartupLocation="CenterScreen">
-    <vistas:MenuPrincipal MouseDown="moverVentana"/>
+    <vistas:IniciarSesion MouseDown="moverVentana"/>
 </Window>
