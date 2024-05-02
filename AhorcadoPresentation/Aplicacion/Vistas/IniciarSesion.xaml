@@ -6,20 +6,21 @@
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
              
              mc:Ignorable="d" 
-             d:DesignHeight="832" d:DesignWidth="1280">
+             d:DesignHeight="666" d:DesignWidth="1024">
     <Border Background="White"  BorderBrush="White" BorderThickness="1" CornerRadius="30">
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="414*"/>
             </Grid.RowDefinitions>
-            <Image  HorizontalAlignment="Center" Height="832" VerticalAlignment="Center" Width="1280" Source="/Aplicacion/Resources/InicioSesionImagen.png" Grid.Row="1" />
-            <TextBlock Foreground="White" FontSize="26" HorizontalAlignment="Left" Margin="409,287,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1"/>
-            <TextBlock Foreground="White" FontSize="26" HorizontalAlignment="Left" Margin="409,472,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Top" Grid.Row="1"/>
-            <TextBox x:Name="TbCorreo" Style="{StaticResource TexBoxInicioSesion}" HorizontalAlignment="Left" Margin="409,363,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="541" Height="50" Grid.Row="1"/>
-            <Button Content="Registrarse" HorizontalAlignment="Left" Margin="641,670,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegistrarse"/>
-            <Button Content="Iniciar Sesión" HorizontalAlignment="Left" FontSize="17" Margin="633,601,0,0" VerticalAlignment="Top" Height="38" Width="105" Grid.Row="1" Click="ClickIniciarSesion"/>
-            <PasswordBox Style="{StaticResource PasswordBoxInicioSesion}" HorizontalAlignment="Left"  Margin="409,535,0,0" VerticalAlignment="Top" Width="541" Height="50" Grid.Row="1"/>
+            <Image  HorizontalAlignment="Center" Height="666" VerticalAlignment="Center" Width="1024" Source="/Aplicacion/Resources/InicioSesionImagen.png" Grid.Row="1" />
+            <TextBlock Foreground="White" FontFamily="{StaticResource Inika}" FontSize="26" HorizontalAlignment="Left" Margin="299,186,0,0" TextWrapping="Wrap" Text="Correo eléctronico" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
+            <TextBlock Foreground="White" FontFamily="{StaticResource Inika}" FontSize="26" HorizontalAlignment="Left" Margin="299,350,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBox x:Name="TbCorreo" Style="{StaticResource TexBoxInicioSesion}" HorizontalAlignment="Left" Margin="331,252,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="413" Height="50" Grid.Row="1"/>
+            <Button Content="Registrarse"  HorizontalAlignment="Left" Margin="509,568,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegistrarse" RenderTransformOrigin="0.5,0.5"/>
+            <Button Content="Iniciar Sesión" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="475,502,0,0" VerticalAlignment="Top" Height="43" Width="124" Grid.Row="1" Click="ClickIniciarSesion"/>
+            <PasswordBox x:Name="PfContrasenia" Style="{StaticResource PasswordBoxInicioSesion}" HorizontalAlignment="Left"  Margin="331,433,0,0" VerticalAlignment="Top" Width="413" Height="50" Grid.Row="1"/>
+
         </Grid>
     </Border>
 </UserControl>

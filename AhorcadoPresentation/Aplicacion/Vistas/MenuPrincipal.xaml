@@ -5,8 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
              mc:Ignorable="d" 
-             d:DesignHeight="832" d:DesignWidth="1280">
-    <Border Background="White"  BorderBrush="White" BorderThickness="1" CornerRadius="30">
-    
+             d:DesignHeight="666" d:DesignWidth="1024">
+    <Border BorderBrush="White" BorderThickness="1" CornerRadius="30">
+        <Border.Background>
+            <ImageBrush ImageSource="/Aplicacion/Resources/MenuImagen.png"/>
+        </Border.Background>
+
     </Border>
 </UserControl>
