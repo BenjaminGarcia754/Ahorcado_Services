@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Aplicacion\Resources\ButtonBackgroundLogin.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Aplicacion\Resources\InicioSesionImagen.png" />
     <Resource Include="Aplicacion\Resources\RGQOm2J.png" />
   </ItemGroup>
