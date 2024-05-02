@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modelo\" />
+    <Folder Include="Modelo\Internacionalizacion\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +33,15 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\RGQOm2J.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Recursos Localizables\StringResources.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Recursos Localizables\StringResources.es-ES.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -188,16 +188,6 @@
     <Content Include="Aplicacion\Implementacion\DificultadService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
     <Content Include="Aplicacion\Implementacion\SubcategoriaService.svc" />
-    <Content Include="Connected Services\JugadorService\Ahorcado_Services.JugadorService.Jugador.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\JugadorService\JugadorService.disco" />
-    <None Include="Connected Services\JugadorService\configuration91.svcinfo" />
-    <None Include="Connected Services\JugadorService\configuration.svcinfo" />
-    <None Include="Connected Services\JugadorService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -219,11 +209,6 @@
     <Compile Include="Aplicacion\Implementacion\SubcategoriaService.svc.cs">
       <DependentUpon>SubcategoriaService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\JugadorService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Infraestructura\Utilidades\AutoMapper.cs" />
     <Compile Include="Infraestructura\Utilidades\AutoMapperHelper.cs" />
     <Compile Include="Migrations\20240415194231_MigracionInicial.cs" />
@@ -241,6 +226,10 @@
     <Compile Include="Migrations\20240421034932_ActualizacionUsuario3.cs" />
     <Compile Include="Migrations\20240421034932_ActualizacionUsuario3.Designer.cs">
       <DependentUpon>20240421034932_ActualizacionUsuario3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240502005815_FechaDeNacimientoUsuario.cs" />
+    <Compile Include="Migrations\20240502005815_FechaDeNacimientoUsuario.Designer.cs">
+      <DependentUpon>20240502005815_FechaDeNacimientoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
@@ -263,16 +252,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\JugadorService\JugadorService.wsdl" />
-    <None Include="Connected Services\JugadorService\JugadorService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\JugadorService\JugadorService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\JugadorService\JugadorService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -283,9 +262,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\JugadorService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
