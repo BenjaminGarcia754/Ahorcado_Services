@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="Aplicacion\Resources\BotonSVG.svg" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
+    <None Remove="Aplicacion\Resources\ButtonBackgroundMenu.png" />
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
     <None Remove="Aplicacion\Resources\MenuImagen.png" />
@@ -34,6 +35,9 @@
   <ItemGroup>
     <Resource Include="Aplicacion\Resources\BotonSVG.svg" />
     <Resource Include="Aplicacion\Resources\ButtonBackgroundLogin.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\ButtonBackgroundMenu.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\InicioSesionImagen.png">

@@ -56,7 +56,7 @@
     <!--Boton inicio de sesion-->
     <ImageBrush x:Key="ButtonBackgroundBrush" ImageSource="/Aplicacion/Resources/ButtonBackgroundLogin.png" />
 
-    <ImageBrush x:Key="ButtonBackgroundMenu" ImageSource="/Aplicacion/Resources/ButtonBackgroundMenu.png" />
+    <ImageBrush x:Key="ButtonBackMenu" ImageSource="/Aplicacion/Resources/ButtonBackgroundMenu.png" />
 
     <!-- Define el estilo del botón -->
     <Style x:Key="ImageButtonStyle" TargetType="Button">
@@ -76,13 +76,13 @@
 
     <!-- Define el estilo del botón -->
     <Style x:Key="ImageButtonStyleMenu" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource ButtonBackgroundMenu}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackMenu}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Background="{TemplateBinding Background}">
+                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="20" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -90,5 +90,6 @@
         </Setter>
     </Style>
     <FontFamily x:Key="Inika">/AhorcadoPresentation;component/Aplicacion/Resources/Inika-Regular.ttf#Inika</FontFamily>
+    <FontFamily x:Key="Inter">/AhorcadoPresentation;component/Aplicacion/Resources/Inter-Regular.ttf#Inter</FontFamily>
 
 </ResourceDictionary>
