@@ -56,9 +56,27 @@
     <!--Boton inicio de sesion-->
     <ImageBrush x:Key="ButtonBackgroundBrush" ImageSource="/Aplicacion/Resources/ButtonBackgroundLogin.png" />
 
+    <ImageBrush x:Key="ButtonBackgroundMenu" ImageSource="/Aplicacion/Resources/ButtonBackgroundMenu.png" />
+
     <!-- Define el estilo del botón -->
     <Style x:Key="ImageButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Define el estilo del botón -->
+    <Style x:Key="ImageButtonStyleMenu" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundMenu}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">

@@ -10,6 +10,9 @@
         <Border.Background>
             <ImageBrush ImageSource="/Aplicacion/Resources/MenuImagen.png"/>
         </Border.Background>
+        <Button Content="Button" Style="{StaticResource ResourceKey=ImageButtonStyleMenu}" Margin="384,136,384,487">
+        </Button>
+
 
     </Border>
 </UserControl>
