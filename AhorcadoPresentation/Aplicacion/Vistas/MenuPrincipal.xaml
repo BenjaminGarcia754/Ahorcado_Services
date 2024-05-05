@@ -11,29 +11,29 @@
             <ImageBrush ImageSource="/Aplicacion/Resources/MenuImagen.png"/>
         </Border.Background>
         <Grid Margin="0,0,0,0">
-            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="384,142,384,467">
+            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="379,142,379,467" Click="click_CrearParitida">
                 <StackPanel Orientation="Horizontal" Width="221">
                     <Path Margin="1,1,1,1" Data="M34.7118 16.504C37.4536 18.0283 37.4536 21.9717 34.7118 23.496L6.44368 39.2122C3.77753 40.6945 0.5 38.7667 0.5 35.7162V4.28384C0.5 1.23335 3.77753 -0.694465 6.44367 0.787824L34.7118 16.504Z" Fill="#D9D9D9" Height="32" Stretch="Fill" Width="28"></Path>
-                    <TextBlock Text="Crear partida" FontFamily="{StaticResource Inter}" FontWeight="Medium" FontSize="25" Foreground="White" Margin="30,0,0,0" Width="177" Height="28"/>
-                </StackPanel>                
+                    <TextBlock Text="Crear partida" FontFamily="{StaticResource Inter}" FontWeight="ExtraBold" FontSize="25" Foreground="White" Margin="10,0,0,0" Width="177" Height="28"/>
+                </StackPanel>
             </Button>
-            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="384,233,384,376">
+            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="379,233,379,376">
                 <StackPanel Orientation="Horizontal" Width="224">
                     <Path Margin="1,1,1,1" Data="M36.4713 30.5379L36.4781 30.5282L36.4845 30.5182C38.4083 27.4914 39.5375 23.899 39.5375 20.0375C39.5375 9.2495 30.8018 0.5 20.025 0.5C9.23593 0.5 0.5 9.24929 0.5 20.0375C0.5 30.8255 9.23572 39.575 20.0125 39.575C23.9247 39.575 27.5686 38.4203 30.6216 36.4448L30.6287 36.4402L30.6355 36.4355C30.936 36.2264 31.3431 36.2627 31.6019 36.5215L42.2896 47.2092C43.6673 48.5869 45.904 48.577 47.2695 47.1873C48.6176 45.8152 48.6084 43.6131 47.2488 42.2523L36.5584 31.552C36.2867 31.2801 36.25 30.8522 36.4713 30.5379ZM30.3214 9.75355C33.0651 12.4972 34.575 16.145 34.575 20.025C34.575 23.905 33.0651 27.5528 30.3214 30.2964C27.5778 33.0401 23.93 34.55 20.05 34.55C16.17 34.55 12.5222 33.0401 9.77855 30.2964C7.03489 27.5528 5.525 23.905 5.525 20.025C5.525 16.145 7.03489 12.4972 9.77855 9.75355C12.5222 7.00989 16.17 5.5 20.05 5.5C23.93 5.5 27.5778 7.00989 30.3214 9.75355Z" Fill="#D9D9D9" Height="32" Stretch="Fill" Width="32"></Path>
-                    <TextBlock Text="Buscar Partida" FontFamily="{StaticResource Inter}" FontWeight="Medium" FontSize="25" Foreground="White" Margin="10,0,0,0" Width="177" Height="28"/>
+                    <TextBlock Text="Buscar Partida" FontFamily="{StaticResource Inter}" FontWeight="ExtraBold" FontSize="25" Foreground="White" Margin="10,0,0,0" Width="177" Height="28"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="384,332,384,277">
+            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="379,332,379,277">
                 <StackPanel Orientation="Horizontal" Width="224">
                     <Path Margin="1,1,1,1" Data="M47.7519 30L45.0752 28.5417C42.1755 26.875 42.1755 22.9167 45.0752 21.25L47.7519 19.7917C49.9825 18.5417 50.6517 16.0417 49.3133 14.1667L47.0827 10.625C45.7444 8.54167 43.0677 7.91667 41.0602 9.16667L38.3835 10.625C35.4837 12.2917 31.6917 10.2083 31.6917 7.08333V4.16667C31.6917 1.875 29.6842 0 27.2306 0H22.7694C20.3158 0 18.3083 1.875 18.3083 4.16667V6.875C18.3083 10 14.5163 12.0833 11.6165 10.4167L8.93983 9.16667C6.70925 7.91667 4.03256 8.75 2.91727 10.625L0.686689 14.1667C-0.4286 16.25 0.240573 18.75 2.24809 20L4.92479 21.4583C7.82454 22.9167 7.82454 27.0833 4.92479 28.5417L2.24809 30C0.0175152 31.25 -0.651658 33.75 0.686689 35.625L2.91727 39.1667C4.25562 41.25 6.93231 41.875 8.93983 40.625L11.6165 39.375C14.5163 37.7083 18.3083 39.7917 18.3083 42.9167V45.8333C18.3083 48.125 20.3158 50 22.7694 50H27.2306C29.6842 50 31.6917 48.125 31.6917 45.8333V43.125C31.6917 40 35.4837 37.9167 38.3835 39.5833L41.0602 41.0417C43.2907 42.2917 45.9674 41.4583 47.0827 39.5833L49.3133 36.0417C50.4286 33.75 49.7594 31.25 47.7519 30ZM25 33.3333C20.0927 33.3333 16.0777 29.5833 16.0777 25C16.0777 20.4167 20.0927 16.6667 25 16.6667C29.9073 16.6667 33.9223 20.4167 33.9223 25C33.9223 29.5833 29.9073 33.3333 25 33.3333Z" Fill="#D9D9D9" Height="32" Stretch="Fill" Width="32"></Path>
-                    <TextBlock Text="Configuración" FontFamily="{StaticResource Inter}" FontWeight="Medium" FontSize="25" Foreground="White" Margin="10,0,0,0" Width="177" Height="28"/>
+                    <TextBlock Text="Configuración" FontFamily="{StaticResource Inter}" FontWeight="ExtraBold" FontSize="25" Foreground="White" Margin="10,0,0,0" Width="177" Height="28"/>
                 </StackPanel>
             </Button>
-            
-            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="384,428,384,181">
-                <StackPanel Orientation="Horizontal" Width="224">
+
+            <Button Style="{StaticResource ImageButtonStyleMenu}" Margin="379,428,379,181">
+                <StackPanel Orientation="Horizontal" Width="229">
                     <Path Margin="1,1,1,1" Data="M26.25 0C17.5 0 9.75 4.8 5.75 12.1263L0 6.31579V22.7368H16.25L9.25 15.6632C12.5 9.34737 18.75 5.05263 26.25 5.05263C36.5 5.05263 45 13.6421 45 24C45 34.3579 36.5 42.9474 26.25 42.9474C18 42.9474 11.25 37.6421 8.5 30.3158H3.25C6 40.4211 15.25 48 26.25 48C39.5 48 50 37.1368 50 24C50 10.8632 39.25 0 26.25 0ZM22.5 12.6316V25.5158L34.25 32.5895L36.25 29.3053L26.25 23.2421V12.6316H22.5Z" Fill="#D9D9D9" Height="30" Stretch="Fill" Width="32"></Path>
-                    <TextBlock Text="Historial de jugadas" FontFamily="{StaticResource Inter}" FontWeight="Medium" FontSize="20" Foreground="White" Margin="10,0,0,0" Width="181" Height="25"/>
+                    <TextBlock Text="Historial de jugadas" FontFamily="{StaticResource Inter}" FontWeight="Bold" FontSize="19" Foreground="White" Margin="9,0,0,0" Width="186" Height="24"/>
                 </StackPanel>
             </Button>
         </Grid>

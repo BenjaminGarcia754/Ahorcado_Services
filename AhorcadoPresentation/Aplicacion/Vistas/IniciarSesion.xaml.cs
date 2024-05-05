@@ -36,12 +36,23 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (jugador != null)
                 {
                     GenericGuiController.MostrarMensajeBox("Bienvenido " + jugador.Nombre);
+                    mostrarMenuPrincipal(jugador);
                 }
                 else
                 {
                     GenericGuiController.MostrarMensajeBox("Correo o contraseña incorrectos");
                 }
             }
+        }
+
+        private void mostrarMenuPrincipal(Jugador jugador)
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            //acceder a la ventana principal
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            menuPrincipal.JugadorActivo = jugador;
+            mainWindow.cambiarVista(menuPrincipal);
+
         }
 
         private void ClickRegistrarse(object sender, RoutedEventArgs e)

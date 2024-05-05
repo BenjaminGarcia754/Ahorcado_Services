@@ -27,5 +27,10 @@ namespace AhorcadoPresentation
                 DragMove();
             }
         }
+        public void cambiarVista(UserControl vista)
+        {
+            ContenedorPrincipal.Children.Clear();
+            ContenedorPrincipal.Children.Add(vista);
+        }
     }
 }

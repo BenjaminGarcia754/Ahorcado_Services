@@ -12,11 +12,22 @@
     <None Remove="Aplicacion\Resources\BotonSVG.svg" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundMenu.png" />
+    <None Remove="Aplicacion\Resources\Fuentes\Inika-Regular.ttf" />
+    <None Remove="Aplicacion\Resources\Fuentes\Inter-Regular.ttf" />
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
     <None Remove="Aplicacion\Resources\MenuImagen.png" />
     <None Remove="Aplicacion\Resources\RGQOm2J.png" />
     <None Remove="ImagenInicioSesion.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Aplicacion\Resources\Fuentes\Inter-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+	  <Resource Include="Aplicacion\Resources\Fuentes\Inika-Regular.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -57,5 +68,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
 
 </Project>

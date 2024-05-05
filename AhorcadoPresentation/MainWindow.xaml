@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AhorcadoPresentation"
-        xmlns:vistas ="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+        xmlns:vistas="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
         
         mc:Ignorable="d"
         Title="Iniciar Sesion" Height="666" Width="1024"
@@ -12,5 +12,7 @@
         AllowsTransparency="True" 
         Background="Transparent"
         WindowStartupLocation="CenterScreen">
-    <vistas:IniciarSesion MouseDown="moverVentana"/>
+    <Grid x:Name="ContenedorPrincipal" MouseDown="moverVentana">
+        <vistas:IniciarSesion />
+    </Grid>
 </Window>

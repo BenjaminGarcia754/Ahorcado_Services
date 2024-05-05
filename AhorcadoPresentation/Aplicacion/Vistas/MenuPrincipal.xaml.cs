@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JugadorServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,16 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// Lógica de interacción para MenuPrincipal.xaml
     /// </summary>
     public partial class MenuPrincipal : UserControl
-    {
+    {   
+        public Jugador JugadorActivo { get; set; }
         public MenuPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void click_CrearParitida(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

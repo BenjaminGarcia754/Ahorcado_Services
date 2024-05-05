@@ -14,5 +14,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             MessageBox.Show(mensaje);
         }
+
+        internal static void MostrarVista(MenuPrincipal menuPrincipal)
+        {
+
+        }
     }
 }
