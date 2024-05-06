@@ -4,9 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+            d:DesignHeight="666" d:DesignWidth="1024">
+
+    
+    <Border Background="White"  BorderThickness="1" CornerRadius="30">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="414*"/>
+            </Grid.RowDefinitions>
+            <Image  HorizontalAlignment="Center" Height="666" VerticalAlignment="Center" Width="1024" Source="/Aplicacion/Resources/InicioSesionImagen.png" Grid.Row="1" />
+            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="299,186,0,0" TextWrapping="Wrap" Text="Correo eléctronico" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
+            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="299,0,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Center" Grid.Row="1"/>
+            <Border Style="{StaticResource StyleContainer}" Margin="331,236,278,371" Width="413" Grid.Row="1">
+                <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <Path Data="M37.5 0.75H7.5C3.375 0.75 0 4.2 0 8.41667V27.5833C0 31.8 3.375 35.25 7.5 35.25H37.5C41.625 35.25 45 31.8 45 27.5833V8.41667C45 4.2 41.625 0.75 37.5 0.75ZM40.5 11.8667L25.6875 22.025C24.75 22.6 23.625 22.9833 22.5 22.9833C21.375 22.9833 20.25 22.6 19.3125 22.025L4.5 11.8667C3.75 11.2917 3.5625 10.1417 4.125 9.18333C4.6875 8.41667 5.8125 8.225 6.75 8.8L21.5625 18.9583C22.125 19.3417 23.0625 19.3417 23.625 18.9583L38.4375 8.8C39.375 8.225 40.5 8.41667 41.0625 9.375C41.4375 10.1417 41.25 11.2917 40.5 11.8667Z" Fill="#FFFFFF" Height="26" Stretch="Fill" Width="36"/>
+                    <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbCorreo" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
+                </WrapPanel>
+            </Border>
+            <Border Style="{StaticResource StyleContainer}" Margin="331,366,278,241" Width="413" Grid.Row="1">
+                <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <Path Data="M24.5 0.15625C19.7594 0.15625 15.1253 1.46669 11.1837 3.92185C7.24205 6.37701 4.16991 9.86663 2.35577 13.9494C0.541635 18.0322 0.0669741 22.5248 0.991814 26.8591C1.91665 31.1933 4.19946 35.1746 7.55155 38.2994C10.9036 41.4243 15.1745 43.5523 19.8239 44.4144C24.4734 45.2766 29.2927 44.8341 33.6725 43.1429C38.0522 41.4518 41.7956 38.5879 44.4293 34.9135C47.063 31.2391 48.4688 26.9192 48.4688 22.5C48.4566 16.5776 45.9274 10.9009 41.435 6.71313C36.9426 2.52532 30.8532 0.167607 24.5 0.15625ZM24.5 41.4063C20.4888 41.4063 16.5676 40.2974 13.2324 38.22C9.89712 36.1425 7.29762 33.1898 5.76258 29.7351C4.22754 26.2804 3.8259 22.479 4.60846 18.8116C5.39102 15.1441 7.32262 11.7754 10.159 9.13126C12.9954 6.48718 16.6092 4.68653 20.5433 3.95703C24.4775 3.22753 28.5554 3.60193 32.2613 5.0329C35.9672 6.46387 39.1347 8.88713 41.3633 11.9963C43.5918 15.1054 44.7813 18.7607 44.7813 22.5C44.7752 27.5125 42.6364 32.3181 38.8343 35.8625C35.0321 39.4068 29.8771 41.4006 24.5 41.4063ZM28.7406 23.832L31.6215 30.084C31.8002 30.4754 31.8723 30.9019 31.8313 31.3255C31.7903 31.7491 31.6374 32.1567 31.3864 32.5119C31.1355 32.8671 30.7941 33.159 30.3928 33.3613C29.9914 33.5637 29.5426 33.6704 29.0863 33.6719H19.9137C19.4574 33.6704 19.0086 33.5637 18.6073 33.3613C18.2059 33.159 17.8646 32.8671 17.6136 32.5119C17.3626 32.1567 17.2098 31.7491 17.1688 31.3255C17.1277 30.9019 17.1998 30.4754 17.3785 30.084L20.2594 23.832C19.3486 23.2365 18.5941 22.4565 18.0525 21.5506C17.5109 20.6447 17.1961 19.6363 17.1318 18.6009C17.0676 17.5655 17.2554 16.53 17.6813 15.5719C18.1071 14.6138 18.76 13.7579 19.591 13.0684C20.3715 12.4268 21.2873 11.9445 22.2795 11.6522C23.2717 11.3599 24.3185 11.2641 25.3527 11.3711C26.8391 11.5306 28.2383 12.1077 29.3646 13.0259C30.4909 13.9441 31.2909 15.1599 31.6585 16.512C32.0261 17.864 31.9438 19.2882 31.4227 20.5957C30.9015 21.9031 29.9661 23.0318 28.7406 23.832Z" Fill="#FFFFFF" Height="36" Stretch="Fill" Width="36"/>
+                    <PasswordBox Style="{StaticResource PasswordBoxLogin}" x:Name="PfContrasenia" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
+                </WrapPanel>
+            </Border>
+            <Button Content="Regresar"  Background="Transparent" FontSize="14" BorderThickness="0,0,0,2" Foreground="White" HorizontalAlignment="Left" Margin="493,525,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegistrarse" RenderTransformOrigin="0.5,0.5"/>
+            <Button Content="Registrarse" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="476,457,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickIniciarSesion"/>
+        </Grid>
+    </Border>
+
+
 </UserControl>
