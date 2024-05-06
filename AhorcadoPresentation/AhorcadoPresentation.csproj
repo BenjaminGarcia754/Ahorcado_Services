@@ -16,6 +16,7 @@
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
     <None Remove="Aplicacion\Resources\MenuImagen.png" />
+    <None Remove="Aplicacion\Resources\RegistrarUsuarioBackground.png" />
     <None Remove="Aplicacion\Resources\RGQOm2J.png" />
     <None Remove="ImagenInicioSesion.png" />
   </ItemGroup>
@@ -57,6 +58,7 @@
     <Resource Include="Aplicacion\Resources\MenuImagen.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Aplicacion\Resources\RegistrarUsuarioBackground.png" />
     <Resource Include="Aplicacion\Resources\RGQOm2J.png" />
   </ItemGroup>
 
