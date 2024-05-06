@@ -24,5 +24,15 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             InitializeComponent();
         }
+
+        private void ClickRegistrarse(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickIniciarSesion(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -7,13 +7,15 @@
         xmlns:vistas="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
         
         mc:Ignorable="d"
-        Title="Iniciar Sesion" Height="666" Width="1024"
+        Title="Iniciar Sesion" 
         WindowStyle="None" 
         AllowsTransparency="True" 
+        Height="666"
+        Width="1024"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid x:Name="ContenedorPrincipal" MouseDown="moverVentana">
-        <vistas:IniciarSesion />
+        <vistas:GenerarPartida />
     </Grid>
 </Window>
