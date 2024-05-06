@@ -1,62 +1,39 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <FontFamily x:Key="Inika">AhorcadoPresentation;Component\Aplicacion\Resources\Fuentes\Inika-Regular.ttf#Inika</FontFamily>
-    <FontFamily x:Key="Inter">AhorcadoPresentation;Component\Aplicacion\Resources\Fuentes\Inter-Regular.ttf#Inter</FontFamily>
+    <FontFamily x:Key="Inika">AhorcadoPresentation;Component\Aplicacion\Resources\Fuentes\Inika-Regular.ttf#INIKA</FontFamily>
+    <FontFamily x:Key="Inter">AhorcadoPresentation;Component\Aplicacion\Resources\Fuentes\Inter-Regular.ttf#INTER</FontFamily>
     <!-- Define el efecto de difuminado negro -->
-    <LinearGradientBrush x:Key="BlurredBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="Black" Offset="0"/>
-        <GradientStop Color="Transparent" Offset="1"/>
-    </LinearGradientBrush>
-
-    <!-- Modifica el estilo para usar el fondo difuminado negro -->
-    <Style TargetType="TextBox" x:Key="TexBoxInicioSesion">
+    <SolidColorBrush x:Key="BlurredBackgroundBrush"  Color="Black" Opacity="0.3"/>
+    <!--se implementa el estilo para el conainer del text boxt-->
+    <Style TargetType="Border" x:Key="StyleContainer">
         <Setter Property="BorderThickness" Value="2.5"/>
         <Setter Property="BorderBrush" Value="White"/>
         <!-- Usa el fondo difuminado negro -->
         <Setter Property="Background" Value="{StaticResource BlurredBackgroundBrush}"/>
-        <Setter Property="FontSize" Value="26"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="FontSize" Value="26"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="16">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
-    <!--se implementa el mismo estilo para un password text-->
-    <Style TargetType="PasswordBox" x:Key="PasswordBoxInicioSesion">
-        <Setter Property="BorderThickness" Value="2.5"/>
-        <Setter Property="BorderBrush" Value="White"/>
-        <!-- Usa el fondo difuminado negro -->
-        <Setter Property="Background" Value="{StaticResource BlurredBackgroundBrush}"/>
-        <Setter Property="FontSize" Value="26"/>
+    <!-- Se define el textBlox transparente con texto blanco -->
+    <Style TargetType="TextBox" x:Key="TextBoxLogin">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="FontFamily" Value="/Aplicacion/Resources/Fuentes/#Inter"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="FontSize" Value="26"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="PasswordBox">
-                    <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="16">
-                        <ScrollViewer x:Name="PART_ContentHost"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="AcceptsReturn" Value="False"/>
+        <Setter Property="CaretBrush" Value="White"/>
+    </Style>
+    <Style TargetType="PasswordBox" x:Key="PasswordBoxLogin">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="FontFamily" Value="/Aplicacion/Resources/Fuentes/#Inter"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="CaretBrush" Value="White"/>
     </Style>
     <!--Boton inicio de sesion-->
     <ImageBrush x:Key="ButtonBackgroundBrush" ImageSource="/Aplicacion/Resources/ButtonBackgroundLogin.png" />
-
     <ImageBrush x:Key="ButtonBackMenu" ImageSource="/Aplicacion/Resources/ButtonBackgroundMenu.png" />
 
     <!-- Define el estilo del botón -->
@@ -67,7 +44,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Background="{TemplateBinding Background}">
+                    <Border BorderBrush="White" BorderThickness="1" CornerRadius="20" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>

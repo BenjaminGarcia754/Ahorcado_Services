@@ -12,8 +12,7 @@
     <None Remove="Aplicacion\Resources\BotonSVG.svg" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundMenu.png" />
-    <None Remove="Aplicacion\Resources\Fuentes\Inika-Regular.ttf" />
-    <None Remove="Aplicacion\Resources\Fuentes\Inter-Regular.ttf" />
+    <None Remove="Aplicacion\Resources\CrearPartidaBackground.png" />
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
     <None Remove="Aplicacion\Resources\MenuImagen.png" />
@@ -22,12 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Aplicacion\Resources\Fuentes\Inter-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-	  <Resource Include="Aplicacion\Resources\Fuentes\Inika-Regular.ttf">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>
+    <Resource Include="Aplicacion\Resources\CrearPartidaBackground.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +44,12 @@
     </Resource>
     <Resource Include="Aplicacion\Resources\ButtonBackgroundMenu.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\Fuentes\Inika-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\Fuentes\Inter-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\InicioSesionImagen.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

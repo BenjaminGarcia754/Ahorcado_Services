@@ -29,7 +29,15 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void click_CrearParitida(object sender, RoutedEventArgs e)
         {
+            mostrarMenuGenerarPartida();
+        }
 
+        private void mostrarMenuGenerarPartida()
+        {
+            GenerarPartida generarPartida = new GenerarPartida();
+            generarPartida.JugadorRetador = JugadorActivo;
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(generarPartida);
         }
     }
 }
