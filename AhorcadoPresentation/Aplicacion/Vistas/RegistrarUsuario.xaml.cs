@@ -25,17 +25,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             InitializeComponent();
         }
 
-        public static bool esRegistro { get; set; }
-
         private void ClickRegistrarse(object sender, RoutedEventArgs e)
         {
-            if (ValidarDatos())
-            {
 
-            }
         }
 
-        private void ClickRegresar(object sender, RoutedEventArgs e)
+        private void ClickIniciarSesion(object sender, RoutedEventArgs e)
         {
 
         }

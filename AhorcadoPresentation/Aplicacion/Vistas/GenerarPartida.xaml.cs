@@ -26,5 +26,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             InitializeComponent();
         }
+
+        private void Click_CrearSala(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

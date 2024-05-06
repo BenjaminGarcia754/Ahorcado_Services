@@ -32,5 +32,15 @@ namespace AhorcadoPresentation
             ContenedorPrincipal.Children.Clear();
             ContenedorPrincipal.Children.Add(vista);
         }
+
+        private void Minimizar(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Cerrar(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

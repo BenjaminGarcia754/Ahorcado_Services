@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <FontFamily x:Key="Inika">AhorcadoPresentation;Component\Aplicacion\Resources\Fuentes\Inika-Regular.ttf#INIKA</FontFamily>
-    <FontFamily x:Key="Inter">AhorcadoPresentation;Component\Aplicacion\Resources\Fuentes\Inter-Regular.ttf#INTER</FontFamily>
+    <FontFamily x:Key="Inika">/Aplicacion/Resources/Fuentes/Inika-Regular.ttf#INIKA</FontFamily>
+    <FontFamily x:Key="Inter">/Aplicacion/Resources/Fuentes/Inter-Regular.ttf#INTER</FontFamily>
     <!-- Define el efecto de difuminado negro -->
     <SolidColorBrush x:Key="BlurredBackgroundBrush"  Color="Black" Opacity="0.3"/>
     <!--se implementa el estilo para el conainer del text boxt-->
@@ -41,6 +41,7 @@
         <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="/Aplicacion/Resources/Fuentes/#Inter"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -50,6 +51,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <!-- Define el estilo del botón -->
@@ -66,6 +73,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 
