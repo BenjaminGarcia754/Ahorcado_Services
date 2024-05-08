@@ -25,6 +25,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public GenerarPartida()
         {
             InitializeComponent();
+
         }
 
         private void Click_CrearSala(object sender, RoutedEventArgs e)

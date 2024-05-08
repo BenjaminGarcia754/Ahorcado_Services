@@ -12,7 +12,7 @@
         </Border.Background>
         <Grid Margin="0,0,0,0">
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Crear partida" VerticalAlignment="Top"/>
-            <ComboBox HorizontalAlignment="Center" Margin="0,198,0,0" VerticalAlignment="Top" Width="160"/>
+            <ComboBox x:Name="CbCategoria" HorizontalAlignment="Center" Margin="0,198,0,0" VerticalAlignment="Top" Width="160"/>
             <ComboBox HorizontalAlignment="Center" Margin="0,284,0,0" VerticalAlignment="Top" Width="160"/>
             <ComboBox HorizontalAlignment="Center" Margin="0,357,0,0" VerticalAlignment="Top" Width="160"/>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="20"  Foreground="White" Margin="679,544,0,0" TextWrapping="Wrap"  Text="Crear sala" VerticalAlignment="Top" Height="32" Width="100"/>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -13,11 +13,19 @@
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundMenu.png" />
     <None Remove="Aplicacion\Resources\CrearPartidaBackground.png" />
+    <None Remove="Aplicacion\Resources\cuartoIntento.png" />
+    <None Remove="Aplicacion\Resources\ImagenBaseAhorcado.png" />
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
+    <None Remove="Aplicacion\Resources\JugarPartidaBackground.png" />
     <None Remove="Aplicacion\Resources\MenuImagen.png" />
+    <None Remove="Aplicacion\Resources\PrimerIntento.png" />
+    <None Remove="Aplicacion\Resources\QuintoIntento.png" />
     <None Remove="Aplicacion\Resources\RegistrarUsuarioBackground.png" />
     <None Remove="Aplicacion\Resources\RGQOm2J.png" />
+    <None Remove="Aplicacion\Resources\SegundoIntento.png" />
+    <None Remove="Aplicacion\Resources\SextoIntento.png" />
+    <None Remove="Aplicacion\Resources\TercerIntento.png" />
     <None Remove="ImagenInicioSesion.png" />
   </ItemGroup>
 
@@ -46,20 +54,42 @@
     <Resource Include="Aplicacion\Resources\ButtonBackgroundMenu.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Aplicacion\Resources\cuartoIntento.png" />
     <Resource Include="Aplicacion\Resources\Fuentes\Inika-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\Fuentes\Inter-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Aplicacion\Resources\ImagenBaseAhorcado.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Aplicacion\Resources\InicioSesionImagen.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\JugarPartidaBackground.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\MenuImagen.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Aplicacion\Resources\PrimerIntento.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\QuintoIntento.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Aplicacion\Resources\RegistrarUsuarioBackground.png" />
     <Resource Include="Aplicacion\Resources\RGQOm2J.png" />
+    <Resource Include="Aplicacion\Resources\SegundoIntento.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\SextoIntento.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\TercerIntento.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

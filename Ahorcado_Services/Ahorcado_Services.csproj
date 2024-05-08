@@ -236,6 +236,7 @@
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />
+    <Compile Include="Modelo\DTO%27s\PalabraDTO.cs" />
     <Compile Include="Modelo\EntityFramework\AhorcadoDbContext.cs" />
     <Compile Include="Modelo\EntityFramework\Categoria.cs" />
     <Compile Include="Modelo\EntityFramework\Dificultad.cs" />

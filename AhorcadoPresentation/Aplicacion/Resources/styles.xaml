@@ -80,6 +80,32 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <!-- Definicion de boton jugarPartida-->
+    <Style x:Key="ImageButtonStyleJugarPartida" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Width" Value="45"/>
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Margin" Value="5,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="White" BorderThickness="1" CornerRadius="20" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
 
 </ResourceDictionary>
