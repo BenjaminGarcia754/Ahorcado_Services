@@ -29,8 +29,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
 
         }
-
-        private void ClickIniciarSesion(object sender, RoutedEventArgs e)
+        private void ClickRegresar(object sender, RoutedEventArgs e)
         {
 
         }

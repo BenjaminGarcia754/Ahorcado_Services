@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Ahorcado_Services.Aplicacion.DificultadService" CodeBehind="DificultadService.svc.cs" %>

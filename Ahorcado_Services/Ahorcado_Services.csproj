@@ -187,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Aplicacion\Implementacion\CategoriaService.svc" />
-    <Content Include="Aplicacion\Implementacion\DificultadService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
     <Content Include="Aplicacion\Implementacion\SubcategoriaService.svc" />
     <Content Include="Service1.svc" />
@@ -199,10 +198,6 @@
     </Compile>
     <Compile Include="Aplicacion\Conexion.cs" />
     <Compile Include="Aplicacion\Interfaces\ICategoriaService.cs" />
-    <Compile Include="Aplicacion\Implementacion\DificultadService.svc.cs">
-      <DependentUpon>DificultadService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Aplicacion\Interfaces\IDificultadService.cs" />
     <Compile Include="Aplicacion\Implementacion\JugadorService.svc.cs">
       <DependentUpon>JugadorService.svc</DependentUpon>
     </Compile>
@@ -232,6 +227,10 @@
     <Compile Include="Migrations\20240502005815_FechaDeNacimientoUsuario.cs" />
     <Compile Include="Migrations\20240502005815_FechaDeNacimientoUsuario.Designer.cs">
       <DependentUpon>20240502005815_FechaDeNacimientoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240508234028_cambio.cs" />
+    <Compile Include="Migrations\20240508234028_cambio.Designer.cs">
+      <DependentUpon>20240508234028_cambio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />

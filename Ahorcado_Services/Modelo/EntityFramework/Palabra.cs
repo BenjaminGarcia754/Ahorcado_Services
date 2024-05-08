@@ -23,7 +23,5 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public Dificultad dificultad { get; set; }
         [Required]
         public string Descripcion { get; set; }
-        
-        
     }
 }

@@ -16,6 +16,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid x:Name="ContenedorPrincipal" MouseDown="moverVentana">
-        <vistas:JugarPartida />
+        <vistas:IniciarSesion RenderTransformOrigin="0.5,0.5" >
+            <vistas:IniciarSesion/>
+        </vistas:IniciarSesion>
     </Grid>
 </Window>
