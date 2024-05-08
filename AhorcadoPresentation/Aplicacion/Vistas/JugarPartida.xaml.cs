@@ -27,6 +27,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private int numeroIntento = 0;
         public Jugador jugadorRetador { get; set; }
         public Jugador jugadorInvitado { get; set; }
+
         public JugarPartida()
         {
             InitializeComponent();
