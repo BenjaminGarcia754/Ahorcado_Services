@@ -37,6 +37,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     GenericGuiController.MostrarMensajeBox("Bienvenido " + jugador.Nombre);
                     mostrarMenuPrincipal(jugador);
+
                 }
                 else
                 {

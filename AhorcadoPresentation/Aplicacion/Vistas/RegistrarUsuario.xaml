@@ -47,7 +47,7 @@
 
             <Border Style="{StaticResource StyleContainer}" Margin="101,485,553,120" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
-                    <DatePicker  x:Name="DpApellidoPaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
+                    <DatePicker  x:Name="DpFechaNacimiento" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
 
@@ -78,7 +78,7 @@
 
             <Button Content="Regresar"  Background="Transparent" FontSize="14" BorderThickness="0,0,0,2" Foreground="White" HorizontalAlignment="Left" Margin="519,592,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegresar" RenderTransformOrigin="0.5,0.5"/>
             <Button Content="Registrarse" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="325,583,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickRegistrarse"/>
-
+            <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="104,10,0,0" Grid.Row="1" TextWrapping="Wrap" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="40"  Text="Registrar Usuario" VerticalAlignment="Top" Height="49" Width="529" x:Name="tbTextoInicial"/>
         </Grid>
     </Border>
 
