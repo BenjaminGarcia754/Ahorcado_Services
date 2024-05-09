@@ -33,12 +33,12 @@ namespace AhorcadoPresentation
             ContenedorPrincipal.Children.Add(vista);
         }
 
-        private void Minimizar(object sender, RoutedEventArgs e)
+        private void Minimizar(object sender, MouseButtonEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
-        private void Cerrar(object sender, RoutedEventArgs e)
+        private void Cerrar(object sender, MouseButtonEventArgs e)
         {
             Close();
         }
