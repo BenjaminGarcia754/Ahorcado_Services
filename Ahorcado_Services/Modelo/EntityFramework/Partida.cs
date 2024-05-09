@@ -20,7 +20,7 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         [Required]
         public int IdPalabraSelecionada { get; set; }
         [Required]
-        public String EstadoPalabra { get; set; }
+        public String PalabraParcial { get; set; }
         [Required]
         public int IdEstadoPartida { get; set; }
         
@@ -30,5 +30,6 @@ namespace Ahorcado_Services.Modelo.EntityFramework
 
         public Palabra Palabra { get; set; }
 
+        public DateTime FechaCreacionPartida { get; set; }
     }
 }

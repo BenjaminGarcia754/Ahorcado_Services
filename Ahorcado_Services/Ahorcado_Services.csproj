@@ -236,6 +236,10 @@
     <Compile Include="Migrations\20240509001026_MigracionFinal.Designer.cs">
       <DependentUpon>20240509001026_MigracionFinal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240509005044_UltimaMigracion.cs" />
+    <Compile Include="Migrations\20240509005044_UltimaMigracion.Designer.cs">
+      <DependentUpon>20240509005044_UltimaMigracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />
