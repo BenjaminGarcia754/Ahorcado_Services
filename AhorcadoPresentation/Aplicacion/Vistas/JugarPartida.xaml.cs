@@ -1,4 +1,5 @@
 ﻿using AhorcadoPresentation.Modelo;
+using AhorcadoPresentation.Modelo.Singleton;
 using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             InitializeComponent();
 
             palabraDTO.Nombre = "Los juegos del hambre en llamas español latino";
+            PartidaSingleton partida= PartidaSingleton.ObtenerInstancia();
+            ttAyuda.Content = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
             generarLabels();
         }
 

@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Modelo\Internacionalizacion\" />
+    <Folder Include="Modelo\Singleton\" />
   </ItemGroup>
 
   <ItemGroup>
