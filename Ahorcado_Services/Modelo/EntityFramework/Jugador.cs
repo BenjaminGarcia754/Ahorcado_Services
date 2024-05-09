@@ -18,7 +18,6 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public string Correo { get; set; }
         [Required]
         public string Contrasena { get; set; }
-        public int Rol { get; set;}
         [Required]
         public string Telefono { get; set; }
         public int Puntaje { get; set; }
