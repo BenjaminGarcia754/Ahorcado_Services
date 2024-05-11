@@ -109,7 +109,6 @@
     </Style>
     <!-- Definicion de boton de ayuda jugarPartida-->
     <Style TargetType="ToolTip">
-        
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="FontSize" Value="14"/>

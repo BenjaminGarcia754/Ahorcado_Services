@@ -32,10 +32,15 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public JugarPartida()
         {
             InitializeComponent();
+            //aqui se debe de recibir el id partida
+            //despues se manda el id de la partida y el id del jugador al servicio 
 
+            //para obtener la palabra a adivinar y la ayuda.
             palabraDTO.Nombre = "Los juegos del hambre en llamas español latino";
             PartidaSingleton partida= PartidaSingleton.ObtenerInstancia();
-            ttAyuda.Content = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
+            tbAyuda.TextWrapping = TextWrapping.Wrap;
+            tbAyuda.Text = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
+            
             generarLabels();
         }
 

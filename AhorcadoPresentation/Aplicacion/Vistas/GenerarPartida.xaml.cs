@@ -30,7 +30,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void Click_CrearSala(object sender, RoutedEventArgs e)
         {
-
+            //Aqui se debe de llamar a la ventana de espera de jugadores hasta que el jugador invitado se una
+            //Instancia de jugadir retador prueba
+            JugadorRetador = new Jugador()
+            {
+                Id = 1,
+                Nombre = "Jugador 1",
+                Correo = ""
+            };
         }
     }
 }
