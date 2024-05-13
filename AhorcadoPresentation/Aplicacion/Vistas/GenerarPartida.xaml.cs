@@ -1,4 +1,5 @@
-﻿using JugadorServiceReference;
+﻿using AhorcadoService;
+using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,17 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public GenerarPartida()
         {
             InitializeComponent();
+            InicializarComboBox();
+        }
+        private void InicializarComboBox()
+        {
 
+            var categoriaServiceClient = new CategoriaServiceClient();
+            var categorias = categoriaServiceClient.GetCategoriasAsync().Result;
+
+            CbCategoria.ItemsSource = categorias;
+            CbCategoria.DisplayMemberPath = "Nombre";
+            CbCategoria.SelectedValuePath = "Id";
         }
 
         private void Click_CrearSala(object sender, RoutedEventArgs e)
