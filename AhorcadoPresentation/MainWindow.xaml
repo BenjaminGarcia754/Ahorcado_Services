@@ -16,6 +16,6 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid x:Name="ContenedorPrincipal" MouseDown="moverVentana">
-        <vistas:IniciarSesion />
+        <vistas:GenerarPartida />
     </Grid>
 </Window>

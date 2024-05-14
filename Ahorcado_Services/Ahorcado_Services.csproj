@@ -186,6 +186,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aplicacion\Implementacion\DificultadService.svc" />
     <Content Include="Aplicacion\Implementacion\CategoriaService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
     <Content Include="Aplicacion\Implementacion\SubcategoriaService.svc" />
@@ -193,6 +194,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicacion\Implementacion\DificultadService.svc.cs">
+      <DependentUpon>DificultadService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Interfaces\IDificultadService.cs" />
     <Compile Include="Aplicacion\Implementacion\CategoriaService.svc.cs">
       <DependentUpon>CategoriaService.svc</DependentUpon>
     </Compile>
