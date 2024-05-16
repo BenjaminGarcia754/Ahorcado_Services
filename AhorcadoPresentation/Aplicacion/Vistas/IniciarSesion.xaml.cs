@@ -36,7 +36,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (jugador != null)
                 {
                     GenericGuiController.MostrarMensajeBox("Bienvenido " + jugador.Nombre);
+
                     mostrarMenuPrincipal(jugador);
+
                 }
                 else
                 {
@@ -57,7 +59,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void ClickRegistrarse(object sender, RoutedEventArgs e)
         {
-
+            RegistrarUsuario registrarUsuario = new RegistrarUsuario();
+            registrarUsuario.esActualizacion = false;
+            //acceder a la ventana principal
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(registrarUsuario);
         }
 
         private bool camposValidos()
