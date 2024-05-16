@@ -39,19 +39,19 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
         }
 
-        public static bool ValidarTextBlockVacios(List<TextBlock> textBlocks)
+        public static bool ValidarTextBlockVacios(List<TextBox> textBoxes)
         {
             bool respuesta = true;
-            foreach (var textBlock in textBlocks)
+            foreach (var textBox in textBoxes)
             {
-                if (string.IsNullOrEmpty(textBlock.Text))
+                if (string.IsNullOrEmpty(textBox.Text))
                 {
-                    textBlock.Background = Brushes.OrangeRed;
+                    textBox.Background = Brushes.OrangeRed;
                     respuesta = false;
                 }
                 else
                 {
-                    textBlock.Background = null;
+                    textBox.Background = null;
                 }
             }
             return respuesta;
@@ -60,18 +60,23 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public static bool ValidarPasswordBox(PasswordBox passwordBox)
         {
             bool respuesta = true;
-            if (string.IsNullOrEmpty(passwordBox.Password))
+            if (string.IsNullOrEmpty(passwordBox.Password) )
             {
                 passwordBox.Background = Brushes.OrangeRed;
                 respuesta = false;
-                if (!ContraseñaSegura(passwordBox.Password))
-                {
-                    respuesta = false;
-                }
+
             }
             else
             {
-                passwordBox.Background = null;
+                if (!ContraseñaSegura(passwordBox.Password))
+                {
+                    respuesta = false;
+                    passwordBox.Background = Brushes.OrangeRed;
+                }
+                else
+                {
+                    passwordBox.Background = null;
+                }
             }
             return respuesta;
         }
@@ -107,17 +112,22 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         public static bool ValidarDatePicker(DatePicker datePicker)
         {
-            DateTime fechaActual = datePicker.SelectedDate.Value;
             DateTime fechaMinima = new DateTime(1950, 1, 1);
             DateTime fechaMaxima = DateTime.Now.AddYears(-10);
             bool respuesta = true;
             if (datePicker.SelectedDate != null)
             {
-                respuesta = false;
-                if (!(fechaActual <= fechaMaxima) && !(fechaActual >= fechaMinima))
+                DateTime fechaActual = datePicker.SelectedDate.Value;
+                if (fechaActual < fechaMinima || fechaActual > fechaMaxima)
                 {
                     respuesta = false;
+                    datePicker.Background = Brushes.OrangeRed;
+
                 }
+            }else
+            {
+                datePicker.Background = Brushes.OrangeRed;
+                respuesta = false;
             }
             return respuesta;
         }

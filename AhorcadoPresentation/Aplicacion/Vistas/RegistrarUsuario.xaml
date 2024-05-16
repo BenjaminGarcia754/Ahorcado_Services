@@ -10,7 +10,7 @@
 
 
     <Border Background="White"  BorderThickness="1" CornerRadius="30">
-        <Grid>
+        <Grid x:Name="GdContenedor">
             <!--TODO: Corroborar la advertencia-->
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -29,24 +29,36 @@
 
             <Border Style="{StaticResource StyleContainer}" Margin="101,141,553,465" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Por favor, completa este campo." />
+                    </WrapPanel.ToolTip>
                     <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbNombre" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
 
             <Border Style="{StaticResource StyleContainer}" Margin="106,255,553,351" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Por favor, completa este campo." />
+                    </WrapPanel.ToolTip>
                     <TextBox Style="{StaticResource TextBoxLogin}" x:Name="TbApellidoMaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
                 </WrapPanel>
             </Border>
 
             <Border Style="{StaticResource StyleContainer}" Margin="106,369,553,234" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Por favor, completa este campo." />
+                    </WrapPanel.ToolTip>
                     <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbApellidoPaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
 
             <Border Style="{StaticResource StyleContainer}" Margin="101,485,553,120" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="La persona no puede ser mayor a 74 años o menor a 10 años" />
+                    </WrapPanel.ToolTip>
                     <DatePicker  x:Name="DpFechaNacimiento" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
@@ -54,24 +66,36 @@
             <!--Segunda parte-->
             <Border Style="{StaticResource StyleContainer}" Margin="495,135,159,469" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Por favor, completa este campo." />
+                    </WrapPanel.ToolTip>
                     <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbTelefono" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
 
             <Border Style="{StaticResource StyleContainer}" Margin="500,249,159,355" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
-                    <PasswordBox Style="{StaticResource PasswordBoxLogin}" x:Name="TbUsuario" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Por favor, completa este campo." />
+                    </WrapPanel.ToolTip>
+                    <TextBox Style="{StaticResource TextBoxLogin}" x:Name="TbUsuario" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
                 </WrapPanel>
             </Border>
 
             <Border Style="{StaticResource StyleContainer}" Margin="500,363,159,238" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Por favor, completa este campo." />
+                    </WrapPanel.ToolTip>
                     <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbCorreo" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
 
             <Border Style="{StaticResource StyleContainer}" Margin="495,479,159,124" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
+                    <WrapPanel.ToolTip>
+                        <ToolTip Content="Incluye mayúsculas, minúsculas, números y caracteres especiales en tu contraseña" />
+                    </WrapPanel.ToolTip>
                     <PasswordBox Style="{StaticResource PasswordBoxLogin}"  x:Name="PfContraseña" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>

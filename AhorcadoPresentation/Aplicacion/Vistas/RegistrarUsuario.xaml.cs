@@ -1,4 +1,5 @@
-﻿using JugadorServiceReference;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,14 +32,45 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void ClickRegistrarse(object sender, RoutedEventArgs e)
         {
-            JugadorServiceClient jugador = new JugadorServiceClient();
+            JugadorServiceClient jugadorCliente = new JugadorServiceClient();
 
             if (ValidarCampos())
             {
+                string Apellidos = TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
+                Jugador jugador = new Jugador();
+                jugador.Nombre = TbNombre.Text;
+                jugador.Apellidos = Apellidos;
+                jugador.Correo = TbCorreo.Text;
+                jugador.fechaDeNacimiento = DpFechaNacimiento.SelectedDate.Value;
+                jugador.Contrasena = PfContraseña.Password;
+                jugador.Telefono = TbTelefono.Text;
+
                 if (esActualizacion)
                 {
-
+                    bool respuesta = jugadorCliente.ActualizarInformacionJugadorAsync(jugador).Result;
+                    if (respuesta)
+                    {
+                        GenericGuiController.MostrarMensajeBox("Informacion actualizada");
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("Error al actualizar la informacion");
+                    }
+                }else
+                {
+                    bool respuesta = jugadorCliente.RegistrarJugadorAsync(jugador).Result;
+                    if (respuesta)
+                    {
+                        GenericGuiController.MostrarMensajeBox("Jugador registrado");
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("Error al registrar el jugador");
+                    }
                 }
+            }else
+            {
+                
             }
         }
 
@@ -62,20 +94,27 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             bool respuesta = true;
             RegistrarUsuario registrarUsuario = new RegistrarUsuario();
-            List<TextBlock> textBlocks = new List<TextBlock>();
-            foreach (TextBlock block in GenericGuiController.FindVisualChildren<TextBlock>(registrarUsuario))
+            List<TextBox> textBlocks = new List<TextBox>();
+            
+            foreach (TextBox block in GenericGuiController.FindVisualChildren<TextBox>(GdContenedor))
             {
                 textBlocks.Add(block);
             }
 
             if (!GenericGuiController.ValidarTextBlockVacios(textBlocks))
             {
+                GenericGuiController.MostrarMensajeBox("Hay campos vacios");
                 respuesta = false;
-            }else if (!GenericGuiController.ValidarDatePicker(DpFechaNacimiento))
+            }
+            
+            if (!GenericGuiController.ValidarDatePicker(DpFechaNacimiento))
             {
+                GenericGuiController.MostrarMensajeBox("Fecha de nacimiento invalida");
                 respuesta = false;
-            }else if (!GenericGuiController.ValidarPasswordBox(PfContraseña))
+            }
+            if (!GenericGuiController.ValidarPasswordBox(PfContraseña))
             {
+                GenericGuiController.MostrarMensajeBox("Contraseña invalida");
                 respuesta = false;
             }
 
@@ -83,5 +122,25 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         }
 
+        public void CargarInformacionJugador()
+        {
+            TbNombre.Text = JugadorSingleton.Instance.Nombre;
+            string[] apellidos = JugadorSingleton.Instance.Apellidos.Split(' ');
+            TbApellidoPaterno.Text = apellidos[0];
+            TbApellidoMaterno.Text = apellidos[1];
+            TbCorreo.Text = JugadorSingleton.Instance.Correo;
+            DpFechaNacimiento.SelectedDate = JugadorSingleton.Instance.fechaDeNacimiento;
+            PfContraseña.Password = JugadorSingleton.Instance.Contrasena;
+            TbTelefono.Text = JugadorSingleton.Instance.Telefono;
+        }
+
+        public void configurarVentana()
+        {
+            if(esActualizacion)
+            {
+                tbTextoInicial.Text= "Actualizar Informacion";
+                CargarInformacionJugador();
+            }
+        }
     }
 }
