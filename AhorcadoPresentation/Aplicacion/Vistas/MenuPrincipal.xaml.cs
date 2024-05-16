@@ -32,6 +32,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             mostrarMenuGenerarPartida();
         }
 
+        private void Click_BuscarPartida(object sender, RoutedEventArgs e)
+        {
+            mostrarBuscarPartidaNueva();
+        }
+
+
         private void mostrarMenuGenerarPartida()
         {
             GenerarPartida generarPartida = new GenerarPartida();
@@ -39,5 +45,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.cambiarVista(generarPartida);
         }
+
+        private void mostrarBuscarPartidaNueva()
+        {
+            BuscarPartidaNueva buscarPartidaNueva = new BuscarPartidaNueva();
+            buscarPartidaNueva.JugadorRetador = JugadorActivo;
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(buscarPartidaNueva);
+        }
+
     }
 }
