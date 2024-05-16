@@ -13,6 +13,7 @@
         Height="800"
         Width="1024"
         Background="Transparent"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid MouseDown="moverVentana" Margin="0,-20,0,0">
