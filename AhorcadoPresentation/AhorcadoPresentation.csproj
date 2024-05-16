@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Aplicacion\Resources\BotonSVG.svg" />
+    <None Remove="Aplicacion\Resources\BuscarPartidaNuevaBckG.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundMenu.png" />
     <None Remove="Aplicacion\Resources\CrearPartidaBackground.png" />
@@ -30,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Aplicacion\Resources\BuscarPartidaNuevaBckG.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Aplicacion\Resources\CrearPartidaBackground.png" />
   </ItemGroup>
 
