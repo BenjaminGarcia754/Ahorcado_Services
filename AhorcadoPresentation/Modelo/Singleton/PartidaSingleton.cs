@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace AhorcadoPresentation.Modelo.Singleton
 {
-    internal class PartidaSingleton
+    public class PartidaSingleton
     {
+        private static PartidaSingleton miSingleton = null;
+        private PartidaSingleton() { 
+        
+        }
         public int IdPartida { get; set; }
         public int IdJugadorAnfitrion { get; set; }
         public int IdJugadorInvitado { get; set; }
@@ -16,5 +20,13 @@ namespace AhorcadoPresentation.Modelo.Singleton
         public int IntentosRestantes{ get; set; }
         public int idEstadoPartida { get; set; }
         public DateTime FechaCreacionPartida { get; set; }
+        public static PartidaSingleton ObtenerInstancia()
+        {
+            if (miSingleton == null)
+            {
+                miSingleton = new PartidaSingleton();
+            }
+            return miSingleton;
+        }
     }
 }
