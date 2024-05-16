@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="AhorcadoPresentation.Aplicacion.Vistas.HistorialPuntaje"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             mc:Ignorable="d" 
+             d:DesignHeight="666" d:DesignWidth="1024">
+    <Border BorderBrush="White" BorderThickness="1" CornerRadius="30">
+        <Border.Background>
+            <ImageBrush ImageSource="/Aplicacion/Resources/CrearPartidaBackground.png"/>
+        </Border.Background>
+        <Grid Margin="0,0,0,0">
+            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Informe de Puntos" VerticalAlignment="Top"/>
+            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="647,64,0,0" TextWrapping="Wrap"  Text="Puntaje:" VerticalAlignment="Top"/>
+            <ScrollViewer Margin= "129,102,162,76" VerticalScrollBarVisibility="Hidden" >
+                <WrapPanel x:Name="WPPanelPuntos" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">
+
+                </WrapPanel>
+            </ScrollViewer>
+            <Label x:Name="lPuntaje" Content="99999" HorizontalAlignment="Left" Margin="745,58,0,0" VerticalAlignment="Top" Width="85" Foreground="White" FontSize="24" Height="39"/>
+
+        </Grid>
+    </Border>
+</UserControl>
