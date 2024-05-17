@@ -11,13 +11,14 @@
             <ImageBrush ImageSource="/Aplicacion/Resources/CrearPartidaBackground.png"/>
         </Border.Background>
         <Grid Margin="0,0,0,0">
+            <Button Content="Regresar" HorizontalAlignment="Left" Margin="48,114,0,0" VerticalAlignment="Top" Height="26" Width="80" Click="Click_Regresar"/>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Crear partida" VerticalAlignment="Top"/>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="290,124,0,0" TextWrapping="Wrap"  Text="Dificultad:" VerticalAlignment="Top" Height="32" Width="124"/>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="290,271,0,0" TextWrapping="Wrap"  Text="Categoria:" VerticalAlignment="Top" Height="32" Width="124"/>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="290,407,0,0" TextWrapping="Wrap"  Text="Palabra:" VerticalAlignment="Top" Height="32" Width="98"/>
-            <ComboBox x:Name="CbDificultad" HorizontalAlignment="Center" Margin="0,162,0,0" VerticalAlignment="Top" Width="244" Height="46"/>
-            <ComboBox x:Name="CbCategoria" HorizontalAlignment="Center" VerticalAlignment="Center" Width="244" Height="46"/>
-            <ComboBox x:Name="CbPalabra" HorizontalAlignment="Center" Margin="0,445,0,0" VerticalAlignment="Top" Width="244" Height="46"/>
+            <ComboBox x:Name="CbDificultad" HorizontalAlignment="Center" Margin="0,162,0,0" VerticalAlignment="Top" Width="244" Height="40" FontSize="20"/>
+            <ComboBox x:Name="CbCategoria" HorizontalAlignment="Center" VerticalAlignment="Center" Width="244" Height="40" FontSize="20"/>
+            <ComboBox x:Name="CbPalabra" HorizontalAlignment="Center" Margin="0,445,0,0" VerticalAlignment="Top" Width="244" Height="40" FontSize="20"/>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="655,541,0,0" TextWrapping="Wrap"  Text="Crear sala" VerticalAlignment="Top" Height="32" Width="124"/>
             <Button Content="Button" HorizontalAlignment="Left" Margin="784,544,0,0" VerticalAlignment="Top" Height="26" Width="40" Click="Click_CrearSala">
                 <!--Aqui quiero poner un path para la imagen del background-->
