@@ -127,4 +127,14 @@
     </Style>
     <!-- Definicion de cerrar y minimizar ventana-->
 
+    <!-- Estilo para el Border de PartidaNueva -->
+    <Style x:Key="ComponentePartidaNueva" TargetType="Border">
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="Height" Value="250"/>
+        <Setter Property="Width" Value="600"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Background" Value="{StaticResource BlurredBackgroundBrush}"/>
+    </Style>
 </ResourceDictionary>
