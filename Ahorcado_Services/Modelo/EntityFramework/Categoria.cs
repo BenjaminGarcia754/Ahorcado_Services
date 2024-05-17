@@ -14,6 +14,8 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }
-        public List<Subcategoria> Subcategorias { get; set; }
+        [Required]
+        public string NombreIngles { get; set; }
+        
     }
 }

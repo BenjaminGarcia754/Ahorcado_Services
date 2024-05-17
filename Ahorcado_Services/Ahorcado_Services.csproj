@@ -188,7 +188,6 @@
   <ItemGroup>
     <Content Include="Aplicacion\Implementacion\CategoriaService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
-    <Content Include="Aplicacion\Implementacion\SubcategoriaService.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -202,10 +201,6 @@
       <DependentUpon>JugadorService.svc</DependentUpon>
     </Compile>
     <Compile Include="Aplicacion\Interfaces\IJugadorService.cs" />
-    <Compile Include="Aplicacion\Interfaces\ISubcategoriaService.cs" />
-    <Compile Include="Aplicacion\Implementacion\SubcategoriaService.svc.cs">
-      <DependentUpon>SubcategoriaService.svc</DependentUpon>
-    </Compile>
     <Compile Include="Infraestructura\Utilidades\AutoMapper.cs" />
     <Compile Include="Infraestructura\Utilidades\AutoMapperHelper.cs" />
     <Compile Include="Migrations\20240415194231_MigracionInicial.cs" />
@@ -240,6 +235,10 @@
     <Compile Include="Migrations\20240509005044_UltimaMigracion.Designer.cs">
       <DependentUpon>20240509005044_UltimaMigracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240517013550_InternacionalizacionBDv1.cs" />
+    <Compile Include="Migrations\20240517013550_InternacionalizacionBDv1.Designer.cs">
+      <DependentUpon>20240517013550_InternacionalizacionBDv1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />
@@ -251,7 +250,6 @@
     <Compile Include="Modelo\EntityFramework\Jugador.cs" />
     <Compile Include="Modelo\EntityFramework\Palabra.cs" />
     <Compile Include="Modelo\EntityFramework\Partida.cs" />
-    <Compile Include="Modelo\EntityFramework\Subcategoria.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
