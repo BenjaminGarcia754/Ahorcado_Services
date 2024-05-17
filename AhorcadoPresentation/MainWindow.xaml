@@ -58,7 +58,7 @@
 
         </Grid>
         <Grid x:Name="ContenedorPrincipal" Width="1024" Height="666">
-            <vistas:GenerarPartida />
+            <vistas:IniciarSesion />
         </Grid>
 
     </Grid>
