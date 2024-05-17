@@ -15,13 +15,19 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         [Required]
         public string Nombre { get; set; }
         [Required]
-        public int IdSubcategoria { get; set; }
+        public int IdCategoria { get; set; }
         [Required]
-        public Subcategoria Subcategoria { get; set; }
+        public Categoria Categoria { get; set; }
         [Required]
         public int IdDificultad { get; set; }
         public Dificultad dificultad { get; set; }
         [Required]
         public string Descripcion { get; set; }
+        [Required]
+        public string NombreIngles { get; set; }
+        [Required]
+        public string DescripcionIngles { get; set; }
+
+
     }
 }

@@ -18,7 +18,6 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public DbSet<Jugador> Jugadores { get; set; }
         public DbSet<Dificultad> Dificultades { get; set; }
         public DbSet<Palabra> Palabras { get; set; }
-        public DbSet<Subcategoria> Subcategorias { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Partida> Partidas { get; set; }
         public DbSet<EstadoPartida> EstadosPartida { get; set; }
