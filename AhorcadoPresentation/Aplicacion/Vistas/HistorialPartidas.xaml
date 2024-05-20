@@ -17,6 +17,7 @@
 
                 </WrapPanel>
             </ScrollViewer>
+            <Button Content="Ver puntaje" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="736,34,0,0" VerticalAlignment="Top" Height="40" Width="124" Click="ClickConsultarPuntaje"/>
 
         </Grid>
     </Border>
