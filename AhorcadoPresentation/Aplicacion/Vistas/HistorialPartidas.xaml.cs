@@ -41,5 +41,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 WPPanelPartidas.Children.Add(partidaHistorial);
             }
         }
+
+        private void ClickConsultarPuntaje(object sender, RoutedEventArgs e)
+        {
+            HistorialPuntaje historialPuntaje = new HistorialPuntaje();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(historialPuntaje);
+        }
     }
 }
