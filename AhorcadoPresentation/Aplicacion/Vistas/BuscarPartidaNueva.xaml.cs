@@ -31,7 +31,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.JugadorActivo = JugadorRetador;
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.cambiarVista(menuPrincipal);
         }

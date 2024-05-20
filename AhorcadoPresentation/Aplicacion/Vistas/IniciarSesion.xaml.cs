@@ -1,4 +1,5 @@
-﻿using JugadorServiceReference;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             //acceder a la ventana principal
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            menuPrincipal.JugadorActivo = jugador;
+            //menuPrincipal.JugadorActivo = jugador;
+            JugadorSingleton.Instance.Id = jugador.Id;
             mainWindow.cambiarVista(menuPrincipal);
 
         }
