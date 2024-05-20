@@ -4,6 +4,7 @@ using ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -66,6 +67,45 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             CbCategoria.IsEnabled = false;
 
             CbPalabra.IsEnabled = false;
+        }
+
+        private void ValidarComboBox(object sender, MouseButtonEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+
+            // Validar si es el ComboBox de dificultad
+            if (comboBox == CbDificultad)
+            {
+                // Si no hay una selección en el ComboBox de dificultad, mostrar mensaje
+                if (CbDificultad.SelectedIndex == -1)
+                {
+                    e.Handled = true; // Detener el evento para que el ComboBox no reciba el clic
+                    MessageBox.Show("Debe seleccionar una dificultad antes de continuar.");
+                    return;
+                }
+            }
+            // Validar si es el ComboBox de categoría
+            else if (comboBox == CbCategoria)
+            {
+                // Si no hay una selección en el ComboBox de categoría, mostrar mensaje
+                if (CbCategoria.SelectedIndex == -1)
+                {
+                    e.Handled = true; // Detener el evento para que el ComboBox no reciba el clic
+                    MessageBox.Show("Debe seleccionar una categoría antes de continuar.");
+                    return;
+                }
+            }
+            // Validar si es el ComboBox de palabra
+            else if (comboBox == CbPalabra)
+            {
+                // Si no hay una selección en el ComboBox de palabra, mostrar mensaje
+                if (CbPalabra.SelectedIndex == -1)
+                {
+                    e.Handled = true; // Detener el evento para que el ComboBox no reciba el clic
+                    MessageBox.Show("Debe seleccionar una palabra antes de continuar.");
+                    return;
+                }
+            }
         }
 
         private void Click_CrearSala(object sender, RoutedEventArgs e)
