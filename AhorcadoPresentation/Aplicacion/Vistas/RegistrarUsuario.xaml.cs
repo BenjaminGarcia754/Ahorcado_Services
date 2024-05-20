@@ -1,4 +1,6 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.Modelo;
+using AutoMapper;
 using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
@@ -24,10 +26,13 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class RegistrarUsuario : UserControl
     {
         public bool esActualizacion = false;
+        IMapper mapper = Modelo.Mapper.ObtenerMapper();
+
 
         public RegistrarUsuario()
         {
             InitializeComponent();
+            configurarVentana();
         }
 
         private void ClickRegistrarse(object sender, RoutedEventArgs e)
@@ -41,7 +46,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 jugador.Nombre = TbNombre.Text;
                 jugador.Apellidos = Apellidos;
                 jugador.Correo = TbCorreo.Text;
-                jugador.fechaDeNacimiento = DpFechaNacimiento.SelectedDate.Value;
+                jugador.fechaDeNacimiento = (DateTime)DpFechaNacimiento.SelectedDate.Value;
                 jugador.Contrasena = PfContraseña.Password;
                 jugador.Telefono = TbTelefono.Text;
 
@@ -124,6 +129,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         public void CargarInformacionJugador()
         {
+            mapper.Map(JugadorSingleton.Instance, JugadorSingleton.Instance);
+
             TbNombre.Text = JugadorSingleton.Instance.Nombre;
             string[] apellidos = JugadorSingleton.Instance.Apellidos.Split(' ');
             TbApellidoPaterno.Text = apellidos[0];
@@ -140,6 +147,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 tbTextoInicial.Text= "Actualizar Informacion";
                 CargarInformacionJugador();
+                TbCorreo.IsEnabled = false;
             }
         }
     }

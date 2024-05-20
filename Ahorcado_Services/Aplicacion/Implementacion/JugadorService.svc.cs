@@ -65,13 +65,14 @@ namespace Ahorcado_Services.Aplicacion.Implementacion
             }
             catch (DbUpdateException ex)
             {
-                ex.Source = "Error al registrar el jugador";
-                throw;
+                throw ex;
             }
             catch(EntityException ex)
             {
-                ex.Source = "Error al registrar el jugador";
-                throw;
+                throw ex;
+            }catch (Exception ex)
+            {
+                throw ex;
             }
             return true;
         }

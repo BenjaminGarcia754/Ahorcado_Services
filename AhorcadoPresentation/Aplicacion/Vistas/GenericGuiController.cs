@@ -83,6 +83,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         public static bool ContraseñaSegura(string contraseña)
         {
+            bool respuesta;
             bool mayuscula = false, minuscula = false, numero = false, carespecial = false;
             for (int i = 0; i < contraseña.Length; i++)
             {
@@ -103,11 +104,23 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     carespecial = true;
                 }
             }
-            if (mayuscula && minuscula && numero && carespecial && contraseña.Length >= 8)
+
+            if (carespecial)
             {
-                return true;
+                respuesta = false;
             }
-            return false;
+            else 
+            {
+                if (mayuscula && minuscula && numero && contraseña.Length >= 8)
+                {
+                    respuesta = true;
+                }
+                else
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
         }
 
         public static bool ValidarDatePicker(DatePicker datePicker)

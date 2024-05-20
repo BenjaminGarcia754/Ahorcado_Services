@@ -41,7 +41,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private void mostrarMenuGenerarPartida()
         {
             GenerarPartida generarPartida = new GenerarPartida();
-            generarPartida.JugadorRetador = JugadorActivo;
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.cambiarVista(generarPartida);
         }
@@ -49,7 +48,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private void mostrarBuscarPartidaNueva()
         {
             BuscarPartidaNueva buscarPartidaNueva = new BuscarPartidaNueva();
-            buscarPartidaNueva.JugadorRetador = JugadorActivo;
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.cambiarVista(buscarPartidaNueva);
         }

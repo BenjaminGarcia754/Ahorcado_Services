@@ -1,4 +1,6 @@
-﻿using JugadorServiceReference;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using AutoMapper;
+using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class IniciarSesion : UserControl
     {
+        IMapper mapper = Modelo.Mapper.ObtenerMapper();
 
         public IniciarSesion()
         {
@@ -36,8 +39,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (jugador != null)
                 {
                     GenericGuiController.MostrarMensajeBox("Bienvenido " + jugador.Nombre);
-
-                    mostrarMenuPrincipal(jugador);
+                    mapper.Map(jugador, JugadorSingleton.Instance);
+                    mostrarMenuPrincipal();
 
                 }
                 else
@@ -47,13 +50,13 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
         }
 
-        private void mostrarMenuPrincipal(Jugador jugador)
+        private void mostrarMenuPrincipal()
         {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             //acceder a la ventana principal
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            menuPrincipal.JugadorActivo = jugador;
             mainWindow.cambiarVista(menuPrincipal);
+
 
         }
 

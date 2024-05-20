@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AhorcadoPresentation.Modelo
 {
-    internal class AutoMapper : Profile
+    public class Mapper : Profile
     {
-        public AutoMapper()
+        public Mapper()
         {
             CreateMap<JugadorSingleton, Jugador>().ReverseMap();
         }
@@ -20,7 +20,7 @@ namespace AhorcadoPresentation.Modelo
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<AutoMapper>();
+                cfg.AddProfile<Mapper>();
             });
 
             return config.CreateMapper();
