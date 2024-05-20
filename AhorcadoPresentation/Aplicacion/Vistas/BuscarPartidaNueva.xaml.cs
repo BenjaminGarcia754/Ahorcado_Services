@@ -25,14 +25,28 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public BuscarPartidaNueva()
         {
             InitializeComponent();
+            AgregarComponenteHistorial();
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.JugadorActivo = JugadorRetador;
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.cambiarVista(menuPrincipal);
+        }
+
+        private void AgregarComponenteHistorial()
+        {
+
+            for (int i = 0; i < 6; i++)
+            {
+                string jugadorRetador = "Usuario" + i;
+                string dificultad = "Palabra" + i;
+                string categoria = "Ganada";
+
+                PartidaNueva partidaHistorial = new PartidaNueva(jugadorRetador, dificultad, categoria);
+                WPPanelPartidasNuevas.Children.Add(partidaHistorial);
+            }
         }
 
         private void Click_Jugar(object sender, RoutedEventArgs e)

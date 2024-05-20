@@ -21,7 +21,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class MenuPrincipal : UserControl
     {   
-        public Jugador JugadorActivo { get; set; }
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -52,5 +51,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             mainWindow.cambiarVista(buscarPartidaNueva);
         }
 
+        private void Click_BuscarPartida_HistorialPartidas(object sender, RoutedEventArgs e)
+        {
+            HistorialPartidas historialPartidas = new HistorialPartidas();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(historialPartidas);
+        }
     }
 }
