@@ -11,6 +11,22 @@
             <ImageBrush ImageSource="/Aplicacion/Resources/CrearPartidaBackground.png"/>
         </Border.Background>
         <Grid Margin="0,0,0,0">
+            <Button Content="Regresar" HorizontalAlignment="Left" Margin="61,28,0,0" VerticalAlignment="Top" Height="33" Width="34" Click="Click_Regresar">
+                <!--Aqui quiero poner un path para la imagen del background-->
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Path x:Name="PathBackground" Fill="White"  Data="M43 0C19.2533 0 0 16.119 0 36C0 55.881 19.2533 72 43 72C66.7468 72 86 55.881 86 36C86 16.119 66.7468 0 43 0ZM55.6528 56.907L51.8526 60.0885L23.0749 36L51.8526 11.907L55.6528 15.0885L30.6751 36L55.6528 56.907Z" Margin="0,0,0,0" Stretch="Fill"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="PathBackground" Property="Fill" Value="Gray"/>
+                                <!-- Cambia el color de relleno del Path cuando el cursor está sobre el botón -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Historial de partida" VerticalAlignment="Top"/>
             <ScrollViewer Margin= "129,102,162,76">
                 <WrapPanel x:Name="WPPanelPartidas" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">

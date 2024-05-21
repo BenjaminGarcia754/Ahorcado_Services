@@ -42,5 +42,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 WPPanelPuntos.Children.Add(partidaHistorial);
             }
         }
+
+        private void Click_Regresar(object sender, RoutedEventArgs e)
+        {  
+            HistorialPartidas historialPartidas = new HistorialPartidas();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(historialPartidas);
+        }
     }
 }

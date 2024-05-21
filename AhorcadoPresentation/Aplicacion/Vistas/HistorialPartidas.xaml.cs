@@ -48,5 +48,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.cambiarVista(historialPuntaje);
         }
+
+        private void Click_Regresar(object sender, RoutedEventArgs e)
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.cambiarVista(menuPrincipal);
+        }
     }
 }
