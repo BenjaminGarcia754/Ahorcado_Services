@@ -41,21 +41,21 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             GenerarPartida generarPartida = new GenerarPartida();
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(generarPartida);
+            mainWindow.CambiarVista(generarPartida);
         }
 
         private void mostrarBuscarPartidaNueva()
         {
             BuscarPartidaNueva buscarPartidaNueva = new BuscarPartidaNueva();
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(buscarPartidaNueva);
+            mainWindow.CambiarVista(buscarPartidaNueva);
         }
 
         private void Click_BuscarPartida_HistorialPartidas(object sender, RoutedEventArgs e)
         {
             HistorialPartidas historialPartidas = new HistorialPartidas();
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(historialPartidas);
+            mainWindow.CambiarVista(historialPartidas);
         }
     }
 }

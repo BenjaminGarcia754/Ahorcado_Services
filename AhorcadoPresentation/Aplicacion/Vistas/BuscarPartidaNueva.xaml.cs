@@ -32,7 +32,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(menuPrincipal);
+            mainWindow.CambiarVista(menuPrincipal);
         }
 
         private void AgregarComponenteHistorial()

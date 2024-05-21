@@ -20,14 +20,14 @@ namespace AhorcadoPresentation
         {
             InitializeComponent();
         }
-        private void moverVentana(object sender, MouseButtonEventArgs e)
+        private void MoverVentana(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
                 DragMove();
             }
         }
-        public void cambiarVista(UserControl vista)
+        public void CambiarVista(UserControl vista)
         {
             ContenedorPrincipal.Children.Clear();
             ContenedorPrincipal.Children.Add(vista);

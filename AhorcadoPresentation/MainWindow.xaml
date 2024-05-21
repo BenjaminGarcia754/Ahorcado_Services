@@ -16,7 +16,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
-    <Grid MouseDown="moverVentana" Margin="0,-20,0,0">
+    <Grid MouseDown="MoverVentana" Margin="0,-20,0,0">
         <Grid Margin="0,-3,0,693" Width="1024" Height="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>

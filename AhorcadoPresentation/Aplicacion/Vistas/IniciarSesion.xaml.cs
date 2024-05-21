@@ -55,7 +55,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             //acceder a la ventana principal
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(menuPrincipal);
+            mainWindow.CambiarVista(menuPrincipal);
 
 
         }
@@ -66,7 +66,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             registrarUsuario.esActualizacion = false;
             //acceder a la ventana principal
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(registrarUsuario);
+            mainWindow.CambiarVista(registrarUsuario);
         }
 
         private bool camposValidos()

@@ -32,7 +32,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public RegistrarUsuario()
         {
             InitializeComponent();
-            configurarVentana();
+            ConfigurarVentana();
         }
 
         private void ClickRegistrarse(object sender, RoutedEventArgs e)
@@ -86,12 +86,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             if (esActualizacion)
             {
                 MenuPrincipal menuPrincipal = new MenuPrincipal();
-                mainWindow.cambiarVista(menuPrincipal);
+                mainWindow.CambiarVista(menuPrincipal);
             }
             else
             {
                 IniciarSesion iniciarSesion = new IniciarSesion();
-                mainWindow.cambiarVista(iniciarSesion);
+                mainWindow.CambiarVista(iniciarSesion);
             }
         }
 
@@ -141,13 +141,25 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             TbTelefono.Text = JugadorSingleton.Instance.Telefono;
         }
 
-        public void configurarVentana()
+        public void ConfigurarVentana()
         {
             if(esActualizacion)
             {
                 tbTextoInicial.Text= "Actualizar Informacion";
                 CargarInformacionJugador();
                 TbCorreo.IsEnabled = false;
+            }
+        }
+
+        private void ValidarNumeros(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length -1))
+            {
+                e.Handled = true;
+            }
+            if (TbTelefono.Text.Length > 9)
+            {
+                e.Handled = true;
             }
         }
     }

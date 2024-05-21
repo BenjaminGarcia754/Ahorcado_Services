@@ -47,7 +47,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {  
             HistorialPartidas historialPartidas = new HistorialPartidas();
             var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.cambiarVista(historialPartidas);
+            mainWindow.CambiarVista(historialPartidas);
         }
     }
 }
