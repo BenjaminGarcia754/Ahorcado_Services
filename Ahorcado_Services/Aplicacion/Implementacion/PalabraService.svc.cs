@@ -32,10 +32,6 @@ namespace Ahorcado_Services.Aplicacion
         {
             palabra = PalabraDAO.AsignarDificultadPalabra(palabra);
             return PalabraDAO.registrarPalabra(palabra);
-            //Facil : Una palabrad
-            //Intermedio Mas de dos menos o igual a 4
-            //Dificil mas de 4 o numeros
-
         }
     }
 }
