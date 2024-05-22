@@ -197,6 +197,7 @@
     <Compile Include="Aplicacion\DAO\CategoriaService.cs" />
     <Compile Include="Aplicacion\DAO\DificultadDAO.cs" />
     <Compile Include="Aplicacion\DAO\JugadorDAO.cs" />
+    <Compile Include="Aplicacion\DAO\PartidaDAO.cs" />
     <Compile Include="Aplicacion\Implementacion\DificultadService.svc.cs">
       <DependentUpon>DificultadService.svc</DependentUpon>
     </Compile>
@@ -256,6 +257,7 @@
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />
     <Compile Include="Modelo\DTO%27s\PalabraDTO.cs" />
+    <Compile Include="Modelo\DTO%27s\PartidaDTO.cs" />
     <Compile Include="Modelo\EntityFramework\AhorcadoDbContext.cs" />
     <Compile Include="Modelo\EntityFramework\Categoria.cs" />
     <Compile Include="Modelo\EntityFramework\Dificultad.cs" />
@@ -263,6 +265,7 @@
     <Compile Include="Modelo\EntityFramework\Jugador.cs" />
     <Compile Include="Modelo\EntityFramework\Palabra.cs" />
     <Compile Include="Modelo\EntityFramework\Partida.cs" />
+    <Compile Include="Modelo\Respuestas\PartidaRespuesta.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>

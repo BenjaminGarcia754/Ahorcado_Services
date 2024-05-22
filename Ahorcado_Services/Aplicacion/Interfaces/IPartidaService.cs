@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ahorcado_Services.Modelo.EntityFramework;
+using Ahorcado_Services.Modelo.Respuestas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,6 +14,9 @@ namespace Ahorcado_Services.Aplicacion
     public interface IPartidaService
     {
         [OperationContract]
-        void DoWork();
+         List<Partida> ObtenerPartidasDisponibles();
+        [OperationContract]
+        PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador);
     }
+   
 }
