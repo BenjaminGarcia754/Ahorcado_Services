@@ -20,7 +20,7 @@ namespace Ahorcado_Services.Aplicacion
 
         public List<Palabra> ObtenerPalabrasPorFiltro(int idCatergoria, int idDificultad)
         {
-            return PalabraDAO.ObtenerPalabrasPorFiltro(idCatergoria, idDificultad);
+            return null;//PalabraDAO.ObtenerPalabrasPorFiltro(idCatergoria, idDificultad);
         }
 
         public Partida RealizarIntento(Partida partida, char caracterIntento)
