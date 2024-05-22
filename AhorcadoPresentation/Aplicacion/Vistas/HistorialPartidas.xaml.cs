@@ -33,34 +33,23 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
 
             var PartidaServicioCliente = new PartidaServiceClient();
-            var PartidasTerminadas = PartidaServicioCliente.ObtenerTodasLasPartidasAsync(JugadorSingleton.Instance.Id).Result;
-            List<Partida> partidas = (List<Partida>)PartidasTerminadas["partidas"];
-            List<Jugador> jugadores = (List<Jugador>)PartidasTerminadas["jugadores"]; 
+            var PartidasTerminadas = PartidaServicioCliente.ObtenerPartidasPorJugadorAsync(JugadorSingleton.Instance.Id).Result;
+            List<Partida> partidas = PartidasTerminadas.Partidas.ToList(); 
+            List<PartidaService.Jugador> jugadores = PartidasTerminadas.Jugadores.ToList();
 
             for (int i = 0; i < partidas.Count; i++)
             {
                 Partida partida = partidas[i];
-                Jugador jugadorContrincante = jugadores[i];
+                PartidaService.Jugador jugadorContrincante = jugadores[i];
                 string fecha = partida.FechaCreacionPartida.ToString();
                 string usuarioContrincante = jugadorContrincante.Nombre;
-                string palabra = partida.Palabra.ToString();
+                string palabra = "";
                 string resultado = partida.PartidaGanada.ToString();
                 string puntaje = "No soportado";
 
                 Historial partidaHistorial = new Historial(fecha, usuarioContrincante, palabra, resultado, puntaje);
                 WPPanelPartidas.Children.Add(partidaHistorial);
             }
-            //{
-            //    //string fecha = DateTime.Now.ToShortDateString();
-            //    //string usuarioContrincante = "Usuario" + i;
-            //    //string palabra = "Palabra" + i;
-            //    //string resultado = "Ganada";
-            //    //string puntaje = "10";
-
-
-            //    Historial partidaHistorial = new Historial(partida.FechaCreacionPartida.ToString(), partida.IdJugadorAnfitrion.ToString(), partida.Palabra.ToString(), partida.PartidaGanada.ToString(), "No soportado");
-            //    WPPanelPartidas.Children.Add(partidaHistorial);
-            //}
         }
 
         private void ClickConsultarPuntaje(object sender, RoutedEventArgs e)
