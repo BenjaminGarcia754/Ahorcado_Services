@@ -190,6 +190,7 @@
     <Content Include="Aplicacion\Implementacion\CategoriaService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
     <Content Include="Aplicacion\Implementacion\PartidaService.svc" />
+    <Content Include="Aplicacion\Implementacion\PalabraService.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -197,6 +198,7 @@
     <Compile Include="Aplicacion\DAO\CategoriaService.cs" />
     <Compile Include="Aplicacion\DAO\DificultadDAO.cs" />
     <Compile Include="Aplicacion\DAO\JugadorDAO.cs" />
+    <Compile Include="Aplicacion\DAO\PalabraDAO.cs" />
     <Compile Include="Aplicacion\DAO\PartidaDAO.cs" />
     <Compile Include="Aplicacion\Implementacion\DificultadService.svc.cs">
       <DependentUpon>DificultadService.svc</DependentUpon>
@@ -214,6 +216,10 @@
     <Compile Include="Aplicacion\Interfaces\IPartidaService.cs" />
     <Compile Include="Aplicacion\Implementacion\PartidaService.svc.cs">
       <DependentUpon>PartidaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Interfaces\IPalabraService.cs" />
+    <Compile Include="Aplicacion\Implementacion\PalabraService.svc.cs">
+      <DependentUpon>PalabraService.svc</DependentUpon>
     </Compile>
     <Compile Include="Infraestructura\Utilidades\AutoMapper.cs" />
     <Compile Include="Infraestructura\Utilidades\AutoMapperHelper.cs" />
