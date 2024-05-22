@@ -31,5 +31,46 @@ namespace Ahorcado_Services.Aplicacion.DAO
             }
             return null;
         }
+
+        public static bool CrearPartida(Partida partida)
+        {
+            bool respuesta = true;
+            try
+            {
+                ahorcadoDbContext.Partidas.Add(partida);
+                ahorcadoDbContext.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+
+                respuesta = false;
+            }
+            catch (EntityException ex)
+            {
+                respuesta = false;
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+            }
+            return respuesta;
+        }
+
+        public static List<Partida> ObtenerPartidasListasParaJugar()
+        {
+            List<Partida> partidas = new List<Partida>();
+            try
+            {
+                partidas = ahorcadoDbContext.Partidas.Where(p => p.IdEstadoPartida == 1).ToList(); //Cambiar por el escojido para partida pendiente
+              
+            }
+            catch (EntityException ex)
+            {
+                partidas = null;
+            }
+            return partidas;
+        }    
     }
+
+ 
 }
