@@ -38,7 +38,7 @@ namespace Ahorcado_Services.Aplicacion.DAO
             bool respuesta = true;
             try
             {
-                ahorcadoDbContext.Entry(partida).State = EntityState.Modified;
+                ahorcadoDbContext.Partidas.Update(partida);
                 ahorcadoDbContext.SaveChanges();
             }
             catch (DbUpdateException ex)
