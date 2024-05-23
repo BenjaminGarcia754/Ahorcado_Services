@@ -24,5 +24,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             InitializeComponent();
         }
+
+        private void Click_Regresar(object sender, RoutedEventArgs e)
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.CambiarVista(menuPrincipal);
+        }
     }
 }
