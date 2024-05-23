@@ -12,7 +12,34 @@ namespace Ahorcado_Services.Aplicacion.DAO
     public class PartidaDAO
     {
         public static readonly AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
-        public static List<Partida> ObtenerTodasLasPartidas(int IdJugador)
+
+        public static PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador)
+        {
+            PartidaRespuesta partidasTerminadas = new PartidaRespuesta();
+            List<Partida> partidas = PartidaDAO.ObtenerTodasLasPartidasPorJugador(IdJugador);
+            List<Jugador> jugadores = new List<Jugador>();
+            foreach (Partida partida in partidas)
+            {
+                if (partida.IdJugadorAnfitrion == IdJugador)
+                {
+                    jugadores.Add(JugadorDAO.ObtenerJugador(partida.IdJugadorInvitado));
+                }
+                else
+                {
+                    jugadores.Add(JugadorDAO.ObtenerJugador(partida.IdJugadorAnfitrion));
+                }
+            }
+            partidasTerminadas.Partidas = partidas;
+            partidasTerminadas.Jugadores = jugadores;
+            if (partidas.Count > 0)
+            {
+                return partidasTerminadas;
+            }
+            return null;
+        }
+
+
+        public static List<Partida> ObtenerTodasLasPartidasPorJugador(int IdJugador)
         {
             try
             {
@@ -127,6 +154,25 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return respuesta;
         }
 
+        public static PartidaRespuesta ObtenerPartida(int IdPartida)
+        {
+            PartidaRespuesta respuesta = new PartidaRespuesta();
+            try
+            {
+                Partida partida = ahorcadoDbContext.Partidas.Find(IdPartida);
+                if (partida != null)
+                {
+                    respuesta.partida = partida;
+                    respuesta.respuesta = true;
+                }
+            }
+            catch (EntityException ex)
+            {
+                Console.WriteLine(ex.Message);
+                respuesta.respuesta = false;
+            }
+            return respuesta;
+        }
     }
 
  
