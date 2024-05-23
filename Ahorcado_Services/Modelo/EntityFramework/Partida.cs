@@ -26,7 +26,7 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         
         public bool PartidaGanadaJugadorInvitado { get; set; }
         public bool PartidaGanadaJugadorAnfitrion { get; set; }
-        string palabraSeleccionada { get; set; }
+        public string palabraSeleccionada { get; set; }
 
         public EstadoPartida EstadoPartida { get; set; }
 

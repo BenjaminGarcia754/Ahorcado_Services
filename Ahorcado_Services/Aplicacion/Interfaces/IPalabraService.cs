@@ -17,8 +17,6 @@ namespace Ahorcado_Services.Aplicacion
         [OperationContract]
         List<Palabra> ObtenerPalabrasPorFiltro(int idCatergoria, int idDificultad);
         [OperationContract]
-        Partida RealizarIntento(Partida partida, char caracterIntento);
-        [OperationContract]
         bool RegistrarPalabra(Palabra palabra);
     }
 }

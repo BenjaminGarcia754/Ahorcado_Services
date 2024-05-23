@@ -18,35 +18,40 @@ namespace Ahorcado_Services.Aplicacion
     public class PartidaService : IPartidaService
     {
         AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
-        public List<Partida> ObtenerPartidasDisponibles()
+
+        public bool ActualizarPartida(Partida partida)
         {
-            return null;
+            return PartidaDAO.ActualizarPartida(partida);
+        }
+
+        public bool CrearPartida(Partida partida)
+        {
+            return PartidaDAO.CrearPartida(partida);
+        }
+
+        public PartidaRespuesta ObtenerPartidaPorId(int idPartida)
+        {
+            return PartidaDAO.ObtenerPartida(idPartida);
+        }
+
+        public List<Partida> ObtenerPartidasListasParaJugar()
+        {
+            return PartidaDAO.ObtenerPartidasListasParaJugar();
         }
 
         public PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador)
         {
-            PartidaRespuesta partidasTerminadas = new PartidaRespuesta();
-            List<Partida> partidas = PartidaDAO.ObtenerTodasLasPartidas(IdJugador);
-            List<Jugador> jugadores = new List<Jugador>();
-            foreach (Partida partida in partidas)
-            {
-                if (partida.IdJugadorAnfitrion == IdJugador)
-                {
-                    jugadores.Add(JugadorDAO.ObtenerJugador(partida.IdJugadorInvitado));
-                }
-                else
-                {
-                    jugadores.Add(JugadorDAO.ObtenerJugador(partida.IdJugadorAnfitrion));
-                }
-            }
-            //Mostrar en un mensaje box las partidas
-            partidasTerminadas.Partidas = partidas;
-            partidasTerminadas.Jugadores = jugadores;
-            if (partidas.Count > 0)
-            {
-                return partidasTerminadas;
-            }
-                return null;
+            return PartidaDAO.ObtenerPartidasPorJugador(IdJugador);
+        }
+
+        public PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento)
+        {
+            return PartidaDAO.RealizarIntento(partida, caracterIntento);    
+        }
+
+        public PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,5 +10,7 @@ namespace Ahorcado_Services.Modelo.Respuestas
     {
         public List<Partida> Partidas { get; set; }
         public List<Jugador> Jugadores { get; set; }
+        public Partida partida { get; set; }
+        public bool respuesta { get; set; }
     }
 }

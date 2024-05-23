@@ -14,9 +14,22 @@ namespace Ahorcado_Services.Aplicacion
     public interface IPartidaService
     {
         [OperationContract]
-         List<Partida> ObtenerPartidasDisponibles();
-        [OperationContract]
         PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador);
+        [OperationContract]
+        bool ActualizarPartida(Partida partida);
+        [OperationContract]
+        bool CrearPartida(Partida partida);
+        [OperationContract]
+        PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento);
+        [OperationContract]
+        List<Partida> ObtenerPartidasListasParaJugar();
+        [OperationContract]
+        PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento);
+        [OperationContract]
+        PartidaRespuesta ObtenerPartidaPorId(int idPartida);
+
+
+
     }
-   
+
 }
