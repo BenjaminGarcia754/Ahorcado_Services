@@ -33,6 +33,32 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return null;
         }
 
+        public static bool ActualizarPartida(Partida partida)
+        {
+            bool respuesta = true;
+            try
+            {
+                ahorcadoDbContext.Entry(partida).State = EntityState.Modified;
+                ahorcadoDbContext.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex.Message);
+                respuesta = false;
+            }
+            catch (EntityException ex)
+            {
+                Console.WriteLine(ex.Message);
+                respuesta = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                respuesta = false;
+            }
+            return respuesta;
+        }
+
         public static bool CrearPartida(Partida partida)
         {
             bool respuesta = true;
