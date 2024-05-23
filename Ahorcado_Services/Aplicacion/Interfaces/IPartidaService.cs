@@ -17,6 +17,8 @@ namespace Ahorcado_Services.Aplicacion
          List<Partida> ObtenerPartidasDisponibles();
         [OperationContract]
         PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador);
+        [OperationContract]
+        PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento);
     }
    
 }

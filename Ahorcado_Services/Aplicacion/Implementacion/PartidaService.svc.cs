@@ -48,5 +48,27 @@ namespace Ahorcado_Services.Aplicacion
             }
                 return null;
         }
+
+        public static PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento)
+        {
+            PartidaRespuesta respuesta = new PartidaRespuesta();
+            if (partida.palabraSeleccionada.Contains(caracterIntento))
+            {
+                for (int i = 0; i < partida.palabraSeleccionada.Length; i++)
+                {
+                    if (partida.palabraSeleccionada.ToLower().ToCharArray()[i] == caracterIntento)
+                    {
+                        partida.PalabraParcial.ToCharArray()[i] = caracterIntento;
+                    }
+                }
+                respuesta.
+            }
+            else
+            {
+                partida.IntentosRestantes--;
+            }
+
+            return partida;
+        }
     }
 }

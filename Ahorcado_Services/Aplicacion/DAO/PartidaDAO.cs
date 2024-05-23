@@ -1,4 +1,5 @@
 ﻿using Ahorcado_Services.Modelo.EntityFramework;
+using Ahorcado_Services.Modelo.Respuestas;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,15 +43,17 @@ namespace Ahorcado_Services.Aplicacion.DAO
             }
             catch (DbUpdateException ex)
             {
-
+                Console.WriteLine(ex.Message);
                 respuesta = false;
             }
             catch (EntityException ex)
             {
+                Console.WriteLine(ex.Message);
                 respuesta = false;
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 respuesta = false;
             }
             return respuesta;
@@ -66,10 +69,38 @@ namespace Ahorcado_Services.Aplicacion.DAO
             }
             catch (EntityException ex)
             {
+                Console.WriteLine(ex.Message);
                 partidas = null;
             }
             return partidas;
-        }    
+        }
+
+        public static PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento)
+        {
+            PartidaRespuesta respuesta = new PartidaRespuesta();
+            if (partida.palabraSeleccionada.Contains(caracterIntento))
+            {
+                for (int i = 0; i < partida.palabraSeleccionada.Length; i++)
+                {
+                    if (partida.palabraSeleccionada.ToLower().ToCharArray()[i] == caracterIntento)
+                    {
+                        partida.PalabraParcial.ToCharArray()[i] = caracterIntento;
+                    }
+                }
+                respuesta.partida = partida;
+                respuesta.respuesta = true;
+            }
+            else
+            {
+                respuesta.respuesta = false;
+                partida.IntentosRestantes--;
+                respuesta.partida = partida;
+
+            }
+
+            return respuesta;
+        }
+
     }
 
  

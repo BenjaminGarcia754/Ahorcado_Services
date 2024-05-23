@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Windows.Forms;
 
 namespace Ahorcado_Services.Aplicacion.DAO
 {
@@ -78,23 +79,20 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return ahorcadoDbContext.Palabras.Find(IdPalabra);
         }
 
-        //public static List<Palabra> ObtenerPalabrasPorFiltro(int idCatergoria, int idDificultad)
-        //{
-        //    List<Palabra> palabras = new List<Palabra>();
-        //    try
-        //    {
-        //        palabras = ahorcadoDbContext.Palabras.Where(p => p.IdCategoria == idCatergoria && p.IdDificultad == idDificultad).ToList();
-        //    }
-        //    catch (EntityException ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //        palabras = null;
-        //    }
-        //    return palabras;
-        //}
-        //public static Partida RealizarIntento(Partida partida, char caracterIntento)
-        //{
-        //    string palabra = partida.Palabra.Nombre;
-        //}
+        public static List<Palabra> ObtenerPalabrasPorFiltro(int idCatergoria, int idDificultad)
+        {
+            List<Palabra> palabras = new List<Palabra>();
+            try
+            {
+                palabras = ahorcadoDbContext.Palabras.Where(p => p.IdCategoria == idCatergoria && p.IdDificultad == idDificultad).ToList();
+            }
+            catch (EntityException ex)
+            {
+                Console.WriteLine(ex.Message);
+                palabras = null;
+            }
+            return palabras;
+        }
+
     }
 }
