@@ -11,14 +11,16 @@ namespace AhorcadoPresentation.Modelo.Singleton
         private static JugadorSingleton instance;
         private static readonly object lockObject = new object();
 
+        public string Apellidos { get; set; }
+        public string Contrasena { get; set; }
+        public string Correo { get; set; }
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string Apellidos { get; set; }
-        public string Correo { get; set; }
-        public string Contrasena { get; set; }
+        public int puntaje { get; set; }
         public int Rol { get; set; }
         public string Telefono { get; set; }
-        public int puntaje { get; set; }
+        public string Username { get; set; }
+
         public DateTime fechaDeNacimiento { get; set; }
 
         private JugadorSingleton()

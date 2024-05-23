@@ -129,16 +129,16 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         public void CargarInformacionJugador()
         {
-            mapper.Map(JugadorSingleton.Instance, JugadorSingleton.Instance);
-
             TbNombre.Text = JugadorSingleton.Instance.Nombre;
-            string[] apellidos = JugadorSingleton.Instance.Apellidos.Split(' ');
-            TbApellidoPaterno.Text = apellidos[0];
-            TbApellidoMaterno.Text = apellidos[1];
+            //string[] apellidos = JugadorSingleton.Instance.Apellidos.Split(' ');
+            //TbApellidoPaterno.Text = apellidos[0];
+            //TbApellidoMaterno.Text = apellidos[1];
+            TbApellidoPaterno.Text = JugadorSingleton.Instance.Apellidos;
             TbCorreo.Text = JugadorSingleton.Instance.Correo;
             DpFechaNacimiento.SelectedDate = JugadorSingleton.Instance.fechaDeNacimiento;
             PfContraseña.Password = JugadorSingleton.Instance.Contrasena;
             TbTelefono.Text = JugadorSingleton.Instance.Telefono;
+            TbUsuario.Text = JugadorSingleton.Instance.Username;
         }
 
         public void ConfigurarVentana()

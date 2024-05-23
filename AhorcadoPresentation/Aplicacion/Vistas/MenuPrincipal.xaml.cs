@@ -57,5 +57,15 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(historialPartidas);
         }
+
+        private void Click_ModificarUsuario(object sender, RoutedEventArgs e)
+        {
+            RegistrarUsuario registrarUsuario = new RegistrarUsuario();
+            registrarUsuario.esActualizacion = true;
+            registrarUsuario.ConfigurarVentana();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.CambiarVista(registrarUsuario);
+
+        }
     }
 }
