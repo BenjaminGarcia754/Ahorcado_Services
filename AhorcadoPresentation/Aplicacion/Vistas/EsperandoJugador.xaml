@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="AhorcadoPresentation.Aplicacion.Vistas.EsperandoJugador"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+             mc:Ignorable="d" 
+             d:DesignHeight="666" d:DesignWidth="1024">
+    <Border BorderBrush="White" BorderThickness="1" CornerRadius="30">
+        <Border.Background>
+            <ImageBrush ImageSource="/Aplicacion/Resources/CrearPartidaBackground.png"/>
+        </Border.Background>
+        <Grid Margin="0,0,0,0">
+            <Button Content="Regresar" HorizontalAlignment="Left" Margin="61,28,0,0" VerticalAlignment="Top" Height="33" Width="34" Click="Click_Regresar">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Path x:Name="PathBackground" Fill="White"  Data="M43 0C19.2533 0 0 16.119 0 36C0 55.881 19.2533 72 43 72C66.7468 72 86 55.881 86 36C86 16.119 66.7468 0 43 0ZM55.6528 56.907L51.8526 60.0885L23.0749 36L51.8526 11.907L55.6528 15.0885L30.6751 36L55.6528 56.907Z" Margin="0,0,0,0" Stretch="Fill"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="PathBackground" Property="Fill" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Esperando Jugador" VerticalAlignment="Top"/>
+            <Image gif:AnimationBehavior.SourceUri="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+                   gif:AnimationBehavior.RepeatBehavior="Forever"
+                   Height="400" Width="600"/>
+        </Grid>
+    </Border>
+</UserControl>
