@@ -18,7 +18,23 @@ namespace Ahorcado_Services.Aplicacion
     public class PartidaService : IPartidaService
     {
         AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
-        public List<Partida> ObtenerPartidasDisponibles()
+
+        public bool ActualizarPartida(Partida partida)
+        {
+            return PartidaDAO.ActualizarPartida(partida);
+        }
+
+        public bool CrearPartida(Partida partida)
+        {
+            return PartidaDAO.CrearPartida(partida);
+        }
+
+        public PartidaRespuesta ObtenerPartidaPorId(int idPartida)
+        {
+            return PartidaDAO.ObtenerPartida(idPartida);
+        }
+
+        public List<Partida> ObtenerPartidasListasParaJugar()
         {
             return PartidaDAO.ObtenerPartidasListasParaJugar();
         }
@@ -31,6 +47,11 @@ namespace Ahorcado_Services.Aplicacion
         public PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento)
         {
             return PartidaDAO.RealizarIntento(partida, caracterIntento);    
+        }
+
+        public PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento)
+        {
+            throw new NotImplementedException();
         }
     }
 }

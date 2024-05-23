@@ -38,7 +38,6 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return null;
         }
 
-
         public static List<Partida> ObtenerTodasLasPartidasPorJugador(int IdJugador)
         {
             try
@@ -112,6 +111,7 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return respuesta;
         }
 
+        //Partidas disponibles para jugar
         public static List<Partida> ObtenerPartidasListasParaJugar()
         {
             List<Partida> partidas = new List<Partida>();
