@@ -2,12 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AhorcadoPresentation"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             xmlns:resource="clr-namespace:AhorcadoPresentation.RecursosLocalizables">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Aplicacion/Resources/styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <!--Aqui se añaden los recursos localizables-->
+        
     </Application.Resources>
+    
 </Application>
