@@ -4,6 +4,7 @@ using PartidaService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,23 +33,48 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private void AgregarComponenteHistorial()
         {
 
-            var PartidaServicioCliente = new PartidaServiceClient();
-            var PartidasTerminadas = PartidaServicioCliente.ObtenerPartidasPorJugadorAsync(JugadorSingleton.Instance.Id).Result;
-            List<Partida> partidas = PartidasTerminadas.Partidas.ToList(); 
-            List<PartidaService.Jugador> jugadores = PartidasTerminadas.Jugadores.ToList();
-
-            for (int i = 0; i < partidas.Count; i++)
+            var respuesta = ObtenerPartidasPorJugador(JugadorSingleton.Instance.Id);
+            if (respuesta != null)
             {
-                Partida partida = partidas[i];
-                PartidaService.Jugador jugadorContrincante = jugadores[i];
-                string fecha = partida.FechaCreacionPartida.ToString();
-                string usuarioContrincante = jugadorContrincante.Nombre;
-                string palabra = "";
-                string resultado = partida.PartidaGanada.ToString();
-                string puntaje = "No soportado";
+                if (respuesta.respuesta)
+                {
+                    List<Partida> partidas = respuesta.Partidas.ToList();
+                    List<PartidaService.Jugador> jugadores = respuesta.Jugadores.ToList();
 
-                Historial partidaHistorial = new Historial(fecha, usuarioContrincante, palabra, resultado, puntaje);
-                WPPanelPartidas.Children.Add(partidaHistorial);
+                    for (int i = 0; i < partidas.Count; i++)
+                    {
+                        Partida partida = partidas[i];
+                        PartidaService.Jugador jugadorContrincante = jugadores[i];
+                        string fecha = partida.FechaCreacionPartida.ToString();
+                        string usuarioContrincante = jugadorContrincante.Nombre;
+                        string palabra = "";
+                        string resultado = partida.PartidaGanadaJugadorInvitado ? "Ganada" : "Perdida";
+                        string puntaje = "No soportado";
+
+                        Historial partidaHistorial = new Historial(fecha, usuarioContrincante, palabra, resultado, puntaje);
+                        WPPanelPartidas.Children.Add(partidaHistorial);
+                    }
+                }else
+                {
+                    GenericGuiController.MostrarMensajeBox("No se encontraron partidas");
+                }
+                
+            }
+            
+        }
+
+        private PartidaRespuesta ObtenerPartidasPorJugador(int idJugador)
+        {
+            try
+            {
+                var partidaServicioCliente = new PartidaServiceClient();
+                var partidasTerminadas = partidaServicioCliente.ObtenerTodasLasPartidasPorJugadorAsync(JugadorSingleton.Instance.Id).Result;
+                return partidasTerminadas;
+            }
+            catch (CommunicationException)
+            {
+                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                return null;
             }
         }
 

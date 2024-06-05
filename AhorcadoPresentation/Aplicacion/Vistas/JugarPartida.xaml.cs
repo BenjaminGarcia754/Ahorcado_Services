@@ -1,10 +1,12 @@
 ﻿using AhorcadoPresentation.Modelo;
 using AhorcadoPresentation.Modelo.Singleton;
 using JugadorServiceReference;
+using PartidaService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,17 +28,35 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     {
         public PalabraDTO palabraDTO = new PalabraDTO();
         private int numeroIntento = 0;
-        public Jugador jugadorRetador { get; set; }
-        public Jugador jugadorInvitado { get; set; }
+        private bool detenerTarea = false;
+
 
         public JugarPartida()
         {
             InitializeComponent();
 
             palabraDTO.Nombre = "Los juegos del hambre en llamas español latino";
-            PartidaSingleton partida= PartidaSingleton.ObtenerInstancia();
+            PartidaSingleton partida = PartidaSingleton.Instance;
             ttAyuda.Content = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
             generarLabels();
+        }
+
+        public void ComprobarStatusPartida()
+        {
+            Task.Run(async () =>
+            {
+                while (!detenerTarea)
+                {
+                    var partida = await VerificarStatusPartida();
+                    if (partida.IdEstadoPartida == 1)//Finalizada
+                    {
+                        detenerTarea = true;
+                        MessageBox.Show("La partida ha finalizada por el jugador anfitrion regresaras al menu principal");
+                        await CambiarVista();
+                    }
+                    await Task.Delay(2000);
+                }
+            });
         }
 
         private void generarLabels()
@@ -115,6 +135,29 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 ImagenIntento.Source = new BitmapImage(new Uri("/Aplicacion/Resources/SextoIntento.png", UriKind.Relative));
             }
+        }
+
+        private async Task<Partida> VerificarStatusPartida()
+        {
+            PartidaServiceClient partidaService = new PartidaService.PartidaServiceClient();
+            try
+            {
+                var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                return partida.partida;
+            }
+            catch (CommunicationException)
+            {
+                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                return null;
+            }
+        }
+        public async Task CambiarVista()
+        {
+            //TODO: Cambiar a la pantalla de juego para el anfitrión
+            MenuPrincipal menu =  new MenuPrincipal();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.CambiarVista(menu);
+            await Task.Delay(1000);
         }
     }
 

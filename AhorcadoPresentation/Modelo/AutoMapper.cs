@@ -20,6 +20,8 @@ namespace AhorcadoPresentation.Modelo
             CreateMap<Jugador, JugadorSingleton>()
                 .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username)) // Mapear Username
                 .ForMember(dest => dest.fechaDeNacimiento, opt => opt.MapFrom(src => DateTime.Parse(src.fechaDeNacimiento.ToString()))); // Convertir fecha de nacimiento a DateTime
+                
+            
         }
 
         public static IMapper ObtenerMapper()

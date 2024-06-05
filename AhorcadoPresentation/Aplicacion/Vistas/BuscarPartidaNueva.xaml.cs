@@ -28,7 +28,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public BuscarPartidaNueva()
         {
             InitializeComponent();
-            IniciarActualizacionPartidasPeriodica();        }
+            IniciarActualizacionPartidasPeriodica();        
+        }
 
         private void IniciarActualizacionPartidasPeriodica()
         {
@@ -56,13 +57,17 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             mainWindow.CambiarVista(menuPrincipal);
         }
 
+        private void LogicaEntrarAPartida()
+        {
 
+        }
+        
         private async Task<List<Partida>> ObtenerPartidasListasParaJugar() 
         {
             PartidaServiceClient partidaService = new PartidaService.PartidaServiceClient();
             try
             {
-                var partidas = await partidaService.ObtenerPartidasDisponiblesAsync();
+                var partidas = await partidaService.ObtenerPartidasListasParaJugarAsync();
                 return partidas.ToList();
             }
             catch (CommunicationException)

@@ -41,7 +41,7 @@ namespace Ahorcado_Services.Aplicacion
 
         public PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador)
         {
-            return PartidaDAO.ObtenerPartidasPorJugador(IdJugador);
+            return PartidaDAO.ObtenerPartidasJugadasPorJugador(IdJugador);
         }
 
         public PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento)
@@ -49,9 +49,15 @@ namespace Ahorcado_Services.Aplicacion
             return PartidaDAO.RealizarIntento(partida, caracterIntento);    
         }
 
+        public PartidaRespuesta ObtenerTodasLasPartidasPorJugador(int idJugardor)
+        {
+            return PartidaDAO.ObtenerTodasLasPartidasPorJugador(idJugardor);
+        }
+        /*
         public PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento)
         {
             throw new NotImplementedException();
         }
+        */
     }
 }

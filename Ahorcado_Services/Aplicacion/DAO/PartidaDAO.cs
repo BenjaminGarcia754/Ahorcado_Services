@@ -13,39 +13,43 @@ namespace Ahorcado_Services.Aplicacion.DAO
     {
         public static readonly AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
 
-        public static PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador)
+        public static PartidaRespuesta ObtenerPartidasJugadasPorJugador(int IdJugador)
         {
-            PartidaRespuesta partidasTerminadas = new PartidaRespuesta();
-            List<Partida> partidas = PartidaDAO.ObtenerTodasLasPartidasPorJugador(IdJugador);
-            List<Jugador> jugadores = new List<Jugador>();
-            foreach (Partida partida in partidas)
+            
+            try
             {
-                if (partida.IdJugadorAnfitrion == IdJugador)
+                PartidaRespuesta partidasTerminadas = new PartidaRespuesta();
+                List<Partida> partidas = ahorcadoDbContext.Partidas.Where(p => p.IdJugadorInvitado == IdJugador && p.PartidaGanadaJugadorInvitado == true).ToList();
+                partidasTerminadas.Partidas = partidas;
+                if (partidas.Count > 0)
                 {
-                    jugadores.Add(JugadorDAO.ObtenerJugador(partida.IdJugadorInvitado));
+                    partidasTerminadas.respuesta = true;
+                    return partidasTerminadas;
                 }
                 else
                 {
-                    jugadores.Add(JugadorDAO.ObtenerJugador(partida.IdJugadorAnfitrion));
+                    partidasTerminadas.respuesta = false;
+                    return partidasTerminadas;
                 }
             }
-            partidasTerminadas.Partidas = partidas;
-            partidasTerminadas.Jugadores = jugadores;
-            if (partidas.Count > 0)
+            catch (EntityException ex)
             {
-                return partidasTerminadas;
+                Console.WriteLine(ex.Message);
+                return null;
             }
-            return null;
         }
 
-        public static List<Partida> ObtenerTodasLasPartidasPorJugador(int IdJugador)
+        public static PartidaRespuesta ObtenerTodasLasPartidasPorJugador(int IdJugador)
         {
+            PartidaRespuesta partidasTerminadas = new PartidaRespuesta();
             try
             {
                 var Partidas = ahorcadoDbContext.Partidas.Where(p => p.IdJugadorAnfitrion == IdJugador || p.IdJugadorInvitado ==IdJugador);
                 if (Partidas != null)
                 {
-                    return Partidas.ToList();
+                    partidasTerminadas.respuesta = true;
+                    partidasTerminadas.Partidas = Partidas.ToList();
+                    return partidasTerminadas;
                 }
             }
             catch (DbUpdateException ex)

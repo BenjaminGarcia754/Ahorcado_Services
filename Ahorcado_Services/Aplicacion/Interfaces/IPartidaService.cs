@@ -23,11 +23,12 @@ namespace Ahorcado_Services.Aplicacion
         PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento);
         [OperationContract]
         List<Partida> ObtenerPartidasListasParaJugar();
-        [OperationContract]
-        PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento);
+        //[OperationContract]
+        //PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento);
         [OperationContract]
         PartidaRespuesta ObtenerPartidaPorId(int idPartida);
-
+        [OperationContract]
+        PartidaRespuesta ObtenerTodasLasPartidasPorJugador(int idJugardor);
 
 
     }

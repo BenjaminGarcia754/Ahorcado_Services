@@ -1,32 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace AhorcadoPresentation.Modelo.Singleton
 {
-    public class PartidaSingleton
+    internal class PartidaSingleton
     {
-        private static PartidaSingleton miSingleton = null;
-        private PartidaSingleton() { 
-        
-        }
-        public int IdPartida { get; set; }
+        private static PartidaSingleton instance;
+        private static readonly object lockObject = new object();
+
+        public int Id { get; set; }
         public int IdJugadorAnfitrion { get; set; }
         public int IdJugadorInvitado { get; set; }
-        public int IdPalabraSeleccionada { get; set; }
-        public string PalabraParcial { get; set; }
-        public int IntentosRestantes{ get; set; }
-        public int idEstadoPartida { get; set; }
+        public int IntentosRestantes { get; set; }
+        public int IdPalabraSelecionada { get; set; }
+        public String PalabraParcial { get; set; }
+        public int IdEstadoPartida { get; set; }
+
+        public bool PartidaGanadaJugadorInvitado { get; set; }
+        public bool PartidaGanadaJugadorAnfitrion { get; set; }
+        public string palabraSeleccionada { get; set; }
+
         public DateTime FechaCreacionPartida { get; set; }
-        public static PartidaSingleton ObtenerInstancia()
+
+        private PartidaSingleton()
         {
-            if (miSingleton == null)
+            // Constructor privado para prevenir instanciación externa
+        }
+
+        public static PartidaSingleton Instance
+        {
+            get
             {
-                miSingleton = new PartidaSingleton();
+                if (instance == null)
+                {
+                    lock (lockObject)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new PartidaSingleton();
+                        }
+                    }
+                }
+                return instance;
             }
-            return miSingleton;
         }
     }
 }

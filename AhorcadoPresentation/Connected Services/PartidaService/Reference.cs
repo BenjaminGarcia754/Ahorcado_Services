@@ -14,6 +14,73 @@ namespace PartidaService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PartidaRespuesta", Namespace="http://schemas.datacontract.org/2004/07/Ahorcado_Services.Modelo.Respuestas")]
+    public partial class PartidaRespuesta : object
+    {
+        
+        private PartidaService.Jugador[] JugadoresField;
+        
+        private PartidaService.Partida[] PartidasField;
+        
+        private PartidaService.Partida partidaField;
+        
+        private bool respuestaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PartidaService.Jugador[] Jugadores
+        {
+            get
+            {
+                return this.JugadoresField;
+            }
+            set
+            {
+                this.JugadoresField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PartidaService.Partida[] Partidas
+        {
+            get
+            {
+                return this.PartidasField;
+            }
+            set
+            {
+                this.PartidasField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PartidaService.Partida partida
+        {
+            get
+            {
+                return this.partidaField;
+            }
+            set
+            {
+                this.partidaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool respuesta
+        {
+            get
+            {
+                return this.respuestaField;
+            }
+            set
+            {
+                this.respuestaField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Partida", Namespace="http://schemas.datacontract.org/2004/07/Ahorcado_Services.Modelo.EntityFramework")]
     public partial class Partida : object
     {
@@ -38,7 +105,11 @@ namespace PartidaService
         
         private string PalabraParcialField;
         
-        private bool PartidaGanadaField;
+        private bool PartidaGanadaJugadorAnfitrionField;
+        
+        private bool PartidaGanadaJugadorInvitadoField;
+        
+        private string palabraSeleccionadaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public PartidaService.EstadoPartida EstadoPartida
@@ -171,15 +242,198 @@ namespace PartidaService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool PartidaGanada
+        public bool PartidaGanadaJugadorAnfitrion
         {
             get
             {
-                return this.PartidaGanadaField;
+                return this.PartidaGanadaJugadorAnfitrionField;
             }
             set
             {
-                this.PartidaGanadaField = value;
+                this.PartidaGanadaJugadorAnfitrionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool PartidaGanadaJugadorInvitado
+        {
+            get
+            {
+                return this.PartidaGanadaJugadorInvitadoField;
+            }
+            set
+            {
+                this.PartidaGanadaJugadorInvitadoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string palabraSeleccionada
+        {
+            get
+            {
+                return this.palabraSeleccionadaField;
+            }
+            set
+            {
+                this.palabraSeleccionadaField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Jugador", Namespace="http://schemas.datacontract.org/2004/07/Ahorcado_Services.Modelo.EntityFramework")]
+    public partial class Jugador : object
+    {
+        
+        private string ApellidoMaternoField;
+        
+        private string ApellidoPaternoField;
+        
+        private string ContrasenaField;
+        
+        private string CorreoField;
+        
+        private int IdField;
+        
+        private string NombreField;
+        
+        private int PuntajeField;
+        
+        private string TelefonoField;
+        
+        private string UsernameField;
+        
+        private System.DateTime fechaDeNacimientoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoMaterno
+        {
+            get
+            {
+                return this.ApellidoMaternoField;
+            }
+            set
+            {
+                this.ApellidoMaternoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoPaterno
+        {
+            get
+            {
+                return this.ApellidoPaternoField;
+            }
+            set
+            {
+                this.ApellidoPaternoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Contrasena
+        {
+            get
+            {
+                return this.ContrasenaField;
+            }
+            set
+            {
+                this.ContrasenaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Correo
+        {
+            get
+            {
+                return this.CorreoField;
+            }
+            set
+            {
+                this.CorreoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this.IdField;
+            }
+            set
+            {
+                this.IdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre
+        {
+            get
+            {
+                return this.NombreField;
+            }
+            set
+            {
+                this.NombreField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Puntaje
+        {
+            get
+            {
+                return this.PuntajeField;
+            }
+            set
+            {
+                this.PuntajeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telefono
+        {
+            get
+            {
+                return this.TelefonoField;
+            }
+            set
+            {
+                this.TelefonoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username
+        {
+            get
+            {
+                return this.UsernameField;
+            }
+            set
+            {
+                this.UsernameField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime fechaDeNacimiento
+        {
+            get
+            {
+                return this.fechaDeNacimientoField;
+            }
+            set
+            {
+                this.fechaDeNacimientoField = value;
             }
         }
     }
@@ -253,6 +507,8 @@ namespace PartidaService
         private int IdCategoriaField;
         
         private int IdDificultadField;
+        
+        private string IdiomaPartidaField;
         
         private string NombreField;
         
@@ -335,6 +591,19 @@ namespace PartidaService
             set
             {
                 this.IdDificultadField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdiomaPartida
+        {
+            get
+            {
+                return this.IdiomaPartidaField;
+            }
+            set
+            {
+                this.IdiomaPartidaField = value;
             }
         }
         
@@ -497,195 +766,31 @@ namespace PartidaService
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PartidaRespuesta", Namespace="http://schemas.datacontract.org/2004/07/Ahorcado_Services.Modelo.Respuestas")]
-    public partial class PartidaRespuesta : object
-    {
-        
-        private PartidaService.Jugador[] JugadoresField;
-        
-        private PartidaService.Partida[] PartidasField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PartidaService.Jugador[] Jugadores
-        {
-            get
-            {
-                return this.JugadoresField;
-            }
-            set
-            {
-                this.JugadoresField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PartidaService.Partida[] Partidas
-        {
-            get
-            {
-                return this.PartidasField;
-            }
-            set
-            {
-                this.PartidasField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Jugador", Namespace="http://schemas.datacontract.org/2004/07/Ahorcado_Services.Modelo.EntityFramework")]
-    public partial class Jugador : object
-    {
-        
-        private string ApellidosField;
-        
-        private string ContrasenaField;
-        
-        private string CorreoField;
-        
-        private int IdField;
-        
-        private string NombreField;
-        
-        private int PuntajeField;
-        
-        private string TelefonoField;
-        
-        private string UsernameField;
-        
-        private System.DateTime fechaDeNacimientoField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Apellidos
-        {
-            get
-            {
-                return this.ApellidosField;
-            }
-            set
-            {
-                this.ApellidosField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Contrasena
-        {
-            get
-            {
-                return this.ContrasenaField;
-            }
-            set
-            {
-                this.ContrasenaField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Correo
-        {
-            get
-            {
-                return this.CorreoField;
-            }
-            set
-            {
-                this.CorreoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id
-        {
-            get
-            {
-                return this.IdField;
-            }
-            set
-            {
-                this.IdField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nombre
-        {
-            get
-            {
-                return this.NombreField;
-            }
-            set
-            {
-                this.NombreField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Puntaje
-        {
-            get
-            {
-                return this.PuntajeField;
-            }
-            set
-            {
-                this.PuntajeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Telefono
-        {
-            get
-            {
-                return this.TelefonoField;
-            }
-            set
-            {
-                this.TelefonoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username
-        {
-            get
-            {
-                return this.UsernameField;
-            }
-            set
-            {
-                this.UsernameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime fechaDeNacimiento
-        {
-            get
-            {
-                return this.fechaDeNacimientoField;
-            }
-            set
-            {
-                this.fechaDeNacimientoField = value;
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PartidaService.IPartidaService")]
     public interface IPartidaService
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/ObtenerPartidasDisponibles", ReplyAction="http://tempuri.org/IPartidaService/ObtenerPartidasDisponiblesResponse")]
-        System.Threading.Tasks.Task<PartidaService.Partida[]> ObtenerPartidasDisponiblesAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/ObtenerPartidasPorJugador", ReplyAction="http://tempuri.org/IPartidaService/ObtenerPartidasPorJugadorResponse")]
         System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> ObtenerPartidasPorJugadorAsync(int IdJugador);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/ActualizarPartida", ReplyAction="http://tempuri.org/IPartidaService/ActualizarPartidaResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarPartidaAsync(PartidaService.Partida partida);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/CrearPartida", ReplyAction="http://tempuri.org/IPartidaService/CrearPartidaResponse")]
+        System.Threading.Tasks.Task<bool> CrearPartidaAsync(PartidaService.Partida partida);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/RealizarIntento", ReplyAction="http://tempuri.org/IPartidaService/RealizarIntentoResponse")]
+        System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> RealizarIntentoAsync(PartidaService.Partida partida, char caracterIntento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/ObtenerPartidasListasParaJugar", ReplyAction="http://tempuri.org/IPartidaService/ObtenerPartidasListasParaJugarResponse")]
+        System.Threading.Tasks.Task<PartidaService.Partida[]> ObtenerPartidasListasParaJugarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/ObtenerPartidaPorId", ReplyAction="http://tempuri.org/IPartidaService/ObtenerPartidaPorIdResponse")]
+        System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> ObtenerPartidaPorIdAsync(int idPartida);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/ObtenerTodasLasPartidasPorJugador", ReplyAction="http://tempuri.org/IPartidaService/ObtenerTodasLasPartidasPorJugadorResponse")]
+        System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> ObtenerTodasLasPartidasPorJugadorAsync(int idJugardor);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
@@ -738,14 +843,39 @@ namespace PartidaService
         {
         }
         
-        public System.Threading.Tasks.Task<PartidaService.Partida[]> ObtenerPartidasDisponiblesAsync()
-        {
-            return base.Channel.ObtenerPartidasDisponiblesAsync();
-        }
-        
         public System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> ObtenerPartidasPorJugadorAsync(int IdJugador)
         {
             return base.Channel.ObtenerPartidasPorJugadorAsync(IdJugador);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarPartidaAsync(PartidaService.Partida partida)
+        {
+            return base.Channel.ActualizarPartidaAsync(partida);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearPartidaAsync(PartidaService.Partida partida)
+        {
+            return base.Channel.CrearPartidaAsync(partida);
+        }
+        
+        public System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> RealizarIntentoAsync(PartidaService.Partida partida, char caracterIntento)
+        {
+            return base.Channel.RealizarIntentoAsync(partida, caracterIntento);
+        }
+        
+        public System.Threading.Tasks.Task<PartidaService.Partida[]> ObtenerPartidasListasParaJugarAsync()
+        {
+            return base.Channel.ObtenerPartidasListasParaJugarAsync();
+        }
+        
+        public System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> ObtenerPartidaPorIdAsync(int idPartida)
+        {
+            return base.Channel.ObtenerPartidaPorIdAsync(idPartida);
+        }
+        
+        public System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> ObtenerTodasLasPartidasPorJugadorAsync(int idJugardor)
+        {
+            return base.Channel.ObtenerTodasLasPartidasPorJugadorAsync(idJugardor);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

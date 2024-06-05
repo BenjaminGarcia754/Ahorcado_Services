@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Modelo\Internacionalizacion\**" />
+    <EmbeddedResource Remove="Modelo\Internacionalizacion\**" />
+    <None Remove="Modelo\Internacionalizacion\**" />
+    <Page Remove="Modelo\Internacionalizacion\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Aplicacion\Resources\BotonSVG.svg" />
     <None Remove="Aplicacion\Resources\BuscarPartidaNuevaBckG.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
@@ -38,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modelo\Internacionalizacion\" />
     <Folder Include="Modelo\Singleton\" />
   </ItemGroup>
 
@@ -104,7 +110,7 @@
     <EmbeddedResource Update="RecursosLocalizables\StringResources.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="RecursosLocalizables\StringResources.es-ES.resx">
+    <EmbeddedResource Update="RecursosLocalizables\StringResources.es-MX.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>

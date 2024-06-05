@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using PartidaService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,16 +23,64 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class EsperandoJugador : UserControl
     {
+        public bool detenerTarea = false;
+
         public EsperandoJugador()
         {
             InitializeComponent();
+            EsperarJugador();
+        }
+
+        
+
+        public void EsperarJugador()
+        {
+            Task.Run(async () =>
+            {
+                while (!detenerTarea)
+                {
+                    var partida = await VerificarStatusPartida();
+                    if (PartidaSingleton.Instance.IdJugadorInvitado != partida.IdJugadorInvitado)
+                    {
+                        PartidaSingleton.Instance.IdJugadorInvitado = partida.IdJugadorInvitado;
+                        await CambiarVista();
+                    }
+                    await Task.Delay(2000);
+                }
+            });
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
+            detenerTarea = true;
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(menuPrincipal);
+        }
+
+        private async Task<Partida> VerificarStatusPartida()
+        {
+            PartidaServiceClient partidaService = new PartidaService.PartidaServiceClient();
+            try
+            {
+                var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                return partida.partida;
+            }
+            catch (CommunicationException)
+            {
+                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                return null;
+            }
+        }
+
+        public async Task CambiarVista()
+        {
+            detenerTarea = true;
+            //TODO: Cambiar a la pantalla de juego para el anfitrión
+            JugarPartida jugarPartida = new JugarPartida();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.CambiarVista(jugarPartida);
+            await Task.Delay(1000);
         }
     }
 }

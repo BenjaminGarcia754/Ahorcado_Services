@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using PartidaService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,26 +23,48 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class HistorialPuntaje : UserControl
     {
-        private int partidas = 14;
+        //private int partidas = 14;
         public HistorialPuntaje()
         {
             InitializeComponent();
             AgregarComponenteHistorial();
-            lPuntaje.Content = partidas * 10;
         }
 
         private void AgregarComponenteHistorial()
         {
-
-            for (int i = 0; i < partidas; i++)
+            var respuesta = ObtenerPartidasPorJugador(JugadorSingleton.Instance.Id);
+            var partidas = respuesta.Partidas;
+            
+            if (respuesta != null)
             {
-                string fecha = DateTime.Now.ToShortDateString();
-                string usuarioContrincante = "Usuario" + i;
-                string palabra = "Palabra" + i;
-                string puntaje = "10";
+                if (respuesta.respuesta)
+                {
+                    foreach (var partida in partidas)
+                    {
+                        string fecha = partida.FechaCreacionPartida.ToString();
+                        string palabra = partida.palabraSeleccionada;
+                        string puntaje = "10";
+                        HistorialPuntos partidaHistorial = new HistorialPuntos(fecha, "No soportado", palabra, puntaje);
+                        WPPanelPuntos.Children.Add(partidaHistorial);
+                    }
+                    lPuntaje.Content = partidas.Length * 10;
+                }
+            }
+            
+        }
 
-                HistorialPuntos partidaHistorial = new HistorialPuntos(fecha, usuarioContrincante, palabra, puntaje);
-                WPPanelPuntos.Children.Add(partidaHistorial);
+        private PartidaRespuesta ObtenerPartidasPorJugador(int idJugador)
+        {
+            try
+            {
+                var partidaServicioCliente = new PartidaServiceClient();
+                var partidasTerminadas = partidaServicioCliente.ObtenerPartidasPorJugadorAsync(JugadorSingleton.Instance.Id).Result;
+                return partidasTerminadas;
+            }
+            catch (CommunicationException)
+            {
+                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                return null;
             }
         }
 
