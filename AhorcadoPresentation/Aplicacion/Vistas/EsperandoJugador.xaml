@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
              xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+             xmlns:resources="clr-namespace:AhorcadoPresentation.RecursosLocalizables"
              mc:Ignorable="d" 
              d:DesignHeight="666" d:DesignWidth="1024">
     <Border BorderBrush="White" BorderThickness="1" CornerRadius="30">
@@ -26,7 +27,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Esperando Jugador" VerticalAlignment="Top"/>
+            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiEsperandoJugadorTbEsperandoJugador}" VerticalAlignment="Top"/>
             <Image gif:AnimationBehavior.SourceUri="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
                    gif:AnimationBehavior.RepeatBehavior="Forever"
                    Height="400" Width="600"/>

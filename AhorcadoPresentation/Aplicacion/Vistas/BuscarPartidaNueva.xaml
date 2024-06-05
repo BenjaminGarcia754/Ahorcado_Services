@@ -4,17 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             xmlns:resources="clr-namespace:AhorcadoPresentation.RecursosLocalizables"
              mc:Ignorable="d" 
              d:DesignHeight="666" d:DesignWidth="1024">
     <Grid>
         <!-- Contenido de tu UserControl -->
         <Border BorderBrush="White" BorderThickness="1" CornerRadius="30">
             <Border.Background>
-                <ImageBrush ImageSource="/Aplicacion/Resources/BuscarPartidaNuevaBckG.png"/>
+                <ImageBrush ImageSource="/Aplicacion/Resources/CrearPartidaBackground.png"/>
             </Border.Background>
             <Grid Margin="0,0,9,-1">
                 <!-- Rectangle para la capa visual -->
-                <Rectangle Fill="#80000000" Margin="20,62,0,526" RadiusX="20" RadiusY="20"/>
                 <Button Content="Regresar" HorizontalAlignment="Left" Margin="48,10,0,0" VerticalAlignment="Top" Height="47" Width="46" Click="Click_Regresar">
                     <!--Aqui quiero poner un path para la imagen del background-->
                     <Button.Template>
@@ -31,15 +31,11 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Jugar" HorizontalAlignment="Right" Margin="0,21,69,0" VerticalAlignment="Top" Height="36" Width="125"  FontSize="25" Click="Click_Jugar"/>
+                <Button Content="{resources:Resx Key=GuiBuscarPartidaNuevaBtnJugar}" HorizontalAlignment="Right" Margin="0,21,69,0" VerticalAlignment="Top" Height="36" Width="125"  FontSize="25" Click="Click_Jugar"/>
 
-                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="35"  Foreground="White" Margin="323,10,283,0" TextWrapping="Wrap"  Text="Buscar partida nueva" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814" Height="47"/>
-                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="25"  Foreground="White" Margin="48,77,726,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814"><Run Text="Escoge la dificultad"/><Run Language="es-mx" Text=":"/></TextBlock>
-                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="25"  Foreground="White" Margin="555,82,232,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814"><Run Text="Escoge la categoria"/><Run Language="es-mx" Text=":"/></TextBlock>
-                <ComboBox x:Name="CbDificultad" HorizontalAlignment="Left" Margin="292,78,0,0" VerticalAlignment="Top" Width="203" Height="40" FontSize="20"/>
-                <ComboBox x:Name="CbCategoria" HorizontalAlignment="Left" Margin="800,82,0,0" VerticalAlignment="Top" Width="203" Height="40" FontSize="20"/>
+                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="35"  Foreground="White" Margin="323,10,283,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiBuscarPartidaNuevaTbBuscarPartia}" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814" Height="47"/>
 
-                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="30"  Foreground="Black" Margin="48,167,631,0" TextWrapping="Wrap"  Text="Partidas disponibles" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814"/>
+                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="30"  Foreground="White" Margin="48,167,631,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiBuscarPartidaNuevaTbPartidasDisponibles}" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814"/>
 
                 <!-- Aplica el estilo al DataGrid -->
                 <ScrollViewer Margin= "48,211,69,62">
