@@ -258,6 +258,9 @@
   <data name="GuiRegistrarUsuarioTtFechaDeNacimiento" xml:space="preserve">
     <value>La persona no puede ser mayor a 74 años o menor a 10 años.</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
   <data name="TituloJuego" xml:space="preserve">
     <value>El Juego del Ahorcado</value>
   </data>

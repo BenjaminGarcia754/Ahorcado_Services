@@ -138,6 +138,9 @@
   <data name="GuiGenerarPartidaTbCrearSala" xml:space="preserve">
     <value>Create room</value>
   </data>
+  <data name="GuiGenerarPartidaTbDificultad" xml:space="preserve">
+    <value>Difficulty:</value>
+  </data>
   <data name="GuiGenerarPartidaTbPalabra" xml:space="preserve">
     <value>Word:</value>
   </data>

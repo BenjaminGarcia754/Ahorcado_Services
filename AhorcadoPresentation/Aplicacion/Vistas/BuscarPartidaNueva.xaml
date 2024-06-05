@@ -35,10 +35,10 @@
 
                 <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="35"  Foreground="White" Margin="323,10,283,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiBuscarPartidaNuevaTbBuscarPartia}" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814" Height="47"/>
 
-                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="30"  Foreground="White" Margin="48,167,631,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiBuscarPartidaNuevaTbPartidasDisponibles}" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814"/>
+                <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika"  FontSize="30"  Foreground="White" Margin="131,57,548,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiBuscarPartidaNuevaTbPartidasDisponibles}" VerticalAlignment="Top" RenderTransformOrigin="0.84,0.814"/>
 
                 <!-- Aplica el estilo al DataGrid -->
-                <ScrollViewer Margin= "48,211,69,62">
+                <ScrollViewer Margin= "98,101,131,62">
                     <WrapPanel x:Name="WPPanelPartidasNuevas" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">
 
                     </WrapPanel>

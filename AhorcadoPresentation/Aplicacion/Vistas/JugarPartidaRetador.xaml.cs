@@ -24,5 +24,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             InitializeComponent();
         }
+
+        private void Click_Regresar(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -159,6 +159,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             mainWindow.CambiarVista(menu);
             await Task.Delay(1000);
         }
+
+        private void Click_Regresar(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
