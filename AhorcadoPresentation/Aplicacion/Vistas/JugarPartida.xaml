@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             xmlns:resources="clr-namespace:AhorcadoPresentation.RecursosLocalizables"
              mc:Ignorable="d" 
              d:DesignHeight="666" d:DesignWidth="1024">
     <Border  BorderBrush="White" BorderThickness="1" CornerRadius="30">
@@ -65,7 +66,7 @@
             </WrapPanel>
             <Image x:Name="ImagenIntento" Source="/Aplicacion/Resources/ImagenBaseAhorcado.png" HorizontalAlignment="Left"  Margin="617,-330,0,0" VerticalAlignment="Top" Height="298" Width="225" />
             <Grid Margin="266,-378,327,324">
-                <Button Content="Botón de Ayuda" 
+                <Button Content="{resources:Resx Key=GuiJugarPartidaBtnBotonDeAyuda}"
                 Width="100" Height="30"
                 HorizontalAlignment="Center" VerticalAlignment="Center">
                     <!-- ToolTip que se mostrará cuando el mouse se posicione sobre el botón -->
