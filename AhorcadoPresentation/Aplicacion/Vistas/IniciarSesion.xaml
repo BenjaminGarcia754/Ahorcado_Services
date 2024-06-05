@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             xmlns:resources="clr-namespace:AhorcadoPresentation.RecursosLocalizables"
              
              mc:Ignorable="d" 
              d:DesignHeight="666" d:DesignWidth="1024">
@@ -14,8 +15,8 @@
                 <RowDefinition Height="414*"/>
             </Grid.RowDefinitions>
             <Image  HorizontalAlignment="Center" Height="666" VerticalAlignment="Center" Width="1024" Source="/Aplicacion/Resources/InicioSesionImagen.png" Grid.Row="1" />
-            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="299,186,0,0" TextWrapping="Wrap" Text="Correo eléctronico" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
-            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="299,0,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Center" Grid.Row="1"/>
+            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="299,186,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiLoginLbCorreo}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
+            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="299,0,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiLoginLbContraseña}" VerticalAlignment="Center" Grid.Row="1"/>
             <Border Style="{StaticResource StyleContainer}" Margin="331,236,278,371" Width="413" Grid.Row="1">
                 <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Height="41">
                     <Path Data="M37.5 0.75H7.5C3.375 0.75 0 4.2 0 8.41667V27.5833C0 31.8 3.375 35.25 7.5 35.25H37.5C41.625 35.25 45 31.8 45 27.5833V8.41667C45 4.2 41.625 0.75 37.5 0.75ZM40.5 11.8667L25.6875 22.025C24.75 22.6 23.625 22.9833 22.5 22.9833C21.375 22.9833 20.25 22.6 19.3125 22.025L4.5 11.8667C3.75 11.2917 3.5625 10.1417 4.125 9.18333C4.6875 8.41667 5.8125 8.225 6.75 8.8L21.5625 18.9583C22.125 19.3417 23.0625 19.3417 23.625 18.9583L38.4375 8.8C39.375 8.225 40.5 8.41667 41.0625 9.375C41.4375 10.1417 41.25 11.2917 40.5 11.8667Z" Fill="#FFFFFF" Height="26" Stretch="Fill" Width="36"/>
@@ -28,9 +29,9 @@
                     <PasswordBox Style="{StaticResource PasswordBoxLogin}" x:Name="PfContrasenia" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
                 </WrapPanel>
             </Border>
-            <Button Content="Registrarse" FontFamily="{StaticResource Inika}" Background="Transparent" FontSize="14" BorderThickness="0,0,0,2" Foreground="White" HorizontalAlignment="Left" Margin="493,525,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegistrarse" RenderTransformOrigin="0.5,0.5"/>
-            <Button Content="Iniciar Sesión" FontFamily="{StaticResource Inika}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="476,457,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickIniciarSesion"/>
-            <TextBlock Foreground="White" FontFamily="{StaticResource Inika}" FontSize="50" HorizontalAlignment="Left" Margin="289,32,0,0" TextWrapping="Wrap" Text="El juego del ahorcado" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186" Width="497"/>
+            <Button Content="{resources:Resx Key=GuiLoginBtnRegistrarse}" FontFamily="{StaticResource Inika}" Background="Transparent" FontSize="14" BorderThickness="0,0,0,2" Foreground="White" HorizontalAlignment="Left" Margin="493,525,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegistrarse" RenderTransformOrigin="0.5,0.5"/>
+            <Button Content="{resources:Resx Key=GuiLoginBtnIniciarSesion}" FontFamily="{StaticResource Inika}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="476,457,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickIniciarSesion"/>
+            <TextBlock Foreground="White" FontFamily="{StaticResource Inika}" FontSize="50" HorizontalAlignment="Left" Margin="289,32,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=TituloJuego}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186" Width="497"/>
         </Grid>
     </Border>
 </UserControl>

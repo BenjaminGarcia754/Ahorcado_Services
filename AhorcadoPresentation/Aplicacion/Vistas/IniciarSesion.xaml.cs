@@ -4,6 +4,8 @@ using JugadorServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +26,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class IniciarSesion : UserControl
     {
         IMapper mapper = Modelo.Mapper.ObtenerMapper();
+        ResourceManager rm;
 
         public IniciarSesion()
         {

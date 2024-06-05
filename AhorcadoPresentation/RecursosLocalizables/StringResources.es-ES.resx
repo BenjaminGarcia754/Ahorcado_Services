@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GuiLoginBtnIniciarSesion" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="GuiLoginBtnRegistrarse" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
   <data name="GuiLoginLbContraseña" xml:space="preserve">
     <value>Contraseña</value>
   </data>
   <data name="GuiLoginLbCorreo" xml:space="preserve">
     <value>Correo</value>
+  </data>
+  <data name="TituloJuego" xml:space="preserve">
+    <value>El Juego del Ahorcado</value>
   </data>
 </root>
