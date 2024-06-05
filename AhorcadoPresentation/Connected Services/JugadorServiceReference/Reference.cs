@@ -18,7 +18,9 @@ namespace JugadorServiceReference
     public partial class Jugador : object
     {
         
-        private string ApellidosField;
+        private string ApellidoMaternoField;
+        
+        private string ApellidoPaternoField;
         
         private string ContrasenaField;
         
@@ -30,8 +32,6 @@ namespace JugadorServiceReference
         
         private int PuntajeField;
         
-        private int RolField;
-        
         private string TelefonoField;
         
         private string UsernameField;
@@ -39,15 +39,28 @@ namespace JugadorServiceReference
         private System.DateTime fechaDeNacimientoField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Apellidos
+        public string ApellidoMaterno
         {
             get
             {
-                return this.ApellidosField;
+                return this.ApellidoMaternoField;
             }
             set
             {
-                this.ApellidosField = value;
+                this.ApellidoMaternoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoPaterno
+        {
+            get
+            {
+                return this.ApellidoPaternoField;
+            }
+            set
+            {
+                this.ApellidoPaternoField = value;
             }
         }
         
@@ -117,19 +130,6 @@ namespace JugadorServiceReference
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Rol
-        {
-            get
-            {
-                return this.RolField;
-            }
-            set
-            {
-                this.RolField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Telefono
         {
             get
@@ -185,6 +185,9 @@ namespace JugadorServiceReference
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJugadorService/ExisteJugador", ReplyAction="http://tempuri.org/IJugadorService/ExisteJugadorResponse")]
         System.Threading.Tasks.Task<bool> ExisteJugadorAsync(string correo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJugadorService/ObtenerJugadorPorId", ReplyAction="http://tempuri.org/IJugadorService/ObtenerJugadorPorIdResponse")]
+        System.Threading.Tasks.Task<JugadorServiceReference.Jugador> ObtenerJugadorPorIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
@@ -255,6 +258,11 @@ namespace JugadorServiceReference
         public System.Threading.Tasks.Task<bool> ExisteJugadorAsync(string correo)
         {
             return base.Channel.ExisteJugadorAsync(correo);
+        }
+        
+        public System.Threading.Tasks.Task<JugadorServiceReference.Jugador> ObtenerJugadorPorIdAsync(int id)
+        {
+            return base.Channel.ObtenerJugadorPorIdAsync(id);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

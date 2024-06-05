@@ -26,7 +26,7 @@ namespace Ahorcado_Services.Modelo.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["ConexionLocal"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["ConexionRemota"].ConnectionString;
             optionsBuilder.UseSqlServer(connectionString);
         }
 

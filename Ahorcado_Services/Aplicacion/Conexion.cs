@@ -16,7 +16,7 @@ namespace Ahorcado_Services.Aplicacion
         
         private static AhorcadoDbContext CrearInstancia()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["ConexionLocal"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["ConexionRemota"].ConnectionString;
             DbContextOptions<AhorcadoDbContext> opciones = new DbContextOptionsBuilder<AhorcadoDbContext>()
                 .UseSqlServer(connectionString)
                 .Options;

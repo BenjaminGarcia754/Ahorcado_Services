@@ -44,7 +44,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 string Apellidos = TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
                 Jugador jugador = new Jugador();
                 jugador.Nombre = TbNombre.Text;
-                jugador.Apellidos = Apellidos;
+                //jugador.Apellidos = Apellidos;
                 jugador.Correo = TbCorreo.Text;
                 jugador.fechaDeNacimiento = (DateTime)DpFechaNacimiento.SelectedDate.Value;
                 jugador.Contrasena = PfContraseña.Password;
@@ -133,7 +133,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             //string[] apellidos = JugadorSingleton.Instance.Apellidos.Split(' ');
             //TbApellidoPaterno.Text = apellidos[0];
             //TbApellidoMaterno.Text = apellidos[1];
-            TbApellidoPaterno.Text = JugadorSingleton.Instance.Apellidos;
+            TbApellidoPaterno.Text = JugadorSingleton.Instance.ApellidoPaterno ;
             TbCorreo.Text = JugadorSingleton.Instance.Correo;
             DpFechaNacimiento.SelectedDate = JugadorSingleton.Instance.fechaDeNacimiento;
             PfContraseña.Password = JugadorSingleton.Instance.Contrasena;

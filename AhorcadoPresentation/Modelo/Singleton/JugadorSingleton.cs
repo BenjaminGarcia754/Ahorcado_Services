@@ -11,7 +11,8 @@ namespace AhorcadoPresentation.Modelo.Singleton
         private static JugadorSingleton instance;
         private static readonly object lockObject = new object();
 
-        public string Apellidos { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
         public string Contrasena { get; set; }
         public string Correo { get; set; }
         public int Id { get; set; }

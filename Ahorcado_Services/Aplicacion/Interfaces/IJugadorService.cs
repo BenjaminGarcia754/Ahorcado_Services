@@ -20,5 +20,7 @@ namespace Ahorcado_Services.Aplicacion
         bool ActualizarInformacionJugador(Jugador jugador);
         [OperationContract]
         bool ExisteJugador(string correo);
+        [OperationContract]
+        Jugador ObtenerJugadorPorId(int id);
     }
 }

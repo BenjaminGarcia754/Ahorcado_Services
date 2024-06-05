@@ -4,14 +4,16 @@ using Ahorcado_Services.Modelo.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ahorcado_Services.Migrations
 {
     [DbContext(typeof(AhorcadoDbContext))]
-    partial class AhorcadoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240527211811_modificacionApellidos")]
+    partial class modificacionApellidos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,9 +149,6 @@ namespace Ahorcado_Services.Migrations
 
                     b.Property<int>("IdDificultad")
                         .HasColumnType("int");
-
-                    b.Property<string>("IdiomaPartida")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()

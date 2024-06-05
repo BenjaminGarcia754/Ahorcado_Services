@@ -14,5 +14,7 @@ namespace Ahorcado_Services.Aplicacion
     {
         [OperationContract]
         List<Dificultad> GetDificultades();
+        Dificultad GetDificultad(int id);
+        bool AddDificultad(Dificultad dificultad);
     }
 }

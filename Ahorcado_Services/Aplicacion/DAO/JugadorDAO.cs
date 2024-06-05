@@ -82,9 +82,19 @@ namespace Ahorcado_Services.Aplicacion.DAO
             }
             return false;
         }
+
         public static Jugador ObtenerJugador(int id)
         {
-            return ahorcadoDbContext.Jugadores.Find(id);
+            try
+            {
+                return ahorcadoDbContext.Jugadores.Find(id);
+            }
+            catch (EntityException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            
         }
     }
 }

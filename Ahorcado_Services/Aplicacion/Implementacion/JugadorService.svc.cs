@@ -39,6 +39,11 @@ namespace Ahorcado_Services.Aplicacion.Implementacion
         {
             return JugadorDAO.ExisteJugador(correo);
         }
+
+        public Jugador ObtenerJugadorPorId(int id)
+        {
+            return JugadorDAO.ObtenerJugador(id);
+        }
     }
 
 }

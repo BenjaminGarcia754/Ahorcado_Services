@@ -1,4 +1,5 @@
-﻿using Ahorcado_Services.Infraestructura.Utilidades;
+﻿using Ahorcado_Services.Aplicacion.DAO;
+using Ahorcado_Services.Infraestructura.Utilidades;
 using Ahorcado_Services.Modelo.EntityFramework;
 using AutoMapper;
 using System;
@@ -21,6 +22,16 @@ namespace Ahorcado_Services.Aplicacion
         public List<Dificultad> GetDificultades()
         {
             return ahorcadoDbContext.Dificultades.ToList();
+        }
+
+        public Dificultad GetDificultad(int id)
+        {
+            return DificultadDAO.GetDificultad(id);
+        }
+
+        public bool AddDificultad(Dificultad dificultad)
+        {
+            return DificultadDAO.AddDificultad(dificultad);
         }
     }
 }
