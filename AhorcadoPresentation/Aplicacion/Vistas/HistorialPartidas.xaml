@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
+             xmlns:resources="clr-namespace:AhorcadoPresentation.RecursosLocalizables"
              mc:Ignorable="d" 
              d:DesignHeight="666" d:DesignWidth="1024">
     <Border BorderBrush="White" BorderThickness="1" CornerRadius="30">
@@ -27,13 +28,13 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap"  Text="Historial de partida" VerticalAlignment="Top"/>
+            <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="108,28,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiHistorialPartidasTbHistorialDePartidas}" VerticalAlignment="Top"/>
             <ScrollViewer Margin= "129,102,162,76">
                 <WrapPanel x:Name="WPPanelPartidas" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">
 
                 </WrapPanel>
             </ScrollViewer>
-            <Button Content="Ver puntaje" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="736,34,0,0" VerticalAlignment="Top" Height="40" Width="124" Click="ClickConsultarPuntaje"/>
+            <Button Content="{resources:Resx Key=GuiHistorialPartidasBtnVerPuntaje}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="736,34,0,0" VerticalAlignment="Top" Height="40" Width="124" Click="ClickConsultarPuntaje"/>
 
         </Grid>
     </Border>

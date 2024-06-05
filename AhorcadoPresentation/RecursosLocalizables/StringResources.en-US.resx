@@ -117,6 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GuiBuscarPartidaNuevaBtnJugar" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="GuiBuscarPartidaNuevaTbBuscarPartia" xml:space="preserve">
+    <value>Search New Game</value>
+  </data>
+  <data name="GuiBuscarPartidaNuevaTbPartidasDisponibles" xml:space="preserve">
+    <value>Available games</value>
+  </data>
+  <data name="GuiEsperandoJugadorTbEsperandoJugador" xml:space="preserve">
+    <value>Waiting player</value>
+  </data>
+  <data name="GuiGenerarPartidaTbCategoria" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="GuiGenerarPartidaTbCrearPartida" xml:space="preserve">
+    <value>Create game:</value>
+  </data>
+  <data name="GuiGenerarPartidaTbCrearSala" xml:space="preserve">
+    <value>Create room</value>
+  </data>
+  <data name="GuiGenerarPartidaTbPalabra" xml:space="preserve">
+    <value>Word:</value>
+  </data>
+  <data name="GuiHistorialLbFechaDePartida" xml:space="preserve">
+    <value>Game date</value>
+  </data>
+  <data name="GuiHistorialLbPalabra" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="GuiHistorialLbPuntaje" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="GuiHistorialLbResultado" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="GuiHistorialLbUsuarioContrincante" xml:space="preserve">
+    <value>Rival user</value>
+  </data>
+  <data name="GuiHistorialPartidasBtnVerPuntaje" xml:space="preserve">
+    <value>See score</value>
+  </data>
+  <data name="GuiHistorialPartidasTbHistorialDePartidas" xml:space="preserve">
+    <value>Game history</value>
+  </data>
+  <data name="GuiHistorialPuntajeTbInformeDePuntos" xml:space="preserve">
+    <value>Points report</value>
+  </data>
+  <data name="GuiHistorialPuntajeTbPuntaje" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="GuiHistorialPuntosLbFechaDePartida" xml:space="preserve">
+    <value>Game date</value>
+  </data>
+  <data name="GuiHistorialPuntosLbPalabra" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="GuiHistorialPuntosLbPuntaje" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="GuiHistorialPuntosLbUsuarioContrincante" xml:space="preserve">
+    <value>Rival user</value>
+  </data>
+  <data name="GuiJugarPartidaBtnBotonDeAyuda" xml:space="preserve">
+    <value>Help button</value>
+  </data>
   <data name="GuiLoginBtnIniciarSesion" xml:space="preserve">
     <value>Sign In</value>
   </data>
@@ -128,6 +194,66 @@
   </data>
   <data name="GuiLoginLbCorreo" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="GuiMenuPrincipalTbBuscarPartida" xml:space="preserve">
+    <value>Search game</value>
+  </data>
+  <data name="GuiMenuPrincipalTbConfiguracion" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="GuiMenuPrincipalTbCrearPartida" xml:space="preserve">
+    <value>Create game</value>
+  </data>
+  <data name="GuiMenuPrincipalTbHistorialDeJugadas" xml:space="preserve">
+    <value>Play history</value>
+  </data>
+  <data name="GuiPartidaNuevaLbCategoria" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="GuiPartidaNuevaLbDificultad" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
+    <value>Challenger player</value>
+  </data>
+  <data name="GuiRegistrarUsuarioBtnRegistrarse" xml:space="preserve">
+    <value>To register</value>
+  </data>
+  <data name="GuiRegistrarUsuarioBtnRegresar" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbApellidoMaterno" xml:space="preserve">
+    <value>Second last name</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbApellidoPaterno" xml:space="preserve">
+    <value>First last name</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbContraseña" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbCorreo" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbFechaDeNacimiento" xml:space="preserve">
+    <value>Birthdate</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbNombres" xml:space="preserve">
+    <value>Name(s)</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbRegistrarUsuario" xml:space="preserve">
+    <value>Create user</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbTelefono" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTbUsuario" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="GuiRegistrarusuarioTtCompletarCampos" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="GuiRegistrarUsuarioTtFechaDeNacimiento" xml:space="preserve">
+    <value>The person must be between 10 and 74 years old.</value>
   </data>
   <data name="TituloJuego" xml:space="preserve">
     <value>The Hangman Game</value>
