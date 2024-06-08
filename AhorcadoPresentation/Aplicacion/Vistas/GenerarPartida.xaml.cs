@@ -31,6 +31,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         Dictionary<string, AhorcadoService.Categoria> categoriaDiccionario = new Dictionary<string, AhorcadoService.Categoria>();
         Dictionary<string, PalabraService.Palabra> palabraDiccionario = new Dictionary<string, PalabraService.Palabra>();
         IMapper mapper = Modelo.Mapper.ObtenerMapper();
+        
         public GenerarPartida()
         {
             CbPalabra.IsEnabled = false;
@@ -202,6 +203,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public bool ValidarComboBox()
         {
             return CbDificultad.SelectedItem != null && CbCategoria.SelectedItem != null && CbPalabra.SelectedItem != null;
+        }
+        private void CbPalabra_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

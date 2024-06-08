@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AhorcadoPresentation.RecursosLocalizables;
 
 namespace AhorcadoPresentation.Aplicacion.Vistas
 {
@@ -53,30 +54,35 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 jugador.Username = TbUsuario.Text;
                 if (esActualizacion)
                 {
+                    jugador.Id = JugadorSingleton.Instance.Id;
                     bool respuesta = jugadorCliente.ActualizarInformacionJugadorAsync(jugador).Result;
                     if (respuesta)
                     {
-                        GenericGuiController.MostrarMensajeBox("Informacion actualizada");
+                        mapper.Map(jugador, JugadorSingleton.Instance);
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgActualizado"));
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("Error al actualizar la informacion");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorActualizar"));
                     }
-                }else
+                }
+                else
                 {
                     bool respuesta = jugadorCliente.RegistrarJugadorAsync(jugador).Result;
                     if (respuesta)
                     {
-                        GenericGuiController.MostrarMensajeBox("Jugador registrado");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgRegistrado"));
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("Error al registrar el jugador");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorRegistrar"));
                     }
                 }
-            }else
+                ClickRegresar(sender, e);
+            }
+            else
             {
-                
+
             }
         }
 
@@ -109,18 +115,18 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
             if (!GenericGuiController.ValidarTextBlockVacios(textBlocks))
             {
-                GenericGuiController.MostrarMensajeBox("Hay campos vacios");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgCamposVacios"));
                 respuesta = false;
             }
             
             if (!GenericGuiController.ValidarDatePicker(DpFechaNacimiento))
             {
-                GenericGuiController.MostrarMensajeBox("Fecha de nacimiento invalida");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgFechaInvalida"));
                 respuesta = false;
             }
             if (!GenericGuiController.ValidarPasswordBox(PfContraseña))
             {
-                GenericGuiController.MostrarMensajeBox("Contraseña invalida");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgContraseniaInvalida"));
                 respuesta = false;
             }
 
@@ -144,7 +150,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             if(esActualizacion)
             {
-                tbTextoInicial.Text= "Actualizar Informacion";
+                tbTextoInicial.Text= ResourceAccesor.GetString("GuiRegistrarActualizarInfo");
+                BTNRegistrar .Content = ResourceAccesor.GetString("GuiRegistrarBtnActualizar");
                 CargarInformacionJugador();
                 TbCorreo.IsEnabled = false;
             }
