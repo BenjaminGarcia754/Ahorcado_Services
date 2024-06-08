@@ -34,9 +34,9 @@
             <TextBlock FontFamily="/Aplicacion/Resources/Fuentes/#Inika" HorizontalAlignment="Left"  FontSize="25"  Foreground="White" Margin="290,407,0,0" TextWrapping="Wrap"  Text="{resources:Resx Key=GuiGenerarPartidaTbPalabra}" VerticalAlignment="Top" Height="32" Width="98"/>
 
             <!-- Aquí están los ComboBox con los ToolTips corregidos -->
-            <ComboBox x:Name="CbDificultad" HorizontalAlignment="Center" Margin="0,162,0,0" VerticalAlignment="Top" Width="244" Height="40" FontSize="20"/>
-            <ComboBox x:Name="CbCategoria" HorizontalAlignment="Center" VerticalAlignment="Center" Width="244" Height="40" FontSize="20"/>
-            <ComboBox x:Name="CbPalabra" HorizontalAlignment="Center" Margin="0,445,0,0" VerticalAlignment="Top" Width="244" Height="40" FontSize="20"/>
+            <ComboBox x:Name="CbDificultad" HorizontalAlignment="Center" Margin="0,162,0,0" VerticalAlignment="Top" Width="244" Height="40" FontSize="20" SelectionChanged="CbDificultad_SelectionChanged"/>
+            <ComboBox x:Name="CbCategoria" HorizontalAlignment="Center" VerticalAlignment="Center" Width="244" Height="40" FontSize="20" SelectionChanged="CbCategoria_SelectionChanged"/>
+            <ComboBox x:Name="CbPalabra" HorizontalAlignment="Center" Margin="0,445,0,0" VerticalAlignment="Top" Width="244" Height="40" FontSize="20" SelectionChanged="CbPalabra_SelectionChanged"/>
 
 
 

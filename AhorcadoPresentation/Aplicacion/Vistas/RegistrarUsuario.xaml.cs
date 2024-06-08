@@ -50,7 +50,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 jugador.fechaDeNacimiento = (DateTime)DpFechaNacimiento.SelectedDate.Value;
                 jugador.Contrasena = PfContraseña.Password;
                 jugador.Telefono = TbTelefono.Text;
-
+                jugador.Username = TbUsuario.Text;
                 if (esActualizacion)
                 {
                     bool respuesta = jugadorCliente.ActualizarInformacionJugadorAsync(jugador).Result;
