@@ -186,11 +186,20 @@
   <data name="GuiJugarPartidaBtnBotonDeAyuda" xml:space="preserve">
     <value>Boton de ayuda</value>
   </data>
+  <data name="GuiLoginBienvenido" xml:space="preserve">
+    <value>Bienvenido</value>
+  </data>
   <data name="GuiLoginBtnIniciarSesion" xml:space="preserve">
     <value>Iniciar Sesión</value>
   </data>
   <data name="GuiLoginBtnRegistrarse" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="GuiLoginCamposInvalidos" xml:space="preserve">
+    <value>Correo o contraseña incorrectos.</value>
+  </data>
+  <data name="GuiLoginCamposVacios" xml:space="preserve">
+    <value>Debe completar todos los campos.</value>
   </data>
   <data name="GuiLoginLbContraseña" xml:space="preserve">
     <value>Contraseña</value>
@@ -215,6 +224,9 @@
   </data>
   <data name="GuiPartidaNuevaLbDificultad" xml:space="preserve">
     <value>Dificultad</value>
+  </data>
+  <data name="GuiPartidaNuevaLbIdioma" xml:space="preserve">
+    <value>Idioma</value>
   </data>
   <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
     <value>Jugador retador</value>
@@ -257,9 +269,6 @@
   </data>
   <data name="GuiRegistrarUsuarioTtFechaDeNacimiento" xml:space="preserve">
     <value>La persona no puede ser mayor a 74 años o menor a 10 años.</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
   </data>
   <data name="TituloJuego" xml:space="preserve">
     <value>El Juego del Ahorcado</value>

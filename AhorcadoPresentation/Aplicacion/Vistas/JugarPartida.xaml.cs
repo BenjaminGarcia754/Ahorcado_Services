@@ -37,8 +37,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
             palabraDTO.Nombre = "Los juegos del hambre en llamas español latino";
             PartidaSingleton partida = PartidaSingleton.Instance;
+            partida.PalabraParcial = "--- --e--- -e- -----e e- ------ e----- ------";
             ttAyuda.Content = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
-            generarLabels();
+            imprimirPalabraParicial(partida.PalabraParcial);
         }
 
         public void ComprobarStatusPartida()
@@ -59,18 +60,25 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             });
         }
 
-        private void generarLabels()
+        private void imprimirPalabraParicial(string palabraParcial)
         {
-            foreach (char letra in palabraDTO.Nombre)
+            foreach (char letra in palabraParcial)
             {
                 System.Windows.Controls.Label labelLetra = generarLabel();
-                if (letra != ' ')
+                 if (letra == ' ')
                 {
-                    labelLetra.BorderThickness = new Thickness(0, 0, 0, 1);
-                    labelLetra.BorderBrush = Brushes.White;
+                    labelLetra.BorderThickness = new Thickness(0, 0, 0, 0);
+                }
+                else if(letra != '-')
+                {
+                    labelLetra.Content = letra;
                 }
                 WPPalabraContainer.Children.Add(labelLetra);
             }
+        }
+        private void generarLabels()
+        {
+
         }
 
         private System.Windows.Controls.Label generarLabel()
@@ -84,6 +92,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             labelLetra.VerticalContentAlignment = VerticalAlignment.Top;
             labelLetra.Foreground = Brushes.White;
             labelLetra.FontFamily = (FontFamily)Application.Current.Resources["Inter"];
+            labelLetra.BorderThickness = new Thickness(0, 0, 0, 1);
+            labelLetra.BorderBrush = Brushes.White;
             return labelLetra;
         }
 

@@ -1,4 +1,5 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.RecursosLocalizables;
 using AutoMapper;
 using JugadorServiceReference;
 using System;
@@ -41,14 +42,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 var jugador =  JugadorCliente.IniciarSesionAsync(TbCorreo.Text, PfContrasenia.Password).Result;
                 if (jugador != null)
                 {
-                    GenericGuiController.MostrarMensajeBox("Bienvenido " + jugador.Nombre);
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiLoginBienvenido") +" " +jugador.Nombre);
                     mapper.Map(jugador, JugadorSingleton.Instance);
                     mostrarMenuPrincipal();
 
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("Correo o contraseña incorrectos");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiLoginCamposInvalidos"));
                 }
             }
         }
@@ -76,7 +77,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             if(string.IsNullOrEmpty(TbCorreo.Text) || string.IsNullOrEmpty(PfContrasenia.Password))
             {
-                GenericGuiController.MostrarMensajeBox("Debe completar todos los campos");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiLoginCamposVacios"));
                 return false;
             }else
             {

@@ -5,17 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AhorcadoPresentation.Aplicacion.Vistas"
              xmlns:resources="clr-namespace:AhorcadoPresentation.RecursosLocalizables"
-             mc:Ignorable="d" Height="222" Width="589">
+             mc:Ignorable="d" Height="271" Width="589">
     <Border Margin="10,10,10,10" Height="NaN" Width="NaN" Style="{StaticResource ComponentePartidaNueva}">
         <Grid Margin="0,9,-1,-1">
-            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbJugadorRetador}" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
-            <Label Foreground="White" FontSize="18" Content="{resources:Resx Key=GuiPartidaNuevaLbDificultad}" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
-            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbCategoria}" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbJugadorRetador}" HorizontalAlignment="Left" Margin="9,14,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label Foreground="White" FontSize="18" Content="{resources:Resx Key=GuiPartidaNuevaLbDificultad}" HorizontalAlignment="Left" Margin="9,51,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
+            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbCategoria}" HorizontalAlignment="Left" Margin="9,88,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
 
-            <Label x:Name="lJugadorRetador"  Foreground="White" FontSize="20" Content="dd/MM/YYYY" HorizontalAlignment="Left" Margin="352,32,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
-            <Label x:Name="lDificultad" Foreground="White" FontSize="18" Content="Username" HorizontalAlignment="Left" Margin="352,69,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
-            <Label x:Name="lCategoria" Foreground="White" FontSize="20" Content="Palabra" HorizontalAlignment="Left" Margin="352,106,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label x:Name="lJugadorRetador"  Foreground="White" FontSize="20" Content="jugadorRetador" HorizontalAlignment="Left" Margin="351,14,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label x:Name="lDificultad" Foreground="White" FontSize="18" Content="dificultad" HorizontalAlignment="Left" Margin="351,51,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
+            <Label x:Name="lCategoria" Foreground="White" FontSize="20" Content="categoria" HorizontalAlignment="Left" Margin="351,88,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbIdioma}" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
 
+            <Button Content="Jugar" FontFamily="{StaticResource Inter}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Center" FontSize="17"  VerticalAlignment="Top" Height="39" Width="110" Click="ClickJugarPartida" Margin="0,183,0,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.121"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0.131"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Label x:Name="lIdioma" Foreground="White" FontSize="20" Content="idioma" HorizontalAlignment="Left" Margin="351,130,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
         </Grid>
     </Border>
 </UserControl>

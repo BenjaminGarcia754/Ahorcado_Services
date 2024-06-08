@@ -20,12 +20,18 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class PartidaNueva : UserControl
     {
-        public PartidaNueva(string jugadorRetador, string dificultad, string categoria)
+        public PartidaNueva(string jugadorRetador, string dificultad, string categoria, string idioma)
         {
             InitializeComponent();
             lJugadorRetador.Content = jugadorRetador;
             lDificultad.Content = dificultad;
             lCategoria.Content = categoria;
+            lIdioma.Content = idioma;
+        }
+
+        private void ClickJugarPartida(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

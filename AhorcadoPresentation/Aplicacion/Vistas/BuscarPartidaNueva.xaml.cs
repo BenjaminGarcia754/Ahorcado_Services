@@ -90,7 +90,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     {
                         var jugadorService = new JugadorServiceClient();
                         var jugadorAnfitrion = jugadorService.ObtenerJugadorPorIdAsync(partida.IdJugadorAnfitrion).Result;
-                        PartidaNueva partidaHistorial = new PartidaNueva(jugadorAnfitrion.Nombre, partida.Palabra.dificultad.Nombre, partida.Palabra.Categoria.Nombre);
+                        PartidaNueva partidaHistorial = new PartidaNueva(jugadorAnfitrion.Nombre, partida.Palabra.dificultad.Nombre, partida.Palabra.Categoria.Nombre, "NO IMPLEMENTADO");
                         WPPanelPartidasNuevas.Children.Add(partidaHistorial);
                     }
                 }

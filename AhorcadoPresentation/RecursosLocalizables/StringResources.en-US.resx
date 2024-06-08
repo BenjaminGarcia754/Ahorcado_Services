@@ -186,11 +186,20 @@
   <data name="GuiJugarPartidaBtnBotonDeAyuda" xml:space="preserve">
     <value>Help button</value>
   </data>
+  <data name="GuiLoginBienvenido" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
   <data name="GuiLoginBtnIniciarSesion" xml:space="preserve">
     <value>Sign In</value>
   </data>
   <data name="GuiLoginBtnRegistrarse" xml:space="preserve">
     <value>Sign Up</value>
+  </data>
+  <data name="GuiLoginCamposInvalidos" xml:space="preserve">
+    <value>Incorrect email or password.</value>
+  </data>
+  <data name="GuiLoginCamposVacios" xml:space="preserve">
+    <value>You must complete all fields.</value>
   </data>
   <data name="GuiLoginLbContraseña" xml:space="preserve">
     <value>Password</value>
@@ -215,6 +224,9 @@
   </data>
   <data name="GuiPartidaNuevaLbDificultad" xml:space="preserve">
     <value>Difficulty</value>
+  </data>
+  <data name="GuiPartidaNuevaLbIdioma" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
     <value>Challenger player</value>
