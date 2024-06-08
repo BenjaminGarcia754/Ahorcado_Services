@@ -44,7 +44,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             bool respuesta = true;
             foreach (var textBox in textBoxes)
             {
-                if (string.IsNullOrEmpty(textBox.Text))
+                
+                if (string.IsNullOrEmpty(textBox.Text) && !string.Equals(textBox.Name, "TbApellidoMaterno"))
                 {
                     textBox.Background = Brushes.OrangeRed;
                     respuesta = false;

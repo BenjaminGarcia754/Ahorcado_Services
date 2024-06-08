@@ -52,10 +52,28 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            detenerTarea = true;
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.CambiarVista(menuPrincipal);
+            Partida partida = new Partida();
+            partida.Id = PartidaSingleton.Instance.Id;
+            partida.IdEstadoPartida = 1;//Cancelada
+            partida.IdPalabraSelecionada = PartidaSingleton.Instance.IdPalabraSelecionada;
+            partida.IdJugadorAnfitrion = PartidaSingleton.Instance.IdJugadorAnfitrion;
+            partida.IdJugadorInvitado = PartidaSingleton.Instance.IdJugadorInvitado;
+
+            try
+            {
+                PartidaServiceClient partidaService = new PartidaServiceClient();
+                partidaService.ActualizarPartidaAsync(partida);
+                detenerTarea = true;
+                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                var mainWindow = (MainWindow)Window.GetWindow(this);
+                mainWindow.CambiarVista(menuPrincipal);
+            }
+            catch (Exception)
+            {
+                GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                throw;
+            }
+            
         }
 
         private async Task<Partida> VerificarStatusPartida()
@@ -77,7 +95,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             detenerTarea = true;
             //TODO: Cambiar a la pantalla de juego para el anfitrión
-            JugarPartida jugarPartida = new JugarPartida();
+            JugarPartidaRetador jugarPartida = new JugarPartidaRetador();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(jugarPartida);
             await Task.Delay(1000);

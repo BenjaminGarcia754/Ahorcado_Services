@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AhorcadoPresentation.Modelo.Singleton
 {
-    internal class PartidaSingleton
+    public class PartidaSingleton
     {
         private static PartidaSingleton instance;
         private static readonly object lockObject = new object();

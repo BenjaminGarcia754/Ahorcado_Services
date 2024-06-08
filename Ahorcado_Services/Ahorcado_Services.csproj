@@ -242,6 +242,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aplicacion\Implementacion\EstadoPartidaService.svc" />
     <Content Include="Aplicacion\Implementacion\DificultadService.svc" />
     <Content Include="Aplicacion\Implementacion\CategoriaService.svc" />
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
@@ -253,9 +254,14 @@
   <ItemGroup>
     <Compile Include="Aplicacion\DAO\CategoriaService.cs" />
     <Compile Include="Aplicacion\DAO\DificultadDAO.cs" />
+    <Compile Include="Aplicacion\DAO\EstadoPartidaDAO.cs" />
     <Compile Include="Aplicacion\DAO\JugadorDAO.cs" />
     <Compile Include="Aplicacion\DAO\PalabraDAO.cs" />
     <Compile Include="Aplicacion\DAO\PartidaDAO.cs" />
+    <Compile Include="Aplicacion\Implementacion\EstadoPartidaService.svc.cs">
+      <DependentUpon>EstadoPartidaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Interfaces\IEstadoPartidaService.cs" />
     <Compile Include="Aplicacion\Implementacion\DificultadService.svc.cs">
       <DependentUpon>DificultadService.svc</DependentUpon>
     </Compile>
@@ -326,6 +332,10 @@
     <Compile Include="Migrations\20240604235825_UltimaMigracionV2.cs" />
     <Compile Include="Migrations\20240604235825_UltimaMigracionV2.Designer.cs">
       <DependentUpon>20240604235825_UltimaMigracionV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240606231008_InternacionalizacionJugador.cs" />
+    <Compile Include="Migrations\20240606231008_InternacionalizacionJugador.Designer.cs">
+      <DependentUpon>20240606231008_InternacionalizacionJugador.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />

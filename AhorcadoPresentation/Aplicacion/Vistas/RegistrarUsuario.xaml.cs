@@ -41,10 +41,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
             if (ValidarCampos())
             {
-                string Apellidos = TbApellidoPaterno.Text + " " + TbApellidoMaterno.Text;
                 Jugador jugador = new Jugador();
                 jugador.Nombre = TbNombre.Text;
-                //jugador.Apellidos = Apellidos;
+                jugador.ApellidoPaterno = TbApellidoPaterno.Text;
+                jugador.ApellidoMaterno = TbApellidoMaterno.Text;
                 jugador.Correo = TbCorreo.Text;
                 jugador.fechaDeNacimiento = (DateTime)DpFechaNacimiento.SelectedDate.Value;
                 jugador.Contrasena = PfContraseña.Password;
@@ -130,9 +130,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public void CargarInformacionJugador()
         {
             TbNombre.Text = JugadorSingleton.Instance.Nombre;
-            //string[] apellidos = JugadorSingleton.Instance.Apellidos.Split(' ');
-            //TbApellidoPaterno.Text = apellidos[0];
-            //TbApellidoMaterno.Text = apellidos[1];
+            TbApellidoMaterno.Text = JugadorSingleton.Instance.ApellidoMaterno;
             TbApellidoPaterno.Text = JugadorSingleton.Instance.ApellidoPaterno ;
             TbCorreo.Text = JugadorSingleton.Instance.Correo;
             DpFechaNacimiento.SelectedDate = JugadorSingleton.Instance.fechaDeNacimiento;
