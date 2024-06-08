@@ -12,8 +12,7 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         [Required]
         public string Nombre { get; set; }
         [Required]
-        public string ApellidoPaterno { get; set; }
-        [Required] 
+        public string ApellidoPaterno { get; set; } 
         public string ApellidoMaterno { get; set; }
         [Required]
         [EmailAddress]

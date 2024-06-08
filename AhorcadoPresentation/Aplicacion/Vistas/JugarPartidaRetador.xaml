@@ -30,7 +30,7 @@
             </Button>
             <Grid Margin="71,421,138,86">
 
-                <Image x:Name="ImagenIntento" Source="/Aplicacion/Resources/ImagenBaseAhorcado.png" HorizontalAlignment="Left"  Margin="230,-334,0,0" VerticalAlignment="Top" Height="298" Width="226" />
+                <Image x:Name="ImgImagenIntento" Source="/Aplicacion/Resources/ImagenBaseAhorcado.png" HorizontalAlignment="Left"  Margin="230,-334,0,0" VerticalAlignment="Top" Height="298" Width="226" />
             </Grid>
         </Grid>
 

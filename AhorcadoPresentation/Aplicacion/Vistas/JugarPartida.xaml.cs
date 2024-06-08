@@ -48,10 +48,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    if (partida.IdEstadoPartida == 1)//Finalizada
+                    if (partida.IdEstadoPartida == 1)//Cancelada
                     {
                         detenerTarea = true;
-                        MessageBox.Show("La partida ha finalizada por el jugador anfitrion regresaras al menu principal");
+                        MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
                         await CambiarVista();
                     }
                     await Task.Delay(2000);
@@ -73,6 +73,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
         }
 
+        //
         private System.Windows.Controls.Label generarLabel()
         {
             System.Windows.Controls.Label labelLetra = new System.Windows.Controls.Label();
@@ -153,7 +154,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         }
         public async Task CambiarVista()
         {
-            //TODO: Cambiar a la pantalla de juego para el anfitrión
             MenuPrincipal menu =  new MenuPrincipal();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(menu);
