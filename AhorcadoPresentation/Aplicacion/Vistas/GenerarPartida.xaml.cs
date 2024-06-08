@@ -1,6 +1,9 @@
-﻿using AhorcadoService;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoService;
+using AutoMapper;
+using DificultadService;
 using JugadorServiceReference;
-using ServiceReference1;
+using PartidaService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +27,15 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class GenerarPartida : UserControl
     {
+        Dictionary<string, DificultadService.Dificultad> dificultadDiccionario = new Dictionary<string, DificultadService.Dificultad>();
+        Dictionary<string, AhorcadoService.Categoria> categoriaDiccionario = new Dictionary<string, AhorcadoService.Categoria>();
+        Dictionary<string, PalabraService.Palabra> palabraDiccionario = new Dictionary<string, PalabraService.Palabra>();
+        IMapper mapper = Modelo.Mapper.ObtenerMapper();
         public GenerarPartida()
         {
+            CbPalabra.IsEnabled = false;
             InitializeComponent();
-            InicializarComboBoxDificultades();
-            InicializarComboBoxCategorias();
-
+            
             // Suscribir al evento SelectionChanged del ComboBox de dificultades
             CbDificultad.SelectionChanged += (sender, e) =>
             {
@@ -41,109 +47,161 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 CbPalabra.IsEnabled = CbCategoria.SelectedItem != null;
             };
+
+            CargarComboBox();
+        }
+        private void CargarComboBox()
+        {
+            var categorias = ObtenerCategorias();
+            var dificultades = ObtenerDidicultades();
+            InicializarComboBoxCategorias(categorias);
+            InicializarComboBoxDificultades(dificultades);
         }
 
-        private void InicializarComboBoxDificultades()
+        private List<DificultadService.Dificultad> ObtenerDidicultades()
         {
-            var dificultadServiceClient = new DificultadServiceClient();
-            var dificultades = dificultadServiceClient.GetDificultadesAsync().Result;
-
-            CbDificultad.ItemsSource = dificultades;
-            CbDificultad.DisplayMemberPath = "Nombre";
-            CbDificultad.SelectedValuePath = "Id";
-        }
-
-        private void InicializarComboBoxCategorias()
-        {
-            var categoriaServiceClient = new CategoriaServiceClient();
-            var categorias = categoriaServiceClient.GetCategoriasAsync().Result;
-
-            CbCategoria.ItemsSource = categorias;
-            CbCategoria.DisplayMemberPath = "Nombre";
-            CbCategoria.SelectedValuePath = "Id";
-
-            // Inicialmente bloquear CbCategoria
-            CbCategoria.IsEnabled = false;
-
-            CbPalabra.IsEnabled = false;
-        }
-
-        private void ValidarComboBox(object sender, MouseButtonEventArgs e)
-        {
-            ComboBox comboBox = sender as ComboBox;
-
-            // Validar si es el ComboBox de dificultad
-            if (comboBox == CbDificultad)
+            DificultadServiceClient dificultadServiceClient = new DificultadServiceClient();
+            try
             {
-                // Si no hay una selección en el ComboBox de dificultad, mostrar mensaje
-                if (CbDificultad.SelectedIndex == -1)
-                {
-                    e.Handled = true; // Detener el evento para que el ComboBox no reciba el clic
-                    MessageBox.Show("Debe seleccionar una dificultad antes de continuar.");
-                    return;
-                }
+                return dificultadServiceClient.GetDificultadesAsync().Result.ToList();
+
             }
-            // Validar si es el ComboBox de categoría
-            else if (comboBox == CbCategoria)
+            catch (Exception)
             {
-                // Si no hay una selección en el ComboBox de categoría, mostrar mensaje
-                if (CbCategoria.SelectedIndex == -1)
-                {
-                    e.Handled = true; // Detener el evento para que el ComboBox no reciba el clic
-                    MessageBox.Show("Debe seleccionar una categoría antes de continuar.");
-                    return;
-                }
+                GenericGuiController.MostrarMensajeBox("No se pudo obtener las dificultades");
+                return null;
             }
-            // Validar si es el ComboBox de palabra
-            else if (comboBox == CbPalabra)
+        }
+        private List<AhorcadoService.Categoria> ObtenerCategorias()
+        {
+            CategoriaServiceClient categoriaServiceClient = new CategoriaServiceClient();
+            try
             {
-                // Si no hay una selección en el ComboBox de palabra, mostrar mensaje
-                if (CbPalabra.SelectedIndex == -1)
+                return categoriaServiceClient.GetCategoriasAsync().Result.ToList();
+            }
+            catch (Exception)
+            {
+                GenericGuiController.MostrarMensajeBox("No se pudo obtener las categorías");
+                return null;
+            }
+
+        }
+
+        private void InicializarComboBoxDificultades(List<DificultadService.Dificultad> dificultades)
+        {
+            foreach (var dificultad in dificultades)
+            {
+                CbDificultad.Items.Add(dificultad.Nombre);
+                dificultadDiccionario.Add(dificultad.Nombre, dificultad);
+            }
+        }
+
+        private void InicializarComboBoxCategorias(List<AhorcadoService.Categoria> categorias)
+        {
+            foreach (var categoria in categorias)
+            {
+                categoriaDiccionario.Add(categoria.Nombre, categoria);
+                CbCategoria.Items.Add(categoria.Nombre);
+            }
+        }
+
+        private void InicializarComboBoxPalabras(List<PalabraService.Palabra> palabras)
+        {
+            foreach (var palabra in palabras)
+            {
+                CbPalabra.Items.Add(palabra.Nombre);
+                palabraDiccionario.Add(palabra.Nombre, palabra);
+            }
+        }
+
+        private void cargarPalabras()
+        {
+            if (CbCategoria.SelectedItem != null && CbDificultad.SelectedItem != null)
+            {
+                var dificultad = dificultadDiccionario[CbDificultad.SelectedItem.ToString()];
+                var categoria = categoriaDiccionario[CbCategoria.SelectedItem.ToString()];
+                try
                 {
-                    e.Handled = true; // Detener el evento para que el ComboBox no reciba el clic
-                    MessageBox.Show("Debe seleccionar una palabra antes de continuar.");
-                    return;
+                    PalabraService.PalabraServiceClient palabraServiceClient = new PalabraService.PalabraServiceClient();
+                    var palabras = palabraServiceClient.ObtenerPalabrasPorFiltroAsync(categoria.Id, dificultad.Id).Result;
+                    if (palabras != null)
+                    {
+                        InicializarComboBoxPalabras(palabras.ToList());
+                        CbPalabra.IsEnabled = true;
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("No se encontraron palabras para la categoría y dificultad seleccionadas");
+                    }
                 }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error en la conexion");
+                    throw;
+                }                
             }
         }
 
         private void Click_CrearSala(object sender, RoutedEventArgs e)
         {
-            if(CbDificultad.SelectedItem == null || CbCategoria.SelectedItem == null || CbPalabra.SelectedItem == null)
+            if (ValidarComboBox())
             {
-                MessageBox.Show("Debe seleccionar una dificultad, categoría y palabra para poder crear la partida.");
-                return;
+                var palabra = palabraDiccionario[CbPalabra.SelectedItem.ToString()];
+                Partida partida = new Partida();
+                partida.IdPalabraSelecionada = palabra.Id;
+                partida.IdJugadorAnfitrion = JugadorSingleton.Instance.Id;
+                partida.IdEstadoPartida = 1;//Creada
+                partida.palabraSeleccionada = palabra.Descripcion;//Validar Idioma
+                partida.IntentosRestantes = 0;
+                partida.PalabraParcial = GenericGuiController.EnmascararFrase(palabra.Nombre);//Validar Idioma
+                mapper.Map(partida, PartidaSingleton.Instance);
+                try
+                {
+                    PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
+                    partidaServiceClient.CrearPartidaAsync(partida);
+                    GenericGuiController.MostrarMensajeBox("Partida creada con éxito");
+                    cambiarVentana();
+                }
+                catch (Exception)
+                {
+                    GenericGuiController.MostrarMensajeBox("Error al crear la partida");
+                    throw;
+                }
             }
-            /*else
+            else
             {
-                var dificultad = (Dificultad)CbDificultad.SelectedItem;
-                var categoria = (Categoria)CbCategoria.SelectedItem;
-                var palabra = (Palabra)CbPalabra.SelectedItem;
-
-                var partidaServiceClient = new PartidaServiceClient();
-                var partida = partidaServiceClient.CrearPartidaAsync(JugadorRetador.Id, palabra.Id, categoria.Id, dificultad.Id).Result;
-
-                if (partida != null)
-                {
-                    MessageBox.Show("Partida creada con éxito.");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.JugadorActivo = JugadorRetador;
-                    var mainWindow = (MainWindow)Window.GetWindow(this);
-                    mainWindow.cambiarVista(menuPrincipal);
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo crear la partida.");
-                }
-            }*/   
+                GenericGuiController.MostrarMensajeBox("Debe seleccionar una dificultad, categoría y palabra");
+            }
         }
 
+        private void cambiarVentana()
+        {
+            EsperandoJugador esperandoJugador = new EsperandoJugador();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.CambiarVista(esperandoJugador);
+        }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(menuPrincipal);
+        }
+
+        private void CbDificultad_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cargarPalabras();
+        }
+
+        private void CbCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cargarPalabras();
+        }
+
+
+        public bool ValidarComboBox()
+        {
+            return CbDificultad.SelectedItem != null && CbCategoria.SelectedItem != null && CbPalabra.SelectedItem != null;
         }
     }
 }

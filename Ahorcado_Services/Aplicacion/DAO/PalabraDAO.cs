@@ -79,12 +79,13 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return ahorcadoDbContext.Palabras.Find(IdPalabra);
         }
 
-        public static List<Palabra> ObtenerPalabrasPorFiltro(int idCatergoria, int idDificultad)
+
+        public static List<Palabra> ObtenerPalabrasPorCategoriaYDificultad(int idCategoria, int idDificultad)
         {
             List<Palabra> palabras = new List<Palabra>();
             try
             {
-                palabras = ahorcadoDbContext.Palabras.Where(p => p.IdCategoria == idCatergoria && p.IdDificultad == idDificultad).ToList();
+                palabras = ahorcadoDbContext.Palabras.Where(p => p.IdCategoria == idCategoria && p.IdDificultad == idDificultad).ToList();
             }
             catch (EntityException ex)
             {

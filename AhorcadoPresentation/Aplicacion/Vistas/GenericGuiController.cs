@@ -19,6 +19,26 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             MessageBox.Show(mensaje);
         }
 
+        public static string EnmascararFrase(string frase)
+        {
+            char[] arregloEnmascarado = new char[frase.Length];
+
+            for (int i = 0; i < frase.Length; i++)
+            {
+                if (char.IsWhiteSpace(frase[i]))
+                {
+                    arregloEnmascarado[i] = ' ';
+                }
+                else
+                {
+                    arregloEnmascarado[i] = '_';
+                }
+            }
+
+            return new string(arregloEnmascarado);
+        }
+
+
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)

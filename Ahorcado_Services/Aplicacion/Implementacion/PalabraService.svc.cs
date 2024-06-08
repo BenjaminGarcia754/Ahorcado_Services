@@ -20,7 +20,7 @@ namespace Ahorcado_Services.Aplicacion
 
         public List<Palabra> ObtenerPalabrasPorFiltro(int idCatergoria, int idDificultad)
         {
-            return null;//PalabraDAO.ObtenerPalabrasPorFiltro(idCatergoria, idDificultad);
+            return PalabraDAO.ObtenerPalabrasPorCategoriaYDificultad(idCatergoria, idDificultad);
         }
 
         public Partida RealizarIntento(Partida partida, char caracterIntento)
@@ -30,8 +30,8 @@ namespace Ahorcado_Services.Aplicacion
 
         public bool RegistrarPalabra(Palabra palabra)
         {
-            palabra = PalabraDAO.AsignarDificultadPalabra(palabra);
-            return PalabraDAO.registrarPalabra(palabra);
+            var palabraAsignada = PalabraDAO.AsignarDificultadPalabra(palabra);
+            return PalabraDAO.registrarPalabra(palabraAsignada);
         }
     }
 }

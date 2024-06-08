@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceReference1
+namespace DificultadService
 {
     using System.Runtime.Serialization;
     
@@ -20,11 +20,11 @@ namespace ServiceReference1
         
         private int IdField;
         
-        private int NivelField;
-        
         private string NombreField;
         
-        private ServiceReference1.Palabra[] PalabrasField;
+        private string NombreInglesField;
+        
+        private DificultadService.Palabra[] PalabrasField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id
@@ -36,19 +36,6 @@ namespace ServiceReference1
             set
             {
                 this.IdField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Nivel
-        {
-            get
-            {
-                return this.NivelField;
-            }
-            set
-            {
-                this.NivelField = value;
             }
         }
         
@@ -66,7 +53,20 @@ namespace ServiceReference1
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiceReference1.Palabra[] Palabras
+        public string NombreIngles
+        {
+            get
+            {
+                return this.NombreInglesField;
+            }
+            set
+            {
+                this.NombreInglesField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DificultadService.Palabra[] Palabras
         {
             get
             {
@@ -85,19 +85,38 @@ namespace ServiceReference1
     public partial class Palabra : object
     {
         
+        private DificultadService.Categoria CategoriaField;
+        
         private string DescripcionField;
+        
+        private string DescripcionInglesField;
         
         private int IdField;
         
+        private int IdCategoriaField;
+        
         private int IdDificultadField;
         
-        private int IdSubcategoriaField;
+        private string IdiomaPartidaField;
         
         private string NombreField;
         
-        private ServiceReference1.Subcategoria SubcategoriaField;
+        private string NombreInglesField;
         
-        private ServiceReference1.Dificultad dificultadField;
+        private DificultadService.Dificultad dificultadField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DificultadService.Categoria Categoria
+        {
+            get
+            {
+                return this.CategoriaField;
+            }
+            set
+            {
+                this.CategoriaField = value;
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Descripcion
@@ -113,99 +132,17 @@ namespace ServiceReference1
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id
+        public string DescripcionIngles
         {
             get
             {
-                return this.IdField;
+                return this.DescripcionInglesField;
             }
             set
             {
-                this.IdField = value;
+                this.DescripcionInglesField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdDificultad
-        {
-            get
-            {
-                return this.IdDificultadField;
-            }
-            set
-            {
-                this.IdDificultadField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdSubcategoria
-        {
-            get
-            {
-                return this.IdSubcategoriaField;
-            }
-            set
-            {
-                this.IdSubcategoriaField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nombre
-        {
-            get
-            {
-                return this.NombreField;
-            }
-            set
-            {
-                this.NombreField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiceReference1.Subcategoria Subcategoria
-        {
-            get
-            {
-                return this.SubcategoriaField;
-            }
-            set
-            {
-                this.SubcategoriaField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiceReference1.Dificultad dificultad
-        {
-            get
-            {
-                return this.dificultadField;
-            }
-            set
-            {
-                this.dificultadField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Subcategoria", Namespace="http://schemas.datacontract.org/2004/07/Ahorcado_Services.Modelo.EntityFramework")]
-    public partial class Subcategoria : object
-    {
-        
-        private int IdField;
-        
-        private int IdCategoriaField;
-        
-        private string NombreField;
-        
-        private ServiceReference1.Palabra[] PalabrasField;
-        
-        private ServiceReference1.Categoria categoriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id
@@ -234,6 +171,32 @@ namespace ServiceReference1
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdDificultad
+        {
+            get
+            {
+                return this.IdDificultadField;
+            }
+            set
+            {
+                this.IdDificultadField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdiomaPartida
+        {
+            get
+            {
+                return this.IdiomaPartidaField;
+            }
+            set
+            {
+                this.IdiomaPartidaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Nombre
         {
             get
@@ -247,28 +210,28 @@ namespace ServiceReference1
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiceReference1.Palabra[] Palabras
+        public string NombreIngles
         {
             get
             {
-                return this.PalabrasField;
+                return this.NombreInglesField;
             }
             set
             {
-                this.PalabrasField = value;
+                this.NombreInglesField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiceReference1.Categoria categoria
+        public DificultadService.Dificultad dificultad
         {
             get
             {
-                return this.categoriaField;
+                return this.dificultadField;
             }
             set
             {
-                this.categoriaField = value;
+                this.dificultadField = value;
             }
         }
     }
@@ -283,7 +246,7 @@ namespace ServiceReference1
         
         private string NombreField;
         
-        private ServiceReference1.Subcategoria[] SubcategoriasField;
+        private string NombreInglesField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id
@@ -312,39 +275,36 @@ namespace ServiceReference1
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiceReference1.Subcategoria[] Subcategorias
+        public string NombreIngles
         {
             get
             {
-                return this.SubcategoriasField;
+                return this.NombreInglesField;
             }
             set
             {
-                this.SubcategoriasField = value;
+                this.NombreInglesField = value;
             }
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IDificultadService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DificultadService.IDificultadService")]
     public interface IDificultadService
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDificultadService/GetDificultades", ReplyAction="http://tempuri.org/IDificultadService/GetDificultadesResponse")]
-        System.Threading.Tasks.Task<ServiceReference1.Dificultad[]> GetDificultadesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDificultadService/GetDificultad", ReplyAction="http://tempuri.org/IDificultadService/GetDificultadResponse")]
-        System.Threading.Tasks.Task<ServiceReference1.Dificultad> GetDificultadAsync(int id);
+        System.Threading.Tasks.Task<DificultadService.Dificultad[]> GetDificultadesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public interface IDificultadServiceChannel : ServiceReference1.IDificultadService, System.ServiceModel.IClientChannel
+    public interface IDificultadServiceChannel : DificultadService.IDificultadService, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public partial class DificultadServiceClient : System.ServiceModel.ClientBase<ServiceReference1.IDificultadService>, ServiceReference1.IDificultadService
+    public partial class DificultadServiceClient : System.ServiceModel.ClientBase<DificultadService.IDificultadService>, DificultadService.IDificultadService
     {
         
         /// <summary>
@@ -387,14 +347,9 @@ namespace ServiceReference1
         {
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.Dificultad[]> GetDificultadesAsync()
+        public System.Threading.Tasks.Task<DificultadService.Dificultad[]> GetDificultadesAsync()
         {
             return base.Channel.GetDificultadesAsync();
-        }
-        
-        public System.Threading.Tasks.Task<ServiceReference1.Dificultad> GetDificultadAsync(int id)
-        {
-            return base.Channel.GetDificultadAsync(id);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
