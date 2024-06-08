@@ -207,11 +207,14 @@
   <data name="GuiLoginLbCorreo" xml:space="preserve">
     <value>Correo</value>
   </data>
+  <data name="GuiMenuCerrarSesion" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
   <data name="GuiMenuPrincipalTbBuscarPartida" xml:space="preserve">
     <value>Buscar partida</value>
   </data>
   <data name="GuiMenuPrincipalTbConfiguracion" xml:space="preserve">
-    <value>Configuración</value>
+    <value>Modificar usuario</value>
   </data>
   <data name="GuiMenuPrincipalTbCrearPartida" xml:space="preserve">
     <value>Crear partida</value>

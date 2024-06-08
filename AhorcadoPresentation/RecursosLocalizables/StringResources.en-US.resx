@@ -207,11 +207,14 @@
   <data name="GuiLoginLbCorreo" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="GuiMenuCerrarSesion" xml:space="preserve">
+    <value>Log out</value>
+  </data>
   <data name="GuiMenuPrincipalTbBuscarPartida" xml:space="preserve">
     <value>Search game</value>
   </data>
   <data name="GuiMenuPrincipalTbConfiguracion" xml:space="preserve">
-    <value>Setting</value>
+    <value>Edit user</value>
   </data>
   <data name="GuiMenuPrincipalTbCrearPartida" xml:space="preserve">
     <value>Create game</value>

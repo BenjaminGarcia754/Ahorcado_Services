@@ -65,7 +65,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             try
             {
                 mapper.Map(partida, PartidaSingleton.Instance);
-
+                GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, partida.PalabraParcial);
             }
             catch (Exception)
             {
@@ -135,5 +135,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             mainWindow.CambiarVista(menuPrincipal);
 
         }
+
     }
 }

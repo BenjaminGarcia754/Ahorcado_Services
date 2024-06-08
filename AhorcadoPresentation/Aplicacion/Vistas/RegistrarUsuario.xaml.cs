@@ -46,6 +46,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 jugador.ApellidoPaterno = TbApellidoPaterno.Text;
                 jugador.ApellidoMaterno = TbApellidoMaterno.Text;
                 jugador.Correo = TbCorreo.Text;
+                jugador.Username = TbUsuario.Text;
                 jugador.fechaDeNacimiento = (DateTime)DpFechaNacimiento.SelectedDate.Value;
                 jugador.Contrasena = PfContraseña.Password;
                 jugador.Telefono = TbTelefono.Text;
