@@ -35,19 +35,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             CbPalabra.IsEnabled = false;
             InitializeComponent();
-            
-            // Suscribir al evento SelectionChanged del ComboBox de dificultades
-            CbDificultad.SelectionChanged += (sender, e) =>
-            {
-                // Habilitar el ComboBox de categorías cuando se seleccione una dificultad
-                CbCategoria.IsEnabled = CbDificultad.SelectedItem != null;
-            };
-
-            CbCategoria.SelectionChanged += (sender, e) =>
-            {
-                CbPalabra.IsEnabled = CbCategoria.SelectedItem != null;
-            };
-
             CargarComboBox();
         }
         private void CargarComboBox()
