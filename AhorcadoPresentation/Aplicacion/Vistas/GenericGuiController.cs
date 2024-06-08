@@ -165,6 +165,35 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             return respuesta;
         }
-
+        public static void imprimirPalabraParcial(WrapPanel WPPPalabraContenedor, string palabraParcial){
+            foreach (char letra in palabraParcial)
+            {
+                Label labelLetra = generarLabel();
+                if (letra == ' ')
+                {
+                    labelLetra.BorderThickness = new Thickness(0, 0, 0, 0);
+                }
+                else if(letra != '-')
+                {
+                    labelLetra.Content = letra;
+                }
+                WPPPalabraContenedor.Children.Add(labelLetra);
+            }
+        }
+        private static System.Windows.Controls.Label generarLabel()
+        {
+            System.Windows.Controls.Label labelLetra = new System.Windows.Controls.Label();
+            labelLetra.Width = 30;
+            labelLetra.Height = 32;
+            labelLetra.FontSize = 17;
+            labelLetra.Margin = new Thickness(5);
+            labelLetra.HorizontalContentAlignment = HorizontalAlignment.Center;
+            labelLetra.VerticalContentAlignment = VerticalAlignment.Top;
+            labelLetra.Foreground = Brushes.White;
+            labelLetra.FontFamily = (FontFamily)Application.Current.Resources["Inter"];
+            labelLetra.BorderThickness = new Thickness(0, 0, 0, 1);
+            labelLetra.BorderBrush = Brushes.White;
+            return labelLetra;
+        }
     }
 }

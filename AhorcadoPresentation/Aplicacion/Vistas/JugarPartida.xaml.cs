@@ -39,7 +39,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             PartidaSingleton partida = PartidaSingleton.Instance;
             partida.PalabraParcial = "--- --e--- -e- -----e e- ------ e----- ------";
             ttAyuda.Content = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
-            imprimirPalabraParicial(partida.PalabraParcial);
         }
 
         public void ComprobarStatusPartida()
@@ -49,6 +48,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
+                    GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, partida.PalabraParcial);
                     if (partida.IdEstadoPartida == 1)//Cancelada
                     {
                         detenerTarea = true;
@@ -60,43 +60,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             });
         }
 
-        private void imprimirPalabraParicial(string palabraParcial)
-        {
-            foreach (char letra in palabraParcial)
-            {
-                System.Windows.Controls.Label labelLetra = generarLabel();
-                 if (letra == ' ')
-                {
-                    labelLetra.BorderThickness = new Thickness(0, 0, 0, 0);
-                }
-                else if(letra != '-')
-                {
-                    labelLetra.Content = letra;
-                }
-                WPPalabraContainer.Children.Add(labelLetra);
-            }
-        }
-        private void generarLabels()
-        {
 
-        }
-
-        //
-        private System.Windows.Controls.Label generarLabel()
-        {
-            System.Windows.Controls.Label labelLetra = new System.Windows.Controls.Label();
-            labelLetra.Width = 30;
-            labelLetra.Height = 32;
-            labelLetra.FontSize = 17;
-            labelLetra.Margin = new Thickness(5);
-            labelLetra.HorizontalContentAlignment = HorizontalAlignment.Center;
-            labelLetra.VerticalContentAlignment = VerticalAlignment.Top;
-            labelLetra.Foreground = Brushes.White;
-            labelLetra.FontFamily = (FontFamily)Application.Current.Resources["Inter"];
-            labelLetra.BorderThickness = new Thickness(0, 0, 0, 1);
-            labelLetra.BorderBrush = Brushes.White;
-            return labelLetra;
-        }
 
         private void Click_intentar(object sender, RoutedEventArgs e)
         {

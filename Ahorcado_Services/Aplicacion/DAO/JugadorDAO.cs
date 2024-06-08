@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
 namespace Ahorcado_Services.Aplicacion.DAO
 {
@@ -17,7 +18,14 @@ namespace Ahorcado_Services.Aplicacion.DAO
         {
             try
             {
-                ahorcadoDbContext.Jugadores.Update(jugador);
+                var existingEntity = ahorcadoDbContext.Jugadores.Local.FirstOrDefault(e => e.Id == jugador.Id);
+                if (existingEntity != null)
+                {
+                    // Desacoplar la entidad existente
+                    ahorcadoDbContext.Entry(existingEntity).State = EntityState.Detached;
+                }
+                ahorcadoDbContext.Jugadores.Attach(jugador);
+                ahorcadoDbContext.Entry(jugador).State = EntityState.Modified;
                 ahorcadoDbContext.SaveChanges();
             }
             catch (DbUpdateException ex)

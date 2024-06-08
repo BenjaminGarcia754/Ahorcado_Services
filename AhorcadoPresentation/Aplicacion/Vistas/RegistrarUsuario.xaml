@@ -102,7 +102,7 @@
             </Border>
 
             <Button Content="{resources:Resx Key=GuiRegistrarUsuarioBtnRegresar}"  Background="Transparent" FontSize="14" BorderThickness="0,0,0,2" Foreground="White" HorizontalAlignment="Left" Margin="519,592,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegresar" RenderTransformOrigin="0.5,0.5"/>
-            <Button Content="{resources:Resx Key=GuiRegistrarUsuarioBtnRegistrarse}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="325,583,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickRegistrarse"/>
+            <Button x:Name="BTNRegistrar" Content="{resources:Resx Key=GuiRegistrarUsuarioBtnRegistrarse}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="325,583,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickRegistrarse"/>
             <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="104,10,0,0" Grid.Row="1" TextWrapping="Wrap" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="40"  Text="{resources:Resx Key=GuiRegistrarUsuarioTbRegistrarUsuario}" VerticalAlignment="Top" Height="49" Width="529" x:Name="tbTextoInicial"/>
         </Grid>
     </Border>

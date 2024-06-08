@@ -46,6 +46,13 @@ namespace AhorcadoPresentation.Modelo.Singleton
                 return instance;
             }
         }
+        public static void CerrarSesion()
+        {
+            lock (lockObject)
+            {
+                instance = null;
+            }
+        }
     }
 
 

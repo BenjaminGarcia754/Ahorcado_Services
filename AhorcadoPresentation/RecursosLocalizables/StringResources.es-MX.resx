@@ -207,11 +207,14 @@
   <data name="GuiLoginLbCorreo" xml:space="preserve">
     <value>Correo</value>
   </data>
+  <data name="GuiMenuCerrarSesion" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
   <data name="GuiMenuPrincipalTbBuscarPartida" xml:space="preserve">
     <value>Buscar partida</value>
   </data>
   <data name="GuiMenuPrincipalTbConfiguracion" xml:space="preserve">
-    <value>Configuración</value>
+    <value>Modificar usuario</value>
   </data>
   <data name="GuiMenuPrincipalTbCrearPartida" xml:space="preserve">
     <value>Crear partida</value>
@@ -230,6 +233,33 @@
   </data>
   <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
     <value>Jugador retador</value>
+  </data>
+  <data name="GuiRegistrarActualizarInfo" xml:space="preserve">
+    <value>Actualizar Información</value>
+  </data>
+  <data name="GuiRegistrarBtnActualizar" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="GuiRegistrarMsgActualizado" xml:space="preserve">
+    <value>Informacion actualizada</value>
+  </data>
+  <data name="GuiRegistrarMsgCamposVacios" xml:space="preserve">
+    <value>Hay campos vacios.</value>
+  </data>
+  <data name="GuiRegistrarMsgContraseniaInvalida" xml:space="preserve">
+    <value>Contraseña invalida</value>
+  </data>
+  <data name="GuiRegistrarMsgErrorActualizar" xml:space="preserve">
+    <value>Error al actualizar la información</value>
+  </data>
+  <data name="GuiRegistrarMsgErrorRegistrar" xml:space="preserve">
+    <value>Error al registrar el jugador</value>
+  </data>
+  <data name="GuiRegistrarMsgFechaInvalida" xml:space="preserve">
+    <value>Fecha de nacimiento invalida.</value>
+  </data>
+  <data name="GuiRegistrarMsgRegistrado" xml:space="preserve">
+    <value>Jugador registrado</value>
   </data>
   <data name="GuiRegistrarUsuarioBtnRegistrarse" xml:space="preserve">
     <value>Registrarse</value>
