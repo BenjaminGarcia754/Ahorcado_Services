@@ -1,4 +1,5 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AutoMapper;
 using PartidaService;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class EsperandoJugador : UserControl
     {
         public bool detenerTarea = false;
-
+        IMapper mapper = Modelo.Mapper.ObtenerMapper();
         public EsperandoJugador()
         {
             InitializeComponent();
             EsperarJugador();
         }
-
-        
 
         public void EsperarJugador()
         {
@@ -40,7 +39,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    if (PartidaSingleton.Instance.IdJugadorInvitado != partida.IdJugadorInvitado)
+                    if (PartidaSingleton.Instance.IdJugadorInvitado != partida.IdJugadorInvitado && partida.IdEstadoPartida == 3)//Jugando
                     {
                         PartidaSingleton.Instance.IdJugadorInvitado = partida.IdJugadorInvitado;
                         await CambiarVista();
@@ -53,12 +52,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
             Partida partida = new Partida();
-            partida.Id = PartidaSingleton.Instance.Id;
+            partida = mapper.Map<Partida>(PartidaSingleton.Instance);
             partida.IdEstadoPartida = 1;//Cancelada
-            partida.IdPalabraSelecionada = PartidaSingleton.Instance.IdPalabraSelecionada;
-            partida.IdJugadorAnfitrion = PartidaSingleton.Instance.IdJugadorAnfitrion;
-            partida.IdJugadorInvitado = PartidaSingleton.Instance.IdJugadorInvitado;
-
+            
             try
             {
                 PartidaServiceClient partidaService = new PartidaServiceClient();

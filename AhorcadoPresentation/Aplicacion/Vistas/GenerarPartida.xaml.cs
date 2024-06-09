@@ -34,8 +34,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         
         public GenerarPartida()
         {
-            CbPalabra.IsEnabled = false;
             InitializeComponent();
+            CbPalabra.IsEnabled = false;
             CargarComboBox();
         }
         private void CargarComboBox()

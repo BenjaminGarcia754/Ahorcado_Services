@@ -1,5 +1,6 @@
 ﻿using AhorcadoPresentation.Modelo;
 using AhorcadoPresentation.Modelo.Singleton;
+using AutoMapper;
 using JugadorServiceReference;
 using PartidaService;
 using System;
@@ -29,7 +30,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public PalabraDTO palabraDTO = new PalabraDTO();
         private int numeroIntento = 0;
         private bool detenerTarea = false;
-
+        IMapper mapper = Modelo.Mapper.ObtenerMapper();
 
         public JugarPartida()
         {
@@ -48,8 +49,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, partida.PalabraParcial);
-                    if (partida.IdEstadoPartida == 1)//Cancelada
+                    if (partida.IdEstadoPartida == 2)//Cancelada
                     {
                         detenerTarea = true;
                         MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
@@ -64,22 +64,45 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void Click_intentar(object sender, RoutedEventArgs e)
         {
-            Button buttonLetra = (Button)sender;
+            Button buttonLetra = sender as Button;
             char letra = buttonLetra.Content.ToString().ToLower().ToCharArray()[0];
-            if (palabraDTO.Nombre.ToLower().Contains(letra))
+            
+            PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
+            try
             {
-                for (int i = 0; i < palabraDTO.Nombre.Length; i++)
+                var partida = mapper.Map<Partida>(PartidaSingleton.Instance);
+                var respuesta = partidaServiceClient.RealizarIntentoAsync(partida, letra).Result;
+                if (respuesta.respuesta)
                 {
-                    if (palabraDTO.Nombre.ToLower().ToCharArray()[i] == letra)
+                    GenericGuiController.MostrarMensajeBox("La letra se encuentra en la palabra");
+                    GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, respuesta.partida.PalabraParcial);
+                    if (respuesta.partida.PalabraParcial.Equals(partida.palabraSeleccionada))
                     {
-                        ((System.Windows.Controls.Label)WPPalabraContainer.Children[i]).Content = palabraDTO.Nombre.ToCharArray()[i];
+                        GenericGuiController.MostrarMensajeBox("Ganaste");
+                        partida.IdEstadoPartida = 3;//Finalizada
+                        partida.PartidaGanadaJugadorInvitado = true;
                     }
                 }
-            }else
-            {
-                MessageBox.Show("La letra no se encuentra en la palabra");
-                cambiarImagen();
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox("La letra no se encuentra en la palabra");
+                    if (respuesta.partida.IntentosRestantes >= 6)
+                    {
+                        GenericGuiController.MostrarMensajeBox("Perdiste");
+                        partida.IdEstadoPartida = 3;//Finalizada
+                        //TODO:Actualizar Partida Estado Finalizada, JUgador Anfitrion Gana
+                    }
+                    cambiarImagen();
+                }
+                mapper.Map(respuesta.partida, PartidaSingleton.Instance);
+                partidaServiceClient.ActualizarPartidaAsync(partida);
+
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            
             buttonLetra.Visibility = Visibility.Hidden;
         }
 
@@ -136,7 +159,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
-
+            MenuPrincipal menu = new MenuPrincipal();
+            var mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.CambiarVista(menu);
         }
     }
 
