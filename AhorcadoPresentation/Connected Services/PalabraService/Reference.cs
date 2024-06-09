@@ -30,8 +30,6 @@ namespace PalabraService
         
         private int IdDificultadField;
         
-        private string IdiomaPartidaField;
-        
         private string NombreField;
         
         private string NombreInglesField;
@@ -113,19 +111,6 @@ namespace PalabraService
             set
             {
                 this.IdDificultadField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IdiomaPartida
-        {
-            get
-            {
-                return this.IdiomaPartidaField;
-            }
-            set
-            {
-                this.IdiomaPartidaField = value;
             }
         }
         

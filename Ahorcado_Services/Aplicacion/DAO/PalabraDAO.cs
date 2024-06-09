@@ -18,24 +18,24 @@ namespace Ahorcado_Services.Aplicacion.DAO
             string[] palabras = palabraFiltrada.Nombre.Split(' ');
             if (ContieneNumeros(palabraFiltrada.Nombre))
             {
-                palabra.IdDificultad = 3;//dificil
+                palabraFiltrada.IdDificultad = 3;//dificil
             }
             else
             {
                 if(palabras.Length == 1)
                 {
-                    palabra.IdDificultad = 1;//facil
+                    palabraFiltrada.IdDificultad = 1;//facil
                 }
                 else if(palabras.Length > 1 && palabras.Length <= 4)
                 {
-                    palabra.IdDificultad = 2;//intermedio
+                    palabraFiltrada.IdDificultad = 2;//intermedio
                 }
                 else if(palabras.Length > 4)
                 {
-                    palabra.IdDificultad = 3;//dificil
+                    palabraFiltrada.IdDificultad = 3;//dificil
                 }
             }
-            return palabra;
+            return palabraFiltrada;
         }
 
         public static List<string> dividirPalabra(string palabra)
@@ -58,16 +58,19 @@ namespace Ahorcado_Services.Aplicacion.DAO
             }
             catch (UpdateException ex)
             {
+                throw new Exception(ex.Message);
                 partidaCreada = false;
                 Console.WriteLine(ex.Message);
             }
             catch (EntityException ex)
             {
+                throw new Exception(ex.Message);
                 partidaCreada = false;
                 Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.Message);
                 partidaCreada = false;
                 Console.WriteLine(ex.Message);
             }
@@ -82,17 +85,17 @@ namespace Ahorcado_Services.Aplicacion.DAO
 
         public static List<Palabra> ObtenerPalabrasPorCategoriaYDificultad(int idCategoria, int idDificultad)
         {
-            List<Palabra> palabras = new List<Palabra>();
+            
             try
             {
-                palabras = ahorcadoDbContext.Palabras.Where(p => p.IdCategoria == idCategoria && p.IdDificultad == idDificultad).ToList();
+                var palabras = ahorcadoDbContext.Palabras.Where(p => p.IdCategoria == idCategoria && p.IdDificultad == idDificultad).ToList();
+                return palabras;
             }
             catch (EntityException ex)
             {
                 Console.WriteLine(ex.Message);
-                palabras = null;
+                return null;
             }
-            return palabras;
         }
 
     }

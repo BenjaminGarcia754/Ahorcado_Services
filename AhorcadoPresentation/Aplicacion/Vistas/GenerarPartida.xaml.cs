@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PalabraService;
 
 namespace AhorcadoPresentation.Aplicacion.Vistas
 {
@@ -28,8 +29,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class GenerarPartida : UserControl
     {
-        Dictionary<string, DificultadService.Dificultad> dificultadDiccionario = new Dictionary<string, DificultadService.Dificultad>();
-        Dictionary<string, CategoriaService.Categoria> categoriaDiccionario = new Dictionary<string, CategoriaService.Categoria>();
+        Dictionary<string, int> dificultadDiccionario = new Dictionary<string, int>();
+        Dictionary<string, int> categoriaDiccionario = new Dictionary<string, int>();
         Dictionary<string, PalabraService.Palabra> palabraDiccionario = new Dictionary<string, PalabraService.Palabra>();
         IMapper mapper = Modelo.Mapper.ObtenerMapper();
         
@@ -37,17 +38,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             InitializeComponent();
             CbPalabra.IsEnabled = false;
-            // Suscribir al evento SelectionChanged del ComboBox de dificultades
-            CbDificultad.SelectionChanged += (sender, e) =>
-            {
-                // Habilitar el ComboBox de categorías cuando se seleccione una dificultad
-                CbCategoria.IsEnabled = CbDificultad.SelectedItem != null;
-            };
-
-            CbCategoria.SelectionChanged += (sender, e) =>
-            {
-                CbPalabra.IsEnabled = CbCategoria.SelectedItem != null;
-            };
 
             CargarComboBox();
         }
@@ -91,14 +81,15 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         private void InicializarComboBoxDificultades(List<DificultadService.Dificultad> dificultades)
         {
             string idiomaHilo = ResourceAccesor.GetIdiomaHilo();
-            foreach (var dificultad in dificultades)
+            if (dificultades != null)
             {
-                string nombre = idiomaHilo == Constantes.IDIOMA_ESPANOL ? dificultad.Nombre : dificultad.NombreIngles;
-                CbDificultad.Items.Add(nombre);
-                dificultadDiccionario.Add(nombre, dificultad);
+                foreach (var dificultad in dificultades)
+                {
+                    string nombre = idiomaHilo == Constantes.IDIOMA_ESPANOL ? dificultad.Nombre : dificultad.NombreIngles;
+                    CbDificultad.Items.Add(nombre);
+                    dificultadDiccionario.Add(nombre, dificultad.Id);
+                }
             }
-
-
         }
 
         private void InicializarComboBoxCategorias(List<CategoriaService.Categoria> categorias)
@@ -108,7 +99,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 string nombre = idiomaHilo == Constantes.IDIOMA_ESPANOL ? categoria.Nombre : categoria.NombreIngles;
                 CbCategoria.Items.Add(nombre);
-                categoriaDiccionario.Add(nombre, categoria);
+                categoriaDiccionario.Add(nombre, categoria.Id);
             }
         }
 
@@ -127,10 +118,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 var dificultad = dificultadDiccionario[CbDificultad.SelectedItem.ToString()];
                 var categoria = categoriaDiccionario[CbCategoria.SelectedItem.ToString()];
+                PalabraServiceClient palabraServiceClient = new PalabraServiceClient();
                 try
                 {
-                    PalabraService.PalabraServiceClient palabraServiceClient = new PalabraService.PalabraServiceClient();
-                    var palabras = palabraServiceClient.ObtenerPalabrasPorFiltroAsync(categoria.Id, dificultad.Id).Result;
+                    var palabras = palabraServiceClient.ObtenerPalabrasPorFiltroAsync(categoria,dificultad).Result;
                     if (palabras != null)
                     {
                         InicializarComboBoxPalabras(palabras.ToList());
