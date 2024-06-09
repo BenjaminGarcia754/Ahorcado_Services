@@ -23,7 +23,8 @@ namespace Ahorcado_Services.Modelo.EntityFramework
         public String PalabraParcial { get; set; }
         [Required]
         public int IdEstadoPartida { get; set; }
-        
+        public string IdiomaPartida { get; set; }
+
         public bool PartidaGanadaJugadorInvitado { get; set; }
         public bool PartidaGanadaJugadorAnfitrion { get; set; }
         public string palabraSeleccionada { get; set; }

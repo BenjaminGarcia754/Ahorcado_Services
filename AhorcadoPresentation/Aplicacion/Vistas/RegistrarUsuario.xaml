@@ -10,7 +10,7 @@
             d:DesignHeight="666" d:DesignWidth="1024">
 
 
-    <Border Background="White"  BorderThickness="1" CornerRadius="30">
+    <Border   BorderThickness="1" CornerRadius="30">
         <Grid x:Name="GdContenedor">
             <!--TODO: Corroborar la advertencia-->
             <Grid.RowDefinitions>

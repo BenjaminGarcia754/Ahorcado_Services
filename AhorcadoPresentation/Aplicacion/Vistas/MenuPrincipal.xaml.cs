@@ -96,7 +96,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             BTNCerrarSesion.BeginAnimation(Button.WidthProperty, widthAnimation);
             TBCerrarSesion.FontSize = 19;
             TBCerrarSesion.Text = ResourceAccesor.GetString("GuiMenuCerrarSesion");
-            TBCerrarSesion.Margin = new Thickness(10, 0, 14, 0);
+            TBCerrarSesion.Margin = new Thickness(15, 5, 0, 0);
             TBCerrarSesion.FontFamily = (FontFamily)Application.Current.Resources["Inter"];
             WPCerrarSesion.Children.Add(TBCerrarSesion);
         }

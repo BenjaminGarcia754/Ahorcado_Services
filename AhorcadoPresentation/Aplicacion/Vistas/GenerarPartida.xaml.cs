@@ -1,5 +1,6 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
-using AhorcadoService;
+using AhorcadoPresentation.RecursosLocalizables;
+using CategoriaService;
 using AutoMapper;
 using DificultadService;
 using JugadorServiceReference;
@@ -28,15 +29,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class GenerarPartida : UserControl
     {
         Dictionary<string, DificultadService.Dificultad> dificultadDiccionario = new Dictionary<string, DificultadService.Dificultad>();
-        Dictionary<string, AhorcadoService.Categoria> categoriaDiccionario = new Dictionary<string, AhorcadoService.Categoria>();
+        Dictionary<string, CategoriaService.Categoria> categoriaDiccionario = new Dictionary<string, CategoriaService.Categoria>();
         Dictionary<string, PalabraService.Palabra> palabraDiccionario = new Dictionary<string, PalabraService.Palabra>();
         IMapper mapper = Modelo.Mapper.ObtenerMapper();
         
         public GenerarPartida()
         {
-            CbPalabra.IsEnabled = false;
             InitializeComponent();
-            
+            CbPalabra.IsEnabled = false;
             // Suscribir al evento SelectionChanged del ComboBox de dificultades
             CbDificultad.SelectionChanged += (sender, e) =>
             {
@@ -73,7 +73,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 return null;
             }
         }
-        private List<AhorcadoService.Categoria> ObtenerCategorias()
+        private List<CategoriaService.Categoria> ObtenerCategorias()
         {
             CategoriaServiceClient categoriaServiceClient = new CategoriaServiceClient();
             try
@@ -90,19 +90,25 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void InicializarComboBoxDificultades(List<DificultadService.Dificultad> dificultades)
         {
+            string idiomaHilo = ResourceAccesor.GetIdiomaHilo();
             foreach (var dificultad in dificultades)
             {
-                CbDificultad.Items.Add(dificultad.Nombre);
-                dificultadDiccionario.Add(dificultad.Nombre, dificultad);
+                string nombre = idiomaHilo == Constantes.IDIOMA_ESPANOL ? dificultad.Nombre : dificultad.NombreIngles;
+                CbDificultad.Items.Add(nombre);
+                dificultadDiccionario.Add(nombre, dificultad);
             }
+
+
         }
 
-        private void InicializarComboBoxCategorias(List<AhorcadoService.Categoria> categorias)
+        private void InicializarComboBoxCategorias(List<CategoriaService.Categoria> categorias)
         {
+            string idiomaHilo = ResourceAccesor.GetIdiomaHilo();
             foreach (var categoria in categorias)
             {
-                categoriaDiccionario.Add(categoria.Nombre, categoria);
-                CbCategoria.Items.Add(categoria.Nombre);
+                string nombre = idiomaHilo == Constantes.IDIOMA_ESPANOL ? categoria.Nombre : categoria.NombreIngles;
+                CbCategoria.Items.Add(nombre);
+                categoriaDiccionario.Add(nombre, categoria);
             }
         }
 

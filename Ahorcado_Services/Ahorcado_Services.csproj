@@ -337,6 +337,10 @@
     <Compile Include="Migrations\20240606231008_InternacionalizacionJugador.Designer.cs">
       <DependentUpon>20240606231008_InternacionalizacionJugador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240609053108_CorreccionIdiomaPartida.cs" />
+    <Compile Include="Migrations\20240609053108_CorreccionIdiomaPartida.Designer.cs">
+      <DependentUpon>20240609053108_CorreccionIdiomaPartida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AhorcadoDbContextModelSnapshot.cs" />
     <Compile Include="Modelo\DTO%27s\DificultadDTO.cs" />
     <Compile Include="Modelo\DTO%27s\JugadorDTO.cs" />

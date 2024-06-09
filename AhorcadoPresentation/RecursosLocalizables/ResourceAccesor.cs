@@ -16,5 +16,9 @@ namespace AhorcadoPresentation.RecursosLocalizables
         {
             return resourceManager.GetString(key);
         }
+        public static string GetIdiomaHilo()
+        {
+            return System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
+        }
     }
 }

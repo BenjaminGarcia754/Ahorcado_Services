@@ -36,7 +36,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             var respuesta = ObtenerPartidasPorJugador(JugadorSingleton.Instance.Id);
             if (respuesta != null)
             {
-                if (respuesta.respuesta || respuesta.Partidas ==null || respuesta.Jugadores.Length < 0)
+                if (respuesta.respuesta && respuesta.Partidas.Any())
                 {
                     List<Partida> partidas = respuesta.Partidas.ToList();
                     List<PartidaService.Jugador> jugadores = respuesta.Jugadores.ToList();
