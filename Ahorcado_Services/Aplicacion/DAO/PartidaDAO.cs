@@ -121,8 +121,7 @@ namespace Ahorcado_Services.Aplicacion.DAO
             List<Partida> partidas = new List<Partida>();
             try
             {
-                partidas = ahorcadoDbContext.Partidas.Where(p => p.IdEstadoPartida == 1).ToList(); //Cambiar por el escojido para partida pendiente
-              
+                partidas = ahorcadoDbContext.Partidas.Where(p => p.IdEstadoPartida == 1).ToList();               
             }
             catch (EntityException ex)
             {

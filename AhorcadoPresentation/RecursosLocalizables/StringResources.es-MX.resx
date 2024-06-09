@@ -187,7 +187,7 @@
     <value>Boton de ayuda</value>
   </data>
   <data name="GuiLoginBienvenido" xml:space="preserve">
-    <value>Bienvenido</value>
+    <value>Bienvenido(a)</value>
   </data>
   <data name="GuiLoginBtnIniciarSesion" xml:space="preserve">
     <value>Iniciar Sesión</value>

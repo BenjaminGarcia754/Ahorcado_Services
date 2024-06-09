@@ -39,19 +39,19 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (respuesta.respuesta && respuesta.Partidas.Any())
                 {
                     List<Partida> partidas = respuesta.Partidas.ToList();
-                    List<PartidaService.Jugador> jugadores = respuesta.Jugadores.ToList();
+                    //List<PartidaService.Jugador> jugadores = respuesta.Jugadores.ToList();
 
                     for (int i = 0; i < partidas.Count; i++)
                     {
                         Partida partida = partidas[i];
-                        PartidaService.Jugador jugadorContrincante = jugadores[i];
+//                      PartidaService.Jugador jugadorContrincante = jugadores[i];
                         string fecha = partida.FechaCreacionPartida.ToString();
-                        string usuarioContrincante = jugadorContrincante.Nombre;
+//                      string usuarioContrincante = jugadorContrincante.Nombre;
                         string palabra = "";
                         string resultado = partida.PartidaGanadaJugadorInvitado ? "Ganada" : "Perdida";
                         string puntaje = "No soportado";
 
-                        Historial partidaHistorial = new Historial(fecha, usuarioContrincante, palabra, resultado, puntaje);
+                        Historial partidaHistorial = new Historial(fecha, "No soportado", palabra, resultado, puntaje);
                         WPPanelPartidas.Children.Add(partidaHistorial);
                     }
                 }else

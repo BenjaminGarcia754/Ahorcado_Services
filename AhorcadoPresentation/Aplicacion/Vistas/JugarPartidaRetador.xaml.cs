@@ -39,20 +39,50 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    if (partida.IdEstadoPartida == 1)//Cancelada
+                    if (partida != null)
                     {
-                        detenerTarea = true;
-                        MessageBox.Show("La partida ha Cancelada por el jugador invitado regresaras al menu principal");
-                        await CambiarVista();
+                        if (partida.IdEstadoPartida == 1)//Cancelada
+                        {
+                            detenerTarea = true;
+                            await Dispatcher.InvokeAsync(() =>
+                            {
+                                MessageBox.Show("La partida ha Cancelada por el jugador invitado regresaras al menu principal");
+                            });
+                                
+                            await CambiarVista();
+                        }
+                        else if (partida.IdEstadoPartida == 2)//Jugando
+                        {
+                            await Dispatcher.InvokeAsync(async () =>
+                            {
+                                await actualizarEstadoEnPartida(partida);
+                            });
+                        }
+                        else if (partida.IdEstadoPartida == 3)//Finalizada
+                        {
+                            await Dispatcher.InvokeAsync(() =>
+                            {
+                                if (partida.PartidaGanadaJugadorAnfitrion)
+                                {
+                                    GenericGuiController.MostrarMensajeBox("Ganaste");
+                                }
+                                else if (partida.PartidaGanadaJugadorInvitado)
+                                {
+                                    GenericGuiController.MostrarMensajeBox("Gano el jugador invitado");
+                                }
+                                MessageBox.Show("La partida ha finalizado");
+                            });
+
+                            detenerTarea = true;
+                            await CambiarVista();
+                        }
                     }
-                    else if (partida.IdEstadoPartida == 2)//Jugando
+                    else
                     {
-                        await actualizarEstadoEnPartida(partida);
-                    }else if (partida.IdEstadoPartida == 3)//Finalizada
-                    {
-                        detenerTarea = true;
-                        MessageBox.Show("La partida ha finalizado");
-                        await CambiarVista();
+                        await Dispatcher.InvokeAsync(() =>
+                        {
+                            GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                        });
                     }
 
                     await Task.Delay(2000);
@@ -62,18 +92,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private async Task actualizarEstadoEnPartida(Partida partida)
         {
-            try
-            {
-                mapper.Map(partida, PartidaSingleton.Instance);
-                GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, partida.PalabraParcial);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            //TODO Generear labels con la palabra parcial
-
+            mapper.Map(partida, PartidaSingleton.Instance);
+            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, partida.PalabraParcial);
+            ActualizarImagen(partida.IntentosRestantes);
+            await Task.Delay(1000);
         }
 
         private void ActualizarImagen(int numeroIntentos)
@@ -114,7 +136,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (CommunicationException)
             {
-                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                //GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
                 return null;
             }
         }

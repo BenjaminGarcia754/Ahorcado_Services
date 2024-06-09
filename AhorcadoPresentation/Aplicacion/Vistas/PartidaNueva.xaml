@@ -8,16 +8,20 @@
              mc:Ignorable="d" Height="271" Width="589">
     <Border Margin="10,10,10,10" Height="NaN" Width="NaN" Style="{StaticResource ComponentePartidaNueva}">
         <Grid Margin="0,9,-1,-1">
-            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbJugadorRetador}" HorizontalAlignment="Left" Margin="9,14,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
-            <Label Foreground="White" FontSize="18" Content="{resources:Resx Key=GuiPartidaNuevaLbDificultad}" HorizontalAlignment="Left" Margin="9,51,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
-            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbCategoria}" HorizontalAlignment="Left" Margin="9,88,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="185*"/>
+                <ColumnDefinition Width="383*"/>
+            </Grid.ColumnDefinitions>
+            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbJugadorRetador}" HorizontalAlignment="Left" Margin="9,14,0,0" VerticalAlignment="Top" Height="37" Width="176" Grid.ColumnSpan="2"/>
+            <Label Foreground="White" FontSize="18" Content="{resources:Resx Key=GuiPartidaNuevaLbDificultad}" HorizontalAlignment="Left" Margin="9,51,0,0" VerticalAlignment="Top" Height="37" Width="216" Grid.ColumnSpan="2"/>
+            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbCategoria}" HorizontalAlignment="Left" Margin="9,88,0,0" VerticalAlignment="Top" Height="37" Width="176" Grid.ColumnSpan="2"/>
 
-            <Label x:Name="lJugadorRetador"  Foreground="White" FontSize="20" Content="jugadorRetador" HorizontalAlignment="Left" Margin="351,14,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
-            <Label x:Name="lDificultad" Foreground="White" FontSize="18" Content="dificultad" HorizontalAlignment="Left" Margin="351,51,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
-            <Label x:Name="lCategoria" Foreground="White" FontSize="20" Content="categoria" HorizontalAlignment="Left" Margin="351,88,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
-            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbIdioma}" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label x:Name="lJugadorRetador"  Foreground="White" FontSize="20" Content="jugadorRetador" HorizontalAlignment="Left" Margin="166,14,0,0" VerticalAlignment="Top" Height="37" Width="176" Grid.Column="1"/>
+            <Label x:Name="lDificultad" Foreground="White" FontSize="18" Content="dificultad" HorizontalAlignment="Left" Margin="166,51,0,0" VerticalAlignment="Top" Height="37" Width="216" Grid.Column="1"/>
+            <Label x:Name="lCategoria" Foreground="White" FontSize="20" Content="categoria" HorizontalAlignment="Left" Margin="166,88,0,0" VerticalAlignment="Top" Height="37" Width="176" Grid.Column="1"/>
+            <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiPartidaNuevaLbIdioma}" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="37" Width="176" Grid.ColumnSpan="2"/>
 
-            <Button Content="Jugar" FontFamily="{StaticResource Inter}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Center" FontSize="17"  VerticalAlignment="Top" Height="39" Width="110" Click="ClickJugarPartida" Margin="0,183,0,0" RenderTransformOrigin="0.5,0.5">
+            <Button Content="Jugar" FontFamily="{StaticResource Inter}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17"  VerticalAlignment="Top" Height="39" Width="110" Click="ClickJugarPartida" Margin="44,183,0,0" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -27,7 +31,8 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Label x:Name="lIdioma" Foreground="White" FontSize="20" Content="idioma" HorizontalAlignment="Left" Margin="351,130,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label x:Name="lIdioma" Foreground="White" FontSize="20" Content="idioma" HorizontalAlignment="Left" Margin="166,130,0,0" VerticalAlignment="Top" Height="37" Width="176" Grid.Column="1"/>
+            <Label Content="" HorizontalAlignment="Left" x:Name="lIdPartida" Visibility="Collapsed" Height="14" Margin="31,195,0,0" VerticalAlignment="Top" Width="86"/>
         </Grid>
     </Border>
 </UserControl>

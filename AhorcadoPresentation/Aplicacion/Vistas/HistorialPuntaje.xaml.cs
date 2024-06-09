@@ -48,6 +48,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         WPPanelPuntos.Children.Add(partidaHistorial);
                     }
                     lPuntaje.Content = partidas.Length * 10;
+                }else
+                {
+                    GenericGuiController.MostrarMensajeBox("No se encontraron partidas");
+                    lPuntaje.Content = "0";
                 }
             }
             
