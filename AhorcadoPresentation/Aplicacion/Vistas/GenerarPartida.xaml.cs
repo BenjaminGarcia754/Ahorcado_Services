@@ -152,11 +152,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 partida.palabraSeleccionada = palabra.Nombre;//Validar Idioma
                 partida.IntentosRestantes = 0;
                 partida.PalabraParcial = GenericGuiController.EnmascararFrase(palabra.Nombre);//Validar Idioma
-                                                                                              //mapper.Map(PartidaSingleton.Instance, partida);
-
                 try
                 {
-                    GenericGuiController.MostrarMensajeBox("Creando partida" + partida.IdPalabraSelecionada);
                     PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
                     var respuesta = partidaServiceClient.CrearPartidaAsync(partida).Result;
                     if (respuesta != null)
@@ -170,7 +167,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         PartidaSingleton.Instance.palabraSeleccionada = respuesta.palabraSeleccionada;
                         PartidaSingleton.Instance.IdPalabraSelecionada = respuesta.IdPalabraSelecionada;
 
-                        //mapper.Map(PartidaSingleton.Instance, respuesta);
                         cambiarVentana();
                     }
                     else

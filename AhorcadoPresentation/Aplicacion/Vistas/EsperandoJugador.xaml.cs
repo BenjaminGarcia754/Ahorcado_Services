@@ -39,11 +39,28 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 while (!detenerTarea)
                 {
-                    var partida = await VerificarStatusPartida();
-                    if (PartidaSingleton.Instance.IdJugadorInvitado != partida.IdJugadorInvitado && partida.IdEstadoPartida == 2)//Jugando
-                    {
+                    Partida partida = new Partida();
+                    partida = await VerificarStatusPartida();
+                    PartidaSingleton.Instance.IdEstadoPartida = partida.IdEstadoPartida;
+                    PartidaSingleton.Instance.IdJugadorInvitado = partida.IdJugadorInvitado;
+                    PartidaSingleton.Instance.IdJugadorAnfitrion= partida.IdJugadorAnfitrion;
+                    PartidaSingleton.Instance.Id = partida.Id;
+                    PartidaSingleton.Instance.palabraSeleccionada = partida.palabraSeleccionada;
+                    PartidaSingleton.Instance.PalabraParcial = partida.PalabraParcial;
+                    PartidaSingleton.Instance.IdPalabraSelecionada = partida.IdPalabraSelecionada;
+                    PartidaSingleton.Instance.IntentosRestantes = partida.IntentosRestantes;
+
+                    if (PartidaSingleton.Instance.IdEstadoPartida == 2)//Jugando
+                    {   
                         PartidaSingleton.Instance.IdJugadorInvitado = partida.IdJugadorInvitado;
-                        await CambiarVista();
+
+                        detenerTarea = true;
+                        await Dispatcher.InvokeAsync(() =>
+                        {
+                            CambiarVista();
+                        });
+                        //CambiarVista();
+
                     }
                     await Task.Delay(2000);
                 }
@@ -99,6 +116,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
                     return partida.partida;
+
                 }
             }
             catch (CommunicationException)
@@ -108,14 +126,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
         }
 
-        public async Task CambiarVista()
+        public void CambiarVista()
         {
-            detenerTarea = true;
+            
             //TODO: Cambiar a la pantalla de juego para el anfitrión
             JugarPartidaRetador jugarPartida = new JugarPartidaRetador();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(jugarPartida);
-            await Task.Delay(1000);
+
         }
     }
 }

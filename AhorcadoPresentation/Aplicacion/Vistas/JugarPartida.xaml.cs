@@ -70,8 +70,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     if (partida.IdEstadoPartida == 3)//Cancelada
                     {
                         detenerTarea = true;
-                        MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
-                        await CambiarVista();
+                        await Dispatcher.InvokeAsync(async () =>
+                        {
+                            MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
+                            await CambiarVista();
+                        });
+                        
                     }
                     await Task.Delay(2000);
                 }
@@ -196,6 +200,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             try
             {
                 var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+
                 return partida.partida;
             }
             catch (CommunicationException)

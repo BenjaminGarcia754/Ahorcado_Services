@@ -27,6 +27,7 @@
     <None Remove="Aplicacion\Resources\ImagenInicioSesion.png" />
     <None Remove="Aplicacion\Resources\InicioSesionImagen.png" />
     <None Remove="Aplicacion\Resources\JugarPartidaBackground.png" />
+    <None Remove="Aplicacion\Resources\JugarPartidaRetadorBackGround.png" />
     <None Remove="Aplicacion\Resources\MenuImagen.png" />
     <None Remove="Aplicacion\Resources\PrimerIntento.png" />
     <None Remove="Aplicacion\Resources\QuintoIntento.png" />
@@ -88,6 +89,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\JugarPartidaBackground.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Aplicacion\Resources\JugarPartidaRetadorBackGround.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Aplicacion\Resources\MenuImagen.png">
