@@ -69,11 +69,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     if (PartidaSingleton.Instance.IdEstadoPartida == 3)//Cancelada
                     {
                         detenerTarea = true;
-                        await Dispatcher.InvokeAsync(async() =>
+                        await Dispatcher.InvokeAsync(async () =>
                         {
                             MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
                             await CambiarVista();
                         });
+                        
                     }
                     await Task.Delay(2000);
                 }

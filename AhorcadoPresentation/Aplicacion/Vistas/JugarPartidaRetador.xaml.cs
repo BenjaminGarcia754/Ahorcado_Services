@@ -30,6 +30,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public JugarPartidaRetador()
         {
             InitializeComponent();
+            ComprobarStatusPartida();
         }
 
         public void ComprobarStatusPartida()
@@ -38,53 +39,55 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 while (!detenerTarea)
                 {
-                    var partida = await VerificarStatusPartida();
-                    if (partida != null)
-                    {
-                        if (partida.IdEstadoPartida == 1)//Cancelada
+                    Partida partida = new Partida();
+                    
+                    partida = await VerificarStatusPartida();
+                        if (PartidaSingleton.Instance.IdEstadoPartida == 3)//Cancelada
                         {
                             detenerTarea = true;
-                            await Dispatcher.InvokeAsync(() =>
+                            await Dispatcher.InvokeAsync(async () =>
                             {
-                                MessageBox.Show("La partida ha Cancelada por el jugador invitado regresaras al menu principal");
+                                GenericGuiController.MostrarMensajeBox("La partida ha Cancelada por el jugador invitado regresaras al menu principal");
+                                await CambiarVista();
                             });
                                 
-                            await CambiarVista();
                         }
-                        else if (partida.IdEstadoPartida == 2)//Jugando
+                        else if (PartidaSingleton.Instance.IdEstadoPartida == 2)//Jugando
                         {
                             await Dispatcher.InvokeAsync(async () =>
                             {
                                 await actualizarEstadoEnPartida(partida);
                             });
                         }
-                        else if (partida.IdEstadoPartida == 3)//Finalizada
+                        else if (PartidaSingleton.Instance.IdEstadoPartida == 4)//Finalizada
                         {
-                            await Dispatcher.InvokeAsync(() =>
-                            {
-                                if (partida.PartidaGanadaJugadorAnfitrion)
+                                detenerTarea = true;
+                                if (PartidaSingleton.Instance.PartidaGanadaJugadorAnfitrion)
                                 {
-                                    GenericGuiController.MostrarMensajeBox("Ganaste");
+                                    Dispatcher.Invoke( () =>
+                                    {
+                                        GenericGuiController.MostrarMensajeBox("Ganaste");
+                                    });
+                                    
                                 }
-                                else if (partida.PartidaGanadaJugadorInvitado)
+                                else if (PartidaSingleton.Instance.PartidaGanadaJugadorInvitado)
                                 {
-                                    GenericGuiController.MostrarMensajeBox("Gano el jugador invitado");
+                                    Dispatcher.Invoke(() =>
+                                    {
+                                        GenericGuiController.MostrarMensajeBox("Gano el jugador invitado");
+                                    });       
                                 }
-                                MessageBox.Show("La partida ha finalizado");
-                            });
 
-                            detenerTarea = true;
-                            await CambiarVista();
+                                await Dispatcher.InvokeAsync(async () =>
+                                {
+
+                                    MessageBox.Show("La partida ha finalizado");
+                                    await Task.Delay(2000);
+                                    await CambiarVista();
+                                });
+                                
+                            
                         }
-                    }
-                    else
-                    {
-                        await Dispatcher.InvokeAsync(() =>
-                        {
-                            GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
-                        });
-                    }
-
                     await Task.Delay(2000);
                 }
             });
@@ -92,9 +95,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private async Task actualizarEstadoEnPartida(Partida partida)
         {
-            mapper.Map(partida, PartidaSingleton.Instance);
-            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, partida.PalabraParcial);
-            ActualizarImagen(partida.IntentosRestantes);
+            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
+            ActualizarImagen(PartidaSingleton.Instance.IntentosRestantes);
             await Task.Delay(1000);
         }
 
@@ -102,6 +104,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             switch (numeroIntentos)
             {
+                case 0:
+                    ImgImagenIntento.Source = new BitmapImage(new Uri("/Aplicacion/Resources/ImagenBaseAhorcado.png", UriKind.Relative));
+                    break;
                 case 1:
                     ImgImagenIntento.Source = new BitmapImage(new Uri("/Aplicacion/Resources/PrimerIntento.png", UriKind.Relative));
                     break;
@@ -121,7 +126,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     ImgImagenIntento.Source = new BitmapImage(new Uri("/Aplicacion/Resources/SextoIntento.png", UriKind.Relative));
                     break;
                 default:
-                    //Pensar en hacer algo
+                    GenericGuiController.MostrarMensajeBox("Superaste el numero de intentos");
                     break;
             }
         }
@@ -132,7 +137,18 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             try
             {
                 var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                PartidaSingleton.Instance.IdEstadoPartida = partida.partida.IdEstadoPartida;
+                PartidaSingleton.Instance.IdJugadorInvitado = partida.partida.IdJugadorInvitado;
+                PartidaSingleton.Instance.IdJugadorAnfitrion = partida.partida.IdJugadorAnfitrion;
+                PartidaSingleton.Instance.Id = partida.partida.Id;
+                PartidaSingleton.Instance.palabraSeleccionada = partida.partida.palabraSeleccionada;
+                PartidaSingleton.Instance.PalabraParcial = partida.partida.PalabraParcial;
+                PartidaSingleton.Instance.IdPalabraSelecionada = partida.partida.IdPalabraSelecionada;
+                PartidaSingleton.Instance.IntentosRestantes = partida.partida.IntentosRestantes;
+                PartidaSingleton.Instance.PartidaGanadaJugadorAnfitrion = partida.partida.PartidaGanadaJugadorAnfitrion;
+                PartidaSingleton.Instance.PartidaGanadaJugadorInvitado = partida.partida.PartidaGanadaJugadorInvitado;
                 return partida.partida;
+
             }
             catch (CommunicationException)
             {
@@ -149,13 +165,45 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             await Task.Delay(1000);
         }
 
-        private void Click_Regresar(object sender, RoutedEventArgs e)
+        private async void Click_Regresar(object sender, RoutedEventArgs e)
         {
             detenerTarea = true;
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.CambiarVista(menuPrincipal);
+            try
+            {
+                PartidaServiceClient partidaService = new PartidaServiceClient();
 
+                // Obtener la partida actual
+                var partidaResponse = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                var partida = partidaResponse.partida;
+
+                if (partidaResponse.respuesta)
+                {
+                    // Modificar el estado de la partida
+                    partida.IdEstadoPartida = 3; // Cancelada
+
+                    // Actualizar la partida a través del servicio WCF
+                    var respuesta = await partidaService.ActualizarPartidaAsync(partida);
+                    if (respuesta)
+                    {
+                        detenerTarea = true;
+                        MenuPrincipal menuPrincipal = new MenuPrincipal();
+                        var mainWindow = (MainWindow)Window.GetWindow(this);
+                        mainWindow.CambiarVista(menuPrincipal);
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("Error al cancelar la partida");
+                    }
+                }
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                }
+            }
+            catch (Exception ex)
+            {
+                GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
+            }
         }
 
     }
