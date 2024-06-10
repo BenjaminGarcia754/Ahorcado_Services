@@ -149,20 +149,38 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 partida.IdPalabraSelecionada = palabra.Id;
                 partida.IdJugadorAnfitrion = JugadorSingleton.Instance.Id;
                 partida.IdEstadoPartida = 1;//Creada
-                partida.palabraSeleccionada = palabra.Descripcion;//Validar Idioma
+                partida.palabraSeleccionada = palabra.Nombre;//Validar Idioma
                 partida.IntentosRestantes = 0;
                 partida.PalabraParcial = GenericGuiController.EnmascararFrase(palabra.Nombre);//Validar Idioma
-                mapper.Map(partida, PartidaSingleton.Instance);
+                                                                                              //mapper.Map(PartidaSingleton.Instance, partida);
+
                 try
                 {
+                    GenericGuiController.MostrarMensajeBox("Creando partida" + partida.IdPalabraSelecionada);
                     PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
-                    partidaServiceClient.CrearPartidaAsync(partida);
-                    GenericGuiController.MostrarMensajeBox("Partida creada con éxito");
-                    cambiarVentana();
+                    var respuesta = partidaServiceClient.CrearPartidaAsync(partida).Result;
+                    if (respuesta != null)
+                    {
+                        GenericGuiController.MostrarMensajeBox("Partida creada con éxito");
+                        PartidaSingleton.Instance.Id = respuesta.Id;
+                        PartidaSingleton.Instance.IdJugadorAnfitrion = respuesta.IdJugadorAnfitrion;
+                        PartidaSingleton.Instance.IdEstadoPartida = respuesta.IdEstadoPartida;
+                        PartidaSingleton.Instance.IntentosRestantes = respuesta.IntentosRestantes;
+                        PartidaSingleton.Instance.PalabraParcial = respuesta.PalabraParcial;
+                        PartidaSingleton.Instance.palabraSeleccionada = respuesta.palabraSeleccionada;
+                        PartidaSingleton.Instance.IdPalabraSelecionada = respuesta.IdPalabraSelecionada;
+
+                        //mapper.Map(PartidaSingleton.Instance, respuesta);
+                        cambiarVentana();
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("Error al crear la partida Else");
+                    }
                 }
                 catch (Exception)
                 {
-                    GenericGuiController.MostrarMensajeBox("Error al crear la partida");
+                    GenericGuiController.MostrarMensajeBox("Error al crear la partida Catch");
                     throw;
                 }
             }

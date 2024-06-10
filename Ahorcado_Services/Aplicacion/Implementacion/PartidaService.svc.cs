@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ahorcado_Services.Aplicacion
@@ -19,19 +20,19 @@ namespace Ahorcado_Services.Aplicacion
     {
         AhorcadoDbContext ahorcadoDbContext = Conexion.ObtenerConexion;
 
-        public bool ActualizarPartida(Partida partida)
+        public async Task<bool> ActualizarPartida(Partida partida)
         {
-            return PartidaDAO.ActualizarPartida(partida);
+            return await PartidaDAO.ActualizarPartidaAsync(partida);
         }
 
-        public bool CrearPartida(Partida partida)
+        public Partida CrearPartida(Partida partida)
         {
             return PartidaDAO.CrearPartida(partida);
         }
 
-        public PartidaRespuesta ObtenerPartidaPorId(int idPartida)
+        public async Task<PartidaRespuesta> ObtenerPartidaPorId(int idPartida)
         {
-            return PartidaDAO.ObtenerPartida(idPartida);
+            return await PartidaDAO.ObtenerPartida(idPartida);
         }
 
         public List<Partida> ObtenerPartidasListasParaJugar()

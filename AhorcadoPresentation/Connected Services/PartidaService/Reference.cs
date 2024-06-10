@@ -99,6 +99,8 @@ namespace PartidaService
         
         private int IdPalabraSelecionadaField;
         
+        private string IdiomaPartidaField;
+        
         private int IntentosRestantesField;
         
         private PartidaService.Palabra PalabraField;
@@ -199,6 +201,19 @@ namespace PartidaService
             set
             {
                 this.IdPalabraSelecionadaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdiomaPartida
+        {
+            get
+            {
+                return this.IdiomaPartidaField;
+            }
+            set
+            {
+                this.IdiomaPartidaField = value;
             }
         }
         
@@ -508,8 +523,6 @@ namespace PartidaService
         
         private int IdDificultadField;
         
-        private string IdiomaPartidaField;
-        
         private string NombreField;
         
         private string NombreInglesField;
@@ -591,19 +604,6 @@ namespace PartidaService
             set
             {
                 this.IdDificultadField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IdiomaPartida
-        {
-            get
-            {
-                return this.IdiomaPartidaField;
-            }
-            set
-            {
-                this.IdiomaPartidaField = value;
             }
         }
         
@@ -778,7 +778,7 @@ namespace PartidaService
         System.Threading.Tasks.Task<bool> ActualizarPartidaAsync(PartidaService.Partida partida);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/CrearPartida", ReplyAction="http://tempuri.org/IPartidaService/CrearPartidaResponse")]
-        System.Threading.Tasks.Task<bool> CrearPartidaAsync(PartidaService.Partida partida);
+        System.Threading.Tasks.Task<PartidaService.Partida> CrearPartidaAsync(PartidaService.Partida partida);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPartidaService/RealizarIntento", ReplyAction="http://tempuri.org/IPartidaService/RealizarIntentoResponse")]
         System.Threading.Tasks.Task<PartidaService.PartidaRespuesta> RealizarIntentoAsync(PartidaService.Partida partida, char caracterIntento);
@@ -853,7 +853,7 @@ namespace PartidaService
             return base.Channel.ActualizarPartidaAsync(partida);
         }
         
-        public System.Threading.Tasks.Task<bool> CrearPartidaAsync(PartidaService.Partida partida)
+        public System.Threading.Tasks.Task<PartidaService.Partida> CrearPartidaAsync(PartidaService.Partida partida)
         {
             return base.Channel.CrearPartidaAsync(partida);
         }

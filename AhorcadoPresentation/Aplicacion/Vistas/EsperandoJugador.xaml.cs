@@ -32,6 +32,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             EsperarJugador();
         }
 
+
         public void EsperarJugador()
         {
             Task.Run(async () =>
@@ -39,7 +40,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    if (PartidaSingleton.Instance.IdJugadorInvitado != partida.IdJugadorInvitado && partida.IdEstadoPartida == 3)//Jugando
+                    if (PartidaSingleton.Instance.IdJugadorInvitado != partida.IdJugadorInvitado && partida.IdEstadoPartida == 2)//Jugando
                     {
                         PartidaSingleton.Instance.IdJugadorInvitado = partida.IdJugadorInvitado;
                         await CambiarVista();
@@ -49,36 +50,56 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             });
         }
 
-        private void Click_Regresar(object sender, RoutedEventArgs e)
+        private async void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            Partida partida = new Partida();
-            partida = mapper.Map<Partida>(PartidaSingleton.Instance);
-            partida.IdEstadoPartida = 1;//Cancelada
-            
+            detenerTarea = true;
             try
             {
                 PartidaServiceClient partidaService = new PartidaServiceClient();
-                partidaService.ActualizarPartidaAsync(partida);
-                detenerTarea = true;
-                MenuPrincipal menuPrincipal = new MenuPrincipal();
-                var mainWindow = (MainWindow)Window.GetWindow(this);
-                mainWindow.CambiarVista(menuPrincipal);
+
+                // Obtener la partida actual
+                var partidaResponse = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                var partida = partidaResponse.partida;
+
+                if (partidaResponse.respuesta)
+                {
+                    // Modificar el estado de la partida
+                    partida.IdEstadoPartida = 3; // Cancelada
+
+                    // Actualizar la partida a través del servicio WCF
+                    var respuesta = await partidaService.ActualizarPartidaAsync(partida);
+                    if (respuesta)
+                    {
+                        detenerTarea = true;
+                        MenuPrincipal menuPrincipal = new MenuPrincipal();
+                        var mainWindow = (MainWindow)Window.GetWindow(this);
+                        mainWindow.CambiarVista(menuPrincipal);
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("Error al cancelar la partida");
+                    }
+                }
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
-                throw;
+                GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
             }
-            
         }
 
         private async Task<Partida> VerificarStatusPartida()
         {
-            PartidaServiceClient partidaService = new PartidaService.PartidaServiceClient();
             try
             {
-                var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
-                return partida.partida;
+                using (var partidaService = new PartidaServiceClient())
+                {
+                    var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                    return partida.partida;
+                }
             }
             catch (CommunicationException)
             {

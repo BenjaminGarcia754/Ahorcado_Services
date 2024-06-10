@@ -97,8 +97,6 @@ namespace DificultadService
         
         private int IdDificultadField;
         
-        private string IdiomaPartidaField;
-        
         private string NombreField;
         
         private string NombreInglesField;
@@ -180,19 +178,6 @@ namespace DificultadService
             set
             {
                 this.IdDificultadField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IdiomaPartida
-        {
-            get
-            {
-                return this.IdiomaPartidaField;
-            }
-            set
-            {
-                this.IdiomaPartidaField = value;
             }
         }
         
@@ -295,6 +280,12 @@ namespace DificultadService
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDificultadService/GetDificultades", ReplyAction="http://tempuri.org/IDificultadService/GetDificultadesResponse")]
         System.Threading.Tasks.Task<DificultadService.Dificultad[]> GetDificultadesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDificultadService/GetDificultad", ReplyAction="http://tempuri.org/IDificultadService/GetDificultadResponse")]
+        System.Threading.Tasks.Task<DificultadService.Dificultad> GetDificultadAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDificultadService/AddDificultad", ReplyAction="http://tempuri.org/IDificultadService/AddDificultadResponse")]
+        System.Threading.Tasks.Task<bool> AddDificultadAsync(DificultadService.Dificultad dificultad);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
@@ -350,6 +341,16 @@ namespace DificultadService
         public System.Threading.Tasks.Task<DificultadService.Dificultad[]> GetDificultadesAsync()
         {
             return base.Channel.GetDificultadesAsync();
+        }
+        
+        public System.Threading.Tasks.Task<DificultadService.Dificultad> GetDificultadAsync(int id)
+        {
+            return base.Channel.GetDificultadAsync(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddDificultadAsync(DificultadService.Dificultad dificultad)
+        {
+            return base.Channel.AddDificultadAsync(dificultad);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

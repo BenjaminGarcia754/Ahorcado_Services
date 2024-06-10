@@ -36,10 +36,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void ClickIniciarSesion(object sender, RoutedEventArgs e)
         {
-            if (camposValidos())
+            if (true)//camposValidos
             {
                 var JugadorCliente = new JugadorServiceClient();
-                var jugador =  JugadorCliente.IniciarSesionAsync(TbCorreo.Text, PfContrasenia.Password).Result;
+                var jugador =  JugadorCliente.IniciarSesionAsync("example@gmail.com", "Picorico1234").Result;
                 if (jugador != null)
                 {
                     GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiLoginBienvenido") +" " +jugador.Nombre);

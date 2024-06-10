@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AhorcadoPresentation.Modelo.Singleton;
+using PartidaService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Channels;
@@ -57,6 +59,18 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                 }
             }
+        }
+
+        public static void MapearPartida(PartidaRespuesta partidaRespuesta)
+        {
+            PartidaSingleton.Instance.Id = partidaRespuesta.partida.Id;
+            PartidaSingleton.Instance.IdJugadorAnfitrion = partidaRespuesta.partida.IdJugadorAnfitrion;
+            PartidaSingleton.Instance.IdJugadorInvitado = JugadorSingleton.Instance.Id;
+            PartidaSingleton.Instance.IdEstadoPartida = partidaRespuesta.partida.IdEstadoPartida;
+            PartidaSingleton.Instance.IntentosRestantes = partidaRespuesta.partida.IntentosRestantes;
+            PartidaSingleton.Instance.PalabraParcial = partidaRespuesta.partida.PalabraParcial;
+            PartidaSingleton.Instance.palabraSeleccionada = partidaRespuesta.partida.palabraSeleccionada;
+            PartidaSingleton.Instance.IdPalabraSelecionada = partidaRespuesta.partida.IdPalabraSelecionada;
         }
 
         public static bool ValidarTextBlockVacios(List<TextBox> textBoxes)
@@ -156,7 +170,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     respuesta = false;
                     datePicker.Background = Brushes.OrangeRed;
-
                 }
             }else
             {
@@ -166,6 +179,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             return respuesta;
         }
         public static void imprimirPalabraParcial(WrapPanel WPPPalabraContenedor, string palabraParcial){
+            WPPPalabraContenedor.Children.Clear();
             foreach (char letra in palabraParcial)
             {
                 Label labelLetra = generarLabel();
@@ -173,7 +187,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     labelLetra.BorderThickness = new Thickness(0, 0, 0, 0);
                 }
-                else if(letra != '-')
+                else if(letra != '_')
                 {
                     labelLetra.Content = letra;
                 }

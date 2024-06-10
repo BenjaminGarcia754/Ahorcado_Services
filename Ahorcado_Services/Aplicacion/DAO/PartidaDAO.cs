@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Forms;
 
 namespace Ahorcado_Services.Aplicacion.DAO
 {
@@ -63,56 +65,49 @@ namespace Ahorcado_Services.Aplicacion.DAO
             return null;
         }
 
-        public static bool ActualizarPartida(Partida partida)
+        public static async Task<bool> ActualizarPartidaAsync(Partida partida)
         {
-            bool respuesta = true;
-            try
+            using (var context = new AhorcadoDbContext())
             {
-                ahorcadoDbContext.Partidas.Update(partida);
-                ahorcadoDbContext.SaveChanges();
+                //Desvincular cualquier instancia previa de la entidad
+                var local = context.Partidas.Local.FirstOrDefault(p => p.Id == partida.Id);
+                if (local != null)
+                {
+                    context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+
+                // Adjuntar y marcar la nueva instancia como modificada
+                context.Partidas.Attach(partida);
+                context.Entry(partida).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+                // Guardar los cambios
+                return await context.SaveChangesAsync() > 0;
             }
-            catch (DbUpdateException ex)
-            {
-                Console.WriteLine(ex.Message);
-                respuesta = false;
-            }
-            catch (EntityException ex)
-            {
-                Console.WriteLine(ex.Message);
-                respuesta = false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                respuesta = false;
-            }
-            return respuesta;
         }
 
-        public static bool CrearPartida(Partida partida)
+        public static Partida CrearPartida(Partida partida)
         {
-            bool respuesta = true;
             try
             {
                 ahorcadoDbContext.Partidas.Add(partida);
                 ahorcadoDbContext.SaveChanges();
+                return partida;
             }
             catch (DbUpdateException ex)
             {
                 Console.WriteLine(ex.Message);
-                respuesta = false;
+                return null;
             }
             catch (EntityException ex)
             {
                 Console.WriteLine(ex.Message);
-                respuesta = false;
+                return null;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                respuesta = false;
+                return null;
             }
-            return respuesta;
         }
 
         //Partidas disponibles para jugar
@@ -134,47 +129,37 @@ namespace Ahorcado_Services.Aplicacion.DAO
         public static PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento)
         {
             PartidaRespuesta respuesta = new PartidaRespuesta();
+            char[] palabraParcial = partida.PalabraParcial.ToCharArray();
             if (partida.palabraSeleccionada.Contains(caracterIntento))
             {
                 for (int i = 0; i < partida.palabraSeleccionada.Length; i++)
                 {
                     if (partida.palabraSeleccionada.ToLower().ToCharArray()[i] == caracterIntento)
                     {
-                        partida.PalabraParcial.ToCharArray()[i] = caracterIntento;
+                        palabraParcial[i] = caracterIntento;
                     }
                 }
+                partida.PalabraParcial = new string(palabraParcial);
                 respuesta.partida = partida;
                 respuesta.respuesta = true;
             }
             else
             {
                 respuesta.respuesta = false;
-                partida.IntentosRestantes--;
+                partida.IntentosRestantes++;
                 respuesta.partida = partida;
-
             }
 
             return respuesta;
         }
 
-        public static PartidaRespuesta ObtenerPartida(int IdPartida)
+        public static async Task<PartidaRespuesta> ObtenerPartida(int IdPartida)
         {
-            PartidaRespuesta respuesta = new PartidaRespuesta();
-            try
+            using (var ahorcadoDbContext = new AhorcadoDbContext())
             {
-                Partida partida = ahorcadoDbContext.Partidas.Find(IdPartida);
-                if (partida != null)
-                {
-                    respuesta.partida = partida;
-                    respuesta.respuesta = true;
-                }
-            }
-            catch (EntityException ex)
-            {
-                Console.WriteLine(ex.Message);
-                respuesta.respuesta = false;
-            }
-            return respuesta;
+                var partida = await ahorcadoDbContext.Partidas.AsNoTracking().FirstOrDefaultAsync(p => p.Id == IdPartida);
+                return new PartidaRespuesta { partida = partida, respuesta = true };
+            }    
         }
     }
 

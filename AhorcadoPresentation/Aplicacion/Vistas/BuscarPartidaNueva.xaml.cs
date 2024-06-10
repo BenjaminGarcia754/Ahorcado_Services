@@ -1,4 +1,7 @@
-﻿using JugadorServiceReference;
+﻿using CategoriaService;
+using DificultadService;
+using JugadorServiceReference;
+using PalabraService;
 using PartidaService;
 using System;
 using System.Collections.Generic;
@@ -86,13 +89,25 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 if (partidas != null)
                 {
+                    var mainWindow = (MainWindow)Window.GetWindow(this);
+                    PartidaNueva partidaNueva = new PartidaNueva(mainWindow);
                     foreach (var partida in partidas)
                     {
+                        PalabraServiceClient palabraServiceClient = new PalabraServiceClient();
+                        DificultadServiceClient dificultadServiceClient = new DificultadServiceClient();
+                        CategoriaServiceClient categoriaServiceClient = new CategoriaServiceClient();
+                        var palabra = palabraServiceClient.ObtenerPalabraAsync(partida.IdPalabraSelecionada).Result;
+                        var categoria = categoriaServiceClient.GetCategoriaAsync(palabra.IdCategoria).Result;
+                        var dificultad = dificultadServiceClient.GetDificultadAsync(palabra.IdDificultad).Result;
                         var jugadorService = new JugadorServiceClient();
                         var jugadorAnfitrion = jugadorService.ObtenerJugadorPorIdAsync(partida.IdJugadorAnfitrion).Result;
-                        PartidaNueva partidaHistorial = new PartidaNueva(jugadorAnfitrion.Nombre, partida.Palabra.dificultad.Nombre, partida.Palabra.Categoria.Nombre, "NO IMPLEMENTADO", partida.Id);
+                        PartidaNueva partidaHistorial = partidaNueva.ObternerPartidaNueva(jugadorAnfitrion.Nombre, dificultad.Nombre, categoria.Nombre, "NO IMPLEMENTADO", partida.Id);
                         WPPanelPartidasNuevas.Children.Add(partidaHistorial);
                     }
+                }
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox("No hay partidas disponibles");
                 }
             }
             catch (CommunicationException)
@@ -102,13 +117,5 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             
         }
 
-
-        private void Click_Jugar(object sender, RoutedEventArgs e)
-        {
-            detenerTarea = true;
-            JugarPartida jugarPartida = new JugarPartida();
-            var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.CambiarVista(jugarPartida);
-        }
     }
 }

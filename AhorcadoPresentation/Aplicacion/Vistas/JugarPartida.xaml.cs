@@ -2,6 +2,7 @@
 using AhorcadoPresentation.Modelo.Singleton;
 using AutoMapper;
 using JugadorServiceReference;
+using PalabraService;
 using PartidaService;
 using System;
 using System.Collections.Generic;
@@ -35,11 +36,28 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public JugarPartida()
         {
             InitializeComponent();
+            ComprobarStatusPartida();
+            var palabra = ObtenerPalabra();
+            if (palabra != null)
+            {
+                ttAyuda.Content = palabra.Descripcion;
+            }
+            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
+            //TODO:Validar Idioma
+        }
 
-            palabraDTO.Nombre = "Los juegos del hambre en llamas español latino";
-            PartidaSingleton partida = PartidaSingleton.Instance;
-            partida.PalabraParcial = "--- --e--- -e- -----e e- ------ e----- ------";
-            ttAyuda.Content = "Categoria:\nPelicula\nDescripcion:\nEsta pelicula fue nominada al Oscar y fue protagonizada por Jennifer Lawrence";
+        public PalabraService.Palabra ObtenerPalabra()
+        {
+            PalabraServiceClient palabraServiceClient = new PalabraServiceClient();
+            try
+            {
+                var palabra = palabraServiceClient.ObtenerPalabraAsync(PartidaSingleton.Instance.IdPalabraSelecionada).Result;
+                return palabra;
+            }
+            catch (Exception)
+            {
+                return null;   
+            }
         }
 
         public void ComprobarStatusPartida()
@@ -49,7 +67,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    if (partida.IdEstadoPartida == 2)//Cancelada
+                    if (partida.IdEstadoPartida == 3)//Cancelada
                     {
                         detenerTarea = true;
                         MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
@@ -70,45 +88,82 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
             try
             {
-                var partida = mapper.Map<Partida>(PartidaSingleton.Instance);
+                //var partida = mapper.Map<Partida>(PartidaSingleton.Instance);
+                Partida partida = new Partida();
+                partida.Id = PartidaSingleton.Instance.Id;
+                partida.IntentosRestantes = PartidaSingleton.Instance.IntentosRestantes;
+                partida.PalabraParcial = PartidaSingleton.Instance.PalabraParcial;
+                partida.palabraSeleccionada = PartidaSingleton.Instance.palabraSeleccionada;
+                partida.IdEstadoPartida = PartidaSingleton.Instance.IdEstadoPartida;
+                partida.IdJugadorAnfitrion = PartidaSingleton.Instance.IdJugadorAnfitrion;
+                partida.IdJugadorInvitado = PartidaSingleton.Instance.IdJugadorInvitado;
+                partida.IdPalabraSelecionada = PartidaSingleton.Instance.IdPalabraSelecionada;
+
                 var respuesta = partidaServiceClient.RealizarIntentoAsync(partida, letra).Result;
-                if (respuesta.respuesta)
+                partida.PalabraParcial = respuesta.partida.PalabraParcial;
+                partida.IntentosRestantes = respuesta.partida.IntentosRestantes;
+                var respuestaActualizacion = partidaServiceClient.ActualizarPartidaAsync(respuesta.partida).Result;
+
+                if (respuestaActualizacion)
                 {
-                    GenericGuiController.MostrarMensajeBox("La letra se encuentra en la palabra");
-                    GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, respuesta.partida.PalabraParcial);
-                    if (respuesta.partida.PalabraParcial.Equals(partida.palabraSeleccionada))
+                    if (respuesta.respuesta)
                     {
-                        GenericGuiController.MostrarMensajeBox("Ganaste");
-                        partida.IdEstadoPartida = 3;//Finalizada
-                        partida.PartidaGanadaJugadorInvitado = true;
+                        GenericGuiController.MostrarMensajeBox("La letra se encuentra en la palabra");
+                        GenericGuiController.MostrarMensajeBox(respuesta.partida.PalabraParcial);
+                        GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, respuesta.partida.PalabraParcial);
+                        if (respuesta.partida.PalabraParcial.Equals(partida.palabraSeleccionada))
+                        {
+                            GenericGuiController.MostrarMensajeBox("Ganaste");
+                            partida.IdEstadoPartida = 4;//Finalizada
+                            partida.PartidaGanadaJugadorInvitado = true;
+                        }
                     }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("La letra no se encuentra en la palabra");
+                        if (respuesta.partida.IntentosRestantes >= 6)
+                        {
+                            GenericGuiController.MostrarMensajeBox("Perdiste");
+                            partida.IdEstadoPartida = 4;//Finalizada
+                            partida.PartidaGanadaJugadorAnfitrion = true;
+                            //TODO:Actualizar Partida Estado Finalizada, JUgador Anfitrion Gana
+                        }
+                        cambiarImagen(partida);
+                    }
+
+                    buttonLetra.Visibility = Visibility.Hidden;
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("La letra no se encuentra en la palabra");
-                    if (respuesta.partida.IntentosRestantes >= 6)
-                    {
-                        GenericGuiController.MostrarMensajeBox("Perdiste");
-                        partida.IdEstadoPartida = 3;//Finalizada
-                        //TODO:Actualizar Partida Estado Finalizada, JUgador Anfitrion Gana
-                    }
-                    cambiarImagen();
+                    GenericGuiController.MostrarMensajeBox("Error al realizar el intento");
                 }
-                mapper.Map(respuesta.partida, PartidaSingleton.Instance);
+
+                PartidaSingleton.Instance.IntentosRestantes = respuesta.partida.IntentosRestantes;
+                PartidaSingleton.Instance.PalabraParcial = respuesta.partida.PalabraParcial;
+                PartidaSingleton.Instance.IdEstadoPartida = respuesta.partida.IdEstadoPartida;
+                PartidaSingleton.Instance.IdJugadorAnfitrion = respuesta.partida.IdJugadorAnfitrion;
+                PartidaSingleton.Instance.IdJugadorInvitado = respuesta.partida.IdJugadorInvitado;
+                PartidaSingleton.Instance.IdPalabraSelecionada = respuesta.partida.IdPalabraSelecionada;
+                PartidaSingleton.Instance.palabraSeleccionada = respuesta.partida.palabraSeleccionada;
+                PartidaSingleton.Instance.IntentosRestantes = respuesta.partida.IntentosRestantes;
+                PartidaSingleton.Instance.PalabraParcial = respuesta.partida.PalabraParcial;
+
+                //mapper.Map(respuesta.partida, PartidaSingleton.Instance);
                 partidaServiceClient.ActualizarPartidaAsync(partida);
 
             }
             catch (Exception)
             {
+                GenericGuiController.MostrarMensajeBox("Error al realizar el intento");
                 throw;
             }
             
-            buttonLetra.Visibility = Visibility.Hidden;
+            
         }
 
-        private void cambiarImagen()
+        private void cambiarImagen(Partida partida)
         {
-            numeroIntento++;
+            int numeroIntento = partida.IntentosRestantes;
             if (numeroIntento == 1)
             {
                 ImagenIntento.Source = new BitmapImage(new Uri("/Aplicacion/Resources/PrimerIntento.png", UriKind.Relative));
@@ -157,11 +212,45 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             await Task.Delay(1000);
         }
 
-        private void Click_Regresar(object sender, RoutedEventArgs e)
+        private async void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            MenuPrincipal menu = new MenuPrincipal();
-            var mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.CambiarVista(menu);
+            detenerTarea = true;
+            try
+            {
+                PartidaServiceClient partidaService = new PartidaServiceClient();
+
+                // Obtener la partida actual
+                var partidaResponse = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+                var partida = partidaResponse.partida;
+
+                if (partidaResponse.respuesta)
+                {
+                    // Modificar el estado de la partida
+                    partida.IdEstadoPartida = 3; // Cancelada
+
+                    // Actualizar la partida a través del servicio WCF
+                    var respuesta = await partidaService.ActualizarPartidaAsync(partida);
+                    if (respuesta)
+                    {
+                        detenerTarea = true;
+                        MenuPrincipal menuPrincipal = new MenuPrincipal();
+                        var mainWindow = (MainWindow)Window.GetWindow(this);
+                        mainWindow.CambiarVista(menuPrincipal);
+                    }
+                    else
+                    {
+                        GenericGuiController.MostrarMensajeBox("Error al cancelar la partida");
+                    }
+                }
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                }
+            }
+            catch (Exception ex)
+            {
+                GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
+            }
         }
     }
 

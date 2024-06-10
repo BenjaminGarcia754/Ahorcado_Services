@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ahorcado_Services.Aplicacion
 {
@@ -16,9 +17,9 @@ namespace Ahorcado_Services.Aplicacion
         [OperationContract]
         PartidaRespuesta ObtenerPartidasPorJugador(int IdJugador);
         [OperationContract]
-        bool ActualizarPartida(Partida partida);
+        Task<bool> ActualizarPartida(Partida partida);
         [OperationContract]
-        bool CrearPartida(Partida partida);
+        Partida CrearPartida(Partida partida);
         [OperationContract]
         PartidaRespuesta RealizarIntento(Partida partida, char caracterIntento);
         [OperationContract]
@@ -26,11 +27,9 @@ namespace Ahorcado_Services.Aplicacion
         //[OperationContract]
         //PartidaRespuesta RealizarIntento(Partida partida, string palabraIntento);
         [OperationContract]
-        PartidaRespuesta ObtenerPartidaPorId(int idPartida);
+        Task<PartidaRespuesta> ObtenerPartidaPorId(int idPartida);
         [OperationContract]
         PartidaRespuesta ObtenerTodasLasPartidasPorJugador(int idJugardor);
-
-
     }
 
 }

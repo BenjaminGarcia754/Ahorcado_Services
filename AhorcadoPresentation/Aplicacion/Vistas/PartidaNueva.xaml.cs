@@ -24,15 +24,23 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class PartidaNueva : UserControl
     {
         IMapper mapper = Modelo.Mapper.ObtenerMapper();
-
-        public PartidaNueva(string jugadorRetador, string dificultad, string categoria, string idioma, int idPartida)
+        MainWindow mainWindow;
+        public PartidaNueva(MainWindow _mainWindow)
         {
             InitializeComponent();
-            lJugadorRetador.Content = jugadorRetador;
-            lDificultad.Content = dificultad;
-            lCategoria.Content = categoria;
-            lIdioma.Content = idioma;
-            lIdPartida.Content = idPartida;
+            this.mainWindow = _mainWindow;
+        }
+
+        public PartidaNueva ObternerPartidaNueva(string jugadorRetador, string dificultad, string categoria, string idioma, int idPartida)
+        {
+
+            PartidaNueva partidaNueva = new PartidaNueva(mainWindow);
+            partidaNueva.lCategoria.Content = categoria;
+            partidaNueva.lDificultad.Content = dificultad;
+            partidaNueva.lIdioma.Content = idioma;
+            partidaNueva.lJugadorRetador.Content = jugadorRetador;
+            partidaNueva.lIdPartida.Content = idPartida;
+            return partidaNueva;
         }
 
         private void ClickJugarPartida(object sender, RoutedEventArgs e)
@@ -50,8 +58,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             Label label = child as Label;
                             if (label.Name == "lIdPartida")
                             {
+
                                 int idPartida = int.Parse(label.Content.ToString());
-                                //LogicaEntrarAPartida(idPartida);
+                                EntrarAPartida(idPartida);
+
                             }
                         }
                     }
@@ -59,23 +69,36 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
         }
 
+
+
         private void EntrarAPartida(int idPartida)
         {
             PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
             try
             {
-                var partida = partidaServiceClient.ObtenerPartidaPorIdAsync(idPartida).Result;
-                if (partida != null)
+                var partidaRespuesta = partidaServiceClient.ObtenerPartidaPorIdAsync(idPartida).Result;
+                if (partidaRespuesta != null)
                 {
-                    if (partida.partida.IdEstadoPartida != 1)//Disponible para jugar
+                    if (partidaRespuesta.partida.IdEstadoPartida != 1)//Disponible para jugar
                     {
                         GenericGuiController.MostrarMensajeBox("La partida ya no esta disponible");
                     }
                     else
                     {
-                        mapper.Map(partida.partida, JugadorSingleton.Instance);
+                        GenericGuiController.MostrarMensajeBox(partidaRespuesta.partida.PalabraParcial);
+                        PartidaSingleton.Instance.Id = partidaRespuesta.partida.Id;
+                        PartidaSingleton.Instance.IdJugadorAnfitrion = partidaRespuesta.partida.IdJugadorAnfitrion;
+                        PartidaSingleton.Instance.IdJugadorInvitado = JugadorSingleton.Instance.Id;
+                        PartidaSingleton.Instance.IdEstadoPartida = partidaRespuesta.partida.IdEstadoPartida;
+                        PartidaSingleton.Instance.IntentosRestantes = partidaRespuesta.partida.IntentosRestantes;
+                        PartidaSingleton.Instance.PalabraParcial = partidaRespuesta.partida.PalabraParcial;
+                        PartidaSingleton.Instance.palabraSeleccionada = partidaRespuesta.partida.palabraSeleccionada;
+                        PartidaSingleton.Instance.IdPalabraSelecionada = partidaRespuesta.partida.IdPalabraSelecionada;
+
+                        partidaRespuesta.partida.IdJugadorInvitado = JugadorSingleton.Instance.Id;
+                        partidaRespuesta.partida.IdEstadoPartida = 2;//En juego
+                        partidaServiceClient.ActualizarPartidaAsync(partidaRespuesta.partida);
                         JugarPartida jugarPartida = new JugarPartida();
-                        var mainWindow = (MainWindow)Window.GetWindow(this);
                         mainWindow.CambiarVista(jugarPartida);
                     }
                 }
@@ -84,8 +107,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     GenericGuiController.MostrarMensajeBox("No se encontraron partidas");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 GenericGuiController.MostrarMensajeBox("Error al cargar las partidas");
             }
         }
