@@ -19,8 +19,8 @@
             </Grid.RowDefinitions>
             <Image HorizontalAlignment="Center" Height="666" VerticalAlignment="Top" Width="1024" Source="/Aplicacion/Resources/RegistrarUsuarioBackground.png" Margin="0,-2,0,0" Grid.RowSpan="2" />
             <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="106,103,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbNombres}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
-            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="106,210,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbApellidoMaterno}" VerticalAlignment="Top" Grid.Row="1" Height="40" Width="245"/>
-            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="106,331,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbApellidoPaterno}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
+            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="106,210,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbApellidoPaterno}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
+            <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="106,331,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbApellidoMaterno}" VerticalAlignment="Top" Grid.Row="1" Height="40" Width="245"/>
             <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="106,452,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbFechaDeNacimiento}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
 
             <TextBlock Foreground="White" FontFamily="/Aplicacion/Resources/Fuentes/#Inika" FontSize="26" HorizontalAlignment="Left" Margin="500,97,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=GuiRegistrarUsuarioTbTelefono}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186"/>
@@ -42,7 +42,7 @@
                     <WrapPanel.ToolTip>
                         <ToolTip Content="{resources:Resx Key=GuiRegistrarusuarioTtCompletarCampos}" />
                     </WrapPanel.ToolTip>
-                    <TextBox Style="{StaticResource TextBoxLogin}" x:Name="TbApellidoMaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
+                    <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbApellidoPaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
                 </WrapPanel>
             </Border>
 
@@ -51,7 +51,7 @@
                     <WrapPanel.ToolTip>
                         <ToolTip Content="{resources:Resx Key=GuiRegistrarusuarioTtCompletarCampos}" />
                     </WrapPanel.ToolTip>
-                    <TextBox Style="{StaticResource TextBoxLogin}"  x:Name="TbApellidoPaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1" />
+                    <TextBox Style="{StaticResource TextBoxLogin}" x:Name="TbApellidoMaterno" Margin="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="341" Height="26" Grid.Row="1"/>
                 </WrapPanel>
             </Border>
 

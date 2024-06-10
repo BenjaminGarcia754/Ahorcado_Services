@@ -137,4 +137,13 @@
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="Background" Value="{StaticResource BlurredBackgroundBrush}"/>
     </Style>
+    <!-- Estilo para el Border de Alerta -->
+    <Style TargetType="Border" x:Key="StyleContainerAlerta">
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <!-- Usa el fondo difuminado negro -->
+        <Setter Property="Background" Value="{StaticResource BlurredBackgroundBrush}"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
 </ResourceDictionary>

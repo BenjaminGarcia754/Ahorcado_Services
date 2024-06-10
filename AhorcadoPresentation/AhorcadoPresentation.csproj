@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Aplicacion\Resources\AlertaFondo.png" />
     <None Remove="Aplicacion\Resources\BotonSVG.svg" />
     <None Remove="Aplicacion\Resources\BuscarPartidaNuevaBckG.png" />
     <None Remove="Aplicacion\Resources\ButtonBackgroundLogin.png" />
@@ -38,6 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Aplicacion\Resources\AlertaFondo.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Aplicacion\Resources\BuscarPartidaNuevaBckG.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

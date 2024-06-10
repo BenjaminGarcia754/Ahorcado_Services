@@ -18,7 +18,9 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     {
         public static void MostrarMensajeBox(string mensaje)
         {
-            MessageBox.Show(mensaje);
+            //MessageBox.Show(mensaje);
+            Alertas.Alerta alerta = new Alertas.Alerta(mensaje);
+            alerta.ShowDialog();
         }
 
         public static string EnmascararFrase(string frase)
