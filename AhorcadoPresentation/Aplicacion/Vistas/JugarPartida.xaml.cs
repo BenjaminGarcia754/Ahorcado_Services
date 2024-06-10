@@ -38,7 +38,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public JugarPartida()
         {
             InitializeComponent();
-            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
             ComprobarStatusPartida();
             var palabra = ObtenerPalabra();
             if (palabra != null)
@@ -46,6 +45,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 palabraEnJuego = palabra;
                 //ttAyuda.Content = palabra.Descripcion;
             }
+                        GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
         }
 
         public PalabraService.Palabra ObtenerPalabra()
@@ -74,7 +74,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         detenerTarea = true;
                         await Dispatcher.InvokeAsync(async () =>
                         {
-                            MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
+                            GenericGuiController.MostrarMensajeBox("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
                             await CambiarVista();
                         });
 
@@ -104,6 +104,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 partida.IdJugadorAnfitrion = PartidaSingleton.Instance.IdJugadorAnfitrion;
                 partida.IdJugadorInvitado = PartidaSingleton.Instance.IdJugadorInvitado;
                 partida.IdPalabraSelecionada = PartidaSingleton.Instance.IdPalabraSelecionada;
+
                 var respuesta = partidaServiceClient.RealizarIntentoAsync(partida, letra).Result;
                 partida.PalabraParcial = respuesta.partida.PalabraParcial;
                 partida.IntentosRestantes = respuesta.partida.IntentosRestantes;
@@ -114,12 +115,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     if (respuesta.respuesta)
                     {
                         GenericGuiController.MostrarMensajeBox("La letra se encuentra en la palabra");
+                        GenericGuiController.MostrarMensajeBox(respuesta.partida.PalabraParcial);
                         GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, respuesta.partida.PalabraParcial);
                         if (respuesta.partida.PalabraParcial.Equals(partida.palabraSeleccionada))
                         {
                             GenericGuiController.MostrarMensajeBox("Ganaste");
                             partida.IdEstadoPartida = 4;//Finalizada
                             partida.PartidaGanadaJugadorInvitado = true;
+
                         }
                     }
                     else
@@ -130,7 +133,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             GenericGuiController.MostrarMensajeBox("Perdiste");
                             partida.IdEstadoPartida = 4;//Finalizada
                             partida.PartidaGanadaJugadorAnfitrion = true;
-                            //TODO:Actualizar Partida Estado Finalizada, JUgador Anfitrion Gana
                         }
                         cambiarImagen(partida);
                     }
@@ -154,7 +156,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
                 //mapper.Map(respuesta.partida, PartidaSingleton.Instance);
                 partidaServiceClient.ActualizarPartidaAsync(partida);
-
             }
             catch (Exception)
             {
