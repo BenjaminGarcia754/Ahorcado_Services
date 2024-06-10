@@ -97,6 +97,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
                         partidaRespuesta.partida.IdJugadorInvitado = JugadorSingleton.Instance.Id;
                         partidaRespuesta.partida.IdEstadoPartida = 2;//En juego
+                        PartidaSingleton.Instance.IdEstadoPartida = 2;
                         partidaServiceClient.ActualizarPartidaAsync(partidaRespuesta.partida);
                         JugarPartida jugarPartida = new JugarPartida();
                         mainWindow.CambiarVista(jugarPartida);

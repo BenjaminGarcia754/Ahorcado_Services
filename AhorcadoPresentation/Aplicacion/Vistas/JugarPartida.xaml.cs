@@ -42,7 +42,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 ttAyuda.Content = palabra.Descripcion;
             }
-            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
             //TODO:Validar Idioma
         }
 
@@ -67,11 +66,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 while (!detenerTarea)
                 {
                     var partida = await VerificarStatusPartida();
-                    if (partida.IdEstadoPartida == 3)//Cancelada
+                    if (PartidaSingleton.Instance.IdEstadoPartida == 3)//Cancelada
                     {
                         detenerTarea = true;
-                        MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
-                        await CambiarVista();
+                        await Dispatcher.InvokeAsync(async() =>
+                        {
+                            MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
+                            await CambiarVista();
+                        });
                     }
                     await Task.Delay(2000);
                 }
@@ -98,7 +100,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 partida.IdJugadorAnfitrion = PartidaSingleton.Instance.IdJugadorAnfitrion;
                 partida.IdJugadorInvitado = PartidaSingleton.Instance.IdJugadorInvitado;
                 partida.IdPalabraSelecionada = PartidaSingleton.Instance.IdPalabraSelecionada;
-
                 var respuesta = partidaServiceClient.RealizarIntentoAsync(partida, letra).Result;
                 partida.PalabraParcial = respuesta.partida.PalabraParcial;
                 partida.IntentosRestantes = respuesta.partida.IntentosRestantes;
@@ -109,7 +110,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     if (respuesta.respuesta)
                     {
                         GenericGuiController.MostrarMensajeBox("La letra se encuentra en la palabra");
-                        GenericGuiController.MostrarMensajeBox(respuesta.partida.PalabraParcial);
                         GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, respuesta.partida.PalabraParcial);
                         if (respuesta.partida.PalabraParcial.Equals(partida.palabraSeleccionada))
                         {
@@ -196,6 +196,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             try
             {
                 var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
+
+                PartidaSingleton.Instance.IdEstadoPartida = partida.partida.IdEstadoPartida;
                 return partida.partida;
             }
             catch (CommunicationException)
