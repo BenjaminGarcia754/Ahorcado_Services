@@ -45,7 +45,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 palabraEnJuego = palabra;
                 //ttAyuda.Content = palabra.Descripcion;
             }
-                        GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
+            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
         }
 
         public PalabraService.Palabra ObtenerPalabra()
@@ -122,7 +122,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             GenericGuiController.MostrarMensajeBox("Ganaste");
                             partida.IdEstadoPartida = 4;//Finalizada
                             partida.PartidaGanadaJugadorInvitado = true;
-
+                            partidaServiceClient.ActualizarPartidaAsync(partida);
+                            MenuPrincipal menuPrincipal = new MenuPrincipal();
+                            var mainWindow = (MainWindow)Window.GetWindow(this);
+                            mainWindow.CambiarVista(menuPrincipal);
                         }
                     }
                     else
@@ -133,6 +136,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             GenericGuiController.MostrarMensajeBox("Perdiste");
                             partida.IdEstadoPartida = 4;//Finalizada
                             partida.PartidaGanadaJugadorAnfitrion = true;
+                            partidaServiceClient.ActualizarPartidaAsync(partida);
+                            MenuPrincipal menuPrincipal = new MenuPrincipal();
+                            var mainWindow = (MainWindow)Window.GetWindow(this);
+                            mainWindow.CambiarVista(menuPrincipal);
                         }
                         cambiarImagen(partida);
                     }
