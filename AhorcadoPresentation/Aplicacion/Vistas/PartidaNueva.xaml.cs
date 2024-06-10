@@ -85,7 +85,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox(partidaRespuesta.partida.PalabraParcial);
                         PartidaSingleton.Instance.Id = partidaRespuesta.partida.Id;
                         PartidaSingleton.Instance.IdJugadorAnfitrion = partidaRespuesta.partida.IdJugadorAnfitrion;
                         PartidaSingleton.Instance.IdJugadorInvitado = JugadorSingleton.Instance.Id;

@@ -1,5 +1,6 @@
 ﻿using AhorcadoPresentation.Modelo;
 using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.RecursosLocalizables;
 using AutoMapper;
 using JugadorServiceReference;
 using PalabraService;
@@ -31,18 +32,20 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         public PalabraDTO palabraDTO = new PalabraDTO();
         private int numeroIntento = 0;
         private bool detenerTarea = false;
+        private PalabraService.Palabra palabraEnJuego;
         IMapper mapper = Modelo.Mapper.ObtenerMapper();
 
         public JugarPartida()
         {
             InitializeComponent();
+            GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, PartidaSingleton.Instance.PalabraParcial);
             ComprobarStatusPartida();
             var palabra = ObtenerPalabra();
             if (palabra != null)
             {
-                ttAyuda.Content = palabra.Descripcion;
+                palabraEnJuego = palabra;
+                //ttAyuda.Content = palabra.Descripcion;
             }
-            //TODO:Validar Idioma
         }
 
         public PalabraService.Palabra ObtenerPalabra()
@@ -55,7 +58,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (Exception)
             {
-                return null;   
+                return null;
             }
         }
 
@@ -74,7 +77,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             MessageBox.Show("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
                             await CambiarVista();
                         });
-                        
+
                     }
                     await Task.Delay(2000);
                 }
@@ -87,7 +90,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             Button buttonLetra = sender as Button;
             char letra = buttonLetra.Content.ToString().ToLower().ToCharArray()[0];
-            
+
             PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
             try
             {
@@ -158,8 +161,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 GenericGuiController.MostrarMensajeBox("Error al realizar el intento");
                 throw;
             }
-            
-            
+
+
         }
 
         private void cambiarImagen(Partida partida)
@@ -209,7 +212,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         }
         public async Task CambiarVista()
         {
-            MenuPrincipal menu =  new MenuPrincipal();
+            MenuPrincipal menu = new MenuPrincipal();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(menu);
             await Task.Delay(1000);
@@ -253,6 +256,21 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             catch (Exception ex)
             {
                 GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
+            }
+        }
+
+        private void Click_Ayuda(object sender, RoutedEventArgs e)
+        {
+            if (palabraEnJuego != null)
+            {
+                if (ResourceAccesor.GetIdiomaHilo() == Constantes.IDIOMA_ESPANOL)
+                {
+                    GenericGuiController.MostrarMensajeBox(palabraEnJuego.Descripcion);
+                }
+                else
+                {
+                    GenericGuiController.MostrarMensajeBox(palabraEnJuego.DescripcionIngles);
+                }
             }
         }
     }
