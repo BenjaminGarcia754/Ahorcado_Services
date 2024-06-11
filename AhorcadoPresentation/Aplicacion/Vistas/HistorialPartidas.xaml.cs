@@ -42,9 +42,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (respuesta.respuesta && respuesta.Partidas.Any())
                 {
                     List<Partida> partidas = respuesta.Partidas.ToList();
-                    foreach (Partida partida in partidas )
+                    foreach (Partida partida in partidas)
                     {
-
                             string fecha = GenericGuiController.FormatearFecha(partida.FechaCreacionPartida);
                             string palabra = partida.palabraSeleccionada;
                             string jugadorVencido = "---";
