@@ -16,7 +16,7 @@ namespace AhorcadoPresentation.Modelo.Singleton
         public int IdPalabraSelecionada { get; set; }
         public String PalabraParcial { get; set; }
         public int IdEstadoPartida { get; set; }
-
+        public string IdiomaPartida { get; set; }
         public bool PartidaGanadaJugadorInvitado { get; set; }
         public bool PartidaGanadaJugadorAnfitrion { get; set; }
         public string palabraSeleccionada { get; set; }

@@ -38,6 +38,8 @@ namespace AhorcadoPresentation.Modelo
                 .ReverseMap();
         }
 
+
+
         public static IMapper ObtenerMapper()
         {
             var config = new MapperConfiguration(cfg =>

@@ -80,13 +80,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
                                 await Dispatcher.InvokeAsync(async () =>
                                 {
-
                                     MessageBox.Show("La partida ha finalizado");
                                     await Task.Delay(2000);
                                     await CambiarVista();
                                 });
-                                
-                            
                         }
                     await Task.Delay(2000);
                 }
@@ -159,10 +156,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         public async Task CambiarVista()
         {
+            await Task.Delay(1000);
             MenuPrincipal menu = new MenuPrincipal();
             var mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.CambiarVista(menu);
-            await Task.Delay(1000);
         }
 
         private async void Click_Regresar(object sender, RoutedEventArgs e)

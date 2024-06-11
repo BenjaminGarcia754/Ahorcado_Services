@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AhorcadoPresentation.RecursosLocalizables;
+using System.ServiceModel;
 
 namespace AhorcadoPresentation.Aplicacion.Vistas
 {
@@ -55,34 +56,64 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (esActualizacion)
                 {
                     jugador.Id = JugadorSingleton.Instance.Id;
-                    bool respuesta = jugadorCliente.ActualizarInformacionJugadorAsync(jugador).Result;
-                    if (respuesta)
+                    try
                     {
-                        mapper.Map(jugador, JugadorSingleton.Instance);
-                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgActualizado"));
+                        bool respuesta = jugadorCliente.ActualizarInformacionJugadorAsync(jugador).Result;
+                        if (respuesta)
+                        {
+                            mapper.Map(jugador, JugadorSingleton.Instance);
+                            GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgActualizado"));
+                        }
+                        else
+                        {
+                            GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorActualizar"));
+                        }
                     }
-                    else
+                    catch (CommunicationException)
+                    {
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorActualizar"));
+                        
+                    }catch (Exception)
                     {
                         GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorActualizar"));
                     }
                 }
                 else
                 {
-                    bool respuesta = jugadorCliente.RegistrarJugadorAsync(jugador).Result;
-                    if (respuesta)
+                    try
                     {
-                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgRegistrado"));
+                        bool existeJugador = jugadorCliente.ExisteJugadorAsync(TbCorreo.Text).Result;
+                        if (existeJugador)
+                        {
+                            bool respuesta = jugadorCliente.RegistrarJugadorAsync(jugador).Result;
+                            if (respuesta)
+                            {
+                                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgRegistrado"));
+                            }
+                            else
+                            {
+                                //TODO: Corroborar mensaje
+                                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorRegistrar"));
+                            }
+                        }
+                        else
+                        {
+                            //TODO: Corroborar mensaje
+                            GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgCorreoExiste"));
+                        }
                     }
-                    else
+                    catch (CommunicationException)
                     {
+                        //TODO: Corroborar mensaje
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorRegistrar"));
+                    }catch (Exception)
+                    { 
+                        //TODO: Corroborar mensaje
                         GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorRegistrar"));
                     }
+                    
                 }
                 ClickRegresar(sender, e);
-            }
-            else
-            {
-
             }
         }
 
@@ -94,11 +125,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 MenuPrincipal menuPrincipal = new MenuPrincipal();
                 mainWindow.CambiarVista(menuPrincipal);
-            }
-            else
-            {
-                IniciarSesion iniciarSesion = new IniciarSesion();
-                mainWindow.CambiarVista(iniciarSesion);
             }
         }
 

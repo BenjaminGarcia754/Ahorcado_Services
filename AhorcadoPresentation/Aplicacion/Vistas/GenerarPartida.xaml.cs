@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PalabraService;
+using System.Globalization;
 
 namespace AhorcadoPresentation.Aplicacion.Vistas
 {
@@ -29,6 +30,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class GenerarPartida : UserControl
     {
+        string idiomaHilo = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
         Dictionary<string, int> dificultadDiccionario = new Dictionary<string, int>();
         Dictionary<string, int> categoriaDiccionario = new Dictionary<string, int>();
         Dictionary<string, PalabraService.Palabra> palabraDiccionario = new Dictionary<string, PalabraService.Palabra>();
@@ -105,15 +107,22 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         private void InicializarComboBoxPalabras(List<PalabraService.Palabra> palabras)
         {
+            palabraDiccionario.Clear();
             foreach (var palabra in palabras)
             {
-                CbPalabra.Items.Add(palabra.Nombre);
-                palabraDiccionario.Add(palabra.Nombre, palabra);
+                if (!palabraDiccionario.ContainsKey(palabra.Nombre))
+                {
+                    string idiomaAsignado = idiomaHilo == "es" ? palabra.Nombre : palabra.NombreIngles;
+                    CbPalabra.Items.Add(idiomaAsignado);
+                    palabraDiccionario.Add(idiomaAsignado, palabra);
+                }
             }
+
         }
 
         private void cargarPalabras()
         {
+            CbPalabra.Items.Clear();
             if (CbCategoria.SelectedItem != null && CbDificultad.SelectedItem != null)
             {
                 var dificultad = dificultadDiccionario[CbDificultad.SelectedItem.ToString()];
@@ -149,9 +158,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 partida.IdPalabraSelecionada = palabra.Id;
                 partida.IdJugadorAnfitrion = JugadorSingleton.Instance.Id;
                 partida.IdEstadoPartida = 1;//Creada
-                partida.palabraSeleccionada = palabra.Nombre;//Validar Idioma
+                partida.palabraSeleccionada = idiomaHilo == "es" ? palabra.Nombre : palabra.NombreIngles; ;//Validar Idioma
                 partida.IntentosRestantes = 0;
                 partida.PalabraParcial = GenericGuiController.EnmascararFrase(palabra.Nombre);//Validar Idioma
+                partida.IdiomaPartida = idiomaHilo;
+                partida.FechaCreacionPartida = DateTime.Now;
                 try
                 {
                     PartidaServiceClient partidaServiceClient = new PartidaServiceClient();
@@ -166,7 +177,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         PartidaSingleton.Instance.PalabraParcial = respuesta.PalabraParcial;
                         PartidaSingleton.Instance.palabraSeleccionada = respuesta.palabraSeleccionada;
                         PartidaSingleton.Instance.IdPalabraSelecionada = respuesta.IdPalabraSelecionada;
-
+                        PartidaSingleton.Instance.IdiomaPartida = respuesta.IdiomaPartida;
+                        PartidaSingleton.Instance.FechaCreacionPartida = respuesta.FechaCreacionPartida;
                         cambiarVentana();
                     }
                     else

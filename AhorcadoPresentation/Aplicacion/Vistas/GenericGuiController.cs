@@ -173,6 +173,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     respuesta = false;
                     datePicker.Background = Brushes.OrangeRed;
                 }
+                else
+                {
+                    datePicker.Background = null;
+                }
             }else
             {
                 datePicker.Background = Brushes.OrangeRed;

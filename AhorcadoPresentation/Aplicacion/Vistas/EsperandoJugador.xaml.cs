@@ -35,7 +35,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
 
         public void EsperarJugador()
         {
-            Task.Run(async () =>
+             Task.Run(async () =>
             {
                 while (!detenerTarea)
                 {
@@ -59,8 +59,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         {
                             CambiarVista();
                         });
-                        //CambiarVista();
-
                     }
                     await Task.Delay(2000);
                 }
@@ -116,7 +114,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     var partida = await partidaService.ObtenerPartidaPorIdAsync(PartidaSingleton.Instance.Id);
                     return partida.partida;
-
                 }
             }
             catch (CommunicationException)
