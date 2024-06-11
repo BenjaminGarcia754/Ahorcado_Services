@@ -12,7 +12,7 @@
             <Label Foreground="White" FontSize="18" Content="{resources:Resx Key=GuiHistorialPuntosLbUsuarioContrincante}" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
             <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiHistorialPuntosLbPalabra}" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
             <Label Foreground="White" FontSize="20" Content="{resources:Resx Key=GuiHistorialPuntosLbPuntaje}" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
-            <Label x:Name="lFechaPartida"  Foreground="White" FontSize="20" Content="dd/MM/YYYY" HorizontalAlignment="Left" Margin="298,32,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
+            <Label x:Name="lFechaPartida"  Foreground="White" FontSize="20" Content="dd/MM/YYYY" HorizontalAlignment="Left" Margin="298,32,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
             <Label x:Name="lUsuarioContrincante" Foreground="White" FontSize="18" Content="Username" HorizontalAlignment="Left" Margin="298,69,0,0" VerticalAlignment="Top" Height="37" Width="216"/>
             <Label x:Name="lPalabraPartida" Foreground="White" FontSize="20" Content="Palabra" HorizontalAlignment="Left" Margin="298,106,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
             <Label x:Name="lPuntaje" Foreground="White" FontSize="20" Content="10 Puntos" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Height="37" Width="176"/>
