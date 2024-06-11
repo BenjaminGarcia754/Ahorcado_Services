@@ -47,7 +47,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         string fecha = GenericGuiController.FormatearFecha(partida.FechaCreacionPartida);
                         string palabra = partida.palabraSeleccionada;
                         string puntaje = ResourceAccesor.GetString("GuiPuntosGanados");
-                        string jugadorVencido = obtenerNombreJugadorVencido(partida.PartidaGanadaJugadorInvitado ? partida.IdJugadorInvitado : partida.IdJugadorAnfitrion);
+                        string jugadorVencido = obtenerNombreJugadorVencido(partida.PartidaGanadaJugadorInvitado ? partida.IdJugadorAnfitrion : partida.IdJugadorInvitado);
                         HistorialPuntos partidaHistorial = new HistorialPuntos(fecha, jugadorVencido, palabra, puntaje);
                         WPPanelPuntos.Children.Add(partidaHistorial);
                     }
