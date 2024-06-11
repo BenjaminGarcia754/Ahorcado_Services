@@ -42,16 +42,8 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 if (respuesta.respuesta && respuesta.Partidas.Any())
                 {
                     List<Partida> partidas = respuesta.Partidas.ToList();
-
-                    for (int i = 0; i < partidas.Count; i++)
+                    foreach (Partida partida in partidas)
                     {
-                        Partida partida = partidas[i];
-                        if (!(partida.IdEstadoPartida == 1 || partida.IdEstadoPartida == 2))
-                        {
-                            if(partida.IdEstadoPartida == 1)
-                                GenericGuiController.MostrarMensajeBox("id estado partida tengo" + partida.IdEstadoPartida);
-                            if(partida.IdEstadoPartida == 2)
-                                GenericGuiController.MostrarMensajeBox("id estado partida tengo" + partida.IdEstadoPartida);
                             string fecha = GenericGuiController.FormatearFecha(partida.FechaCreacionPartida);
                             string palabra = partida.palabraSeleccionada;
                             string jugadorVencido = "---";
@@ -71,7 +63,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             }
                             Historial partidaHistorial = new Historial(fecha, jugadorVencido, palabra, resultado, puntaje);
                             WPPanelPartidas.Children.Add(partidaHistorial);
-                        }
                     }
                 }else
                 {
@@ -86,9 +77,13 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
         {
             try
             {
+                if (idJugador == JugadorSingleton.Instance.Id)
+                {
+                    return JugadorSingleton.Instance.Nombre;
+                }
                 var jugador = jugadorServiceCliente.ObtenerJugadorPorIdAsync(idJugador).Result;
                 return jugador.Nombre;
-            }
+            } 
             catch (CommunicationException)
             {
                 GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiErrorComunicacion"));
