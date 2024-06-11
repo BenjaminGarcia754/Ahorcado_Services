@@ -1,4 +1,5 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.RecursosLocalizables;
 using PartidaService;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Globalization;
 
 namespace AhorcadoPresentation.Aplicacion.Vistas
 {
@@ -214,6 +216,18 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             labelLetra.BorderThickness = new Thickness(0, 0, 0, 1);
             labelLetra.BorderBrush = Brushes.White;
             return labelLetra;
+        }
+        public static string FormatearFecha(DateTime fecha)
+        {
+           if(ResourceAccesor.GetIdiomaHilo() == Constantes.IDIOMA_INGLES)
+           {
+               return fecha.ToString("MMM dd, yyyy", CultureInfo.InvariantCulture);
+           }
+           else
+           {
+                return fecha.ToString("dd 'de' MMMM 'de' yyyy", CultureInfo.InvariantCulture);
+           }
+           
         }
     }
 }

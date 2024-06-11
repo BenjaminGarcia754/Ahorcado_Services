@@ -126,6 +126,9 @@
   <data name="GuiBuscarPartidaNuevaTbPartidasDisponibles" xml:space="preserve">
     <value>Partidas disponibles</value>
   </data>
+  <data name="GuiErrorComunicacion" xml:space="preserve">
+    <value>Error de comunicación con el servidor</value>
+  </data>
   <data name="GuiEsperandoJugadorTbEsperandoJugador" xml:space="preserve">
     <value>Esperando jugador</value>
   </data>
@@ -144,6 +147,12 @@
   <data name="GuiGenerarPartidaTbPalabra" xml:space="preserve">
     <value>Palabra:</value>
   </data>
+  <data name="GuiHistorialCancelada" xml:space="preserve">
+    <value>Cancelada</value>
+  </data>
+  <data name="GuiHistorialGanada" xml:space="preserve">
+    <value>Ganada</value>
+  </data>
   <data name="GuiHistorialLbFechaDePartida" xml:space="preserve">
     <value>Fecha de partida</value>
   </data>
@@ -157,13 +166,19 @@
     <value>Resultado</value>
   </data>
   <data name="GuiHistorialLbUsuarioContrincante" xml:space="preserve">
-    <value>Usuario contrincante</value>
+    <value>Jugador vencido</value>
+  </data>
+  <data name="GuiHistorialNoHayPartidas" xml:space="preserve">
+    <value>No se encontraron partidas</value>
   </data>
   <data name="GuiHistorialPartidasBtnVerPuntaje" xml:space="preserve">
     <value>Ver puntaje</value>
   </data>
   <data name="GuiHistorialPartidasTbHistorialDePartidas" xml:space="preserve">
     <value>Historial de partidas</value>
+  </data>
+  <data name="GuiHistorialPerdido" xml:space="preserve">
+    <value>Perdida</value>
   </data>
   <data name="GuiHistorialPuntajeTbInformeDePuntos" xml:space="preserve">
     <value>Informe de puntos</value>
@@ -181,7 +196,7 @@
     <value>Puntaje</value>
   </data>
   <data name="GuiHistorialPuntosLbUsuarioContrincante" xml:space="preserve">
-    <value>Usuario contrincante</value>
+    <value>Jugador vencido</value>
   </data>
   <data name="GuiJugarPartidaBtnBotonDeAyuda" xml:space="preserve">
     <value>Boton de ayuda</value>
@@ -222,6 +237,9 @@
   <data name="GuiMenuPrincipalTbHistorialDeJugadas" xml:space="preserve">
     <value>Historial de jugadas</value>
   </data>
+  <data name="GuiPartidaNuevaJugar" xml:space="preserve">
+    <value>Jugar</value>
+  </data>
   <data name="GuiPartidaNuevaLbCategoria" xml:space="preserve">
     <value>Categoria</value>
   </data>
@@ -233,6 +251,12 @@
   </data>
   <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
     <value>Jugador retador</value>
+  </data>
+  <data name="GuiPuntosGanados" xml:space="preserve">
+    <value>10 puntos</value>
+  </data>
+  <data name="GuiPuntosPerdido" xml:space="preserve">
+    <value>0 puntos</value>
   </data>
   <data name="GuiRegistrarActualizarInfo" xml:space="preserve">
     <value>Actualizar Información</value>
@@ -299,6 +323,15 @@
   </data>
   <data name="GuiRegistrarUsuarioTtFechaDeNacimiento" xml:space="preserve">
     <value>La persona no puede ser mayor a 74 años o menor a 10 años.</value>
+  </data>
+  <data name="IdiomaEsp" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="IdiomaIng" xml:space="preserve">
+    <value>Ingles</value>
+  </data>
+  <data name="MsgNoPartidas" xml:space="preserve">
+    <value>No se encontraron partidas</value>
   </data>
   <data name="TituloJuego" xml:space="preserve">
     <value>El Juego del Ahorcado</value>

@@ -1,4 +1,6 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.RecursosLocalizables;
+using JugadorServiceReference;
 using PartidaService;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class HistorialPuntaje : UserControl
     {
         //private int partidas = 14;
+        private JugadorServiceClient jugadorServiceCliente = new JugadorServiceClient();
         public HistorialPuntaje()
         {
             InitializeComponent();
@@ -41,20 +44,38 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     foreach (var partida in partidas)
                     {
-                        string fecha = partida.FechaCreacionPartida.ToString();
+                        string fecha = GenericGuiController.FormatearFecha(partida.FechaCreacionPartida);
                         string palabra = partida.palabraSeleccionada;
-                        string puntaje = "10";
-                        HistorialPuntos partidaHistorial = new HistorialPuntos(fecha, "No soportado", palabra, puntaje);
+                        string puntaje = ResourceAccesor.GetString("GuiPuntosGanados");
+                        string jugadorVencido = obtenerNombreJugadorVencido(partida.PartidaGanadaJugadorInvitado ? partida.IdJugadorInvitado : partida.IdJugadorAnfitrion);
+                        HistorialPuntos partidaHistorial = new HistorialPuntos(fecha, jugadorVencido, palabra, puntaje);
                         WPPanelPuntos.Children.Add(partidaHistorial);
                     }
                     lPuntaje.Content = partidas.Length * 10;
                 }else
                 {
-                    GenericGuiController.MostrarMensajeBox("No se encontraron partidas");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiHistorialNoHayPartidas"));
                     lPuntaje.Content = "0";
                 }
             }
             
+        }
+        private string obtenerNombreJugadorVencido(int idJugador)
+        {
+            try
+            {
+                if(idJugador == JugadorSingleton.Instance.Id)
+                {
+                    return JugadorSingleton.Instance.Nombre;
+                }
+                var jugador = jugadorServiceCliente.ObtenerJugadorPorIdAsync(idJugador).Result;
+                return jugador.Nombre;
+            }
+            catch (CommunicationException)
+            {
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiErrorComunicacion"));
+                return null;
+            }
         }
 
         private PartidaRespuesta ObtenerPartidasPorJugador(int idJugador)

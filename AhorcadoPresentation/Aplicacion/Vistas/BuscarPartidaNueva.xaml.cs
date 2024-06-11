@@ -1,4 +1,5 @@
-﻿using CategoriaService;
+﻿using AhorcadoPresentation.RecursosLocalizables;
+using CategoriaService;
 using DificultadService;
 using JugadorServiceReference;
 using PalabraService;
@@ -101,7 +102,14 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         var dificultad = dificultadServiceClient.GetDificultadAsync(palabra.IdDificultad).Result;
                         var jugadorService = new JugadorServiceClient();
                         var jugadorAnfitrion = jugadorService.ObtenerJugadorPorIdAsync(partida.IdJugadorAnfitrion).Result;
-                        PartidaNueva partidaHistorial = partidaNueva.ObternerPartidaNueva(jugadorAnfitrion.Nombre, dificultad.Nombre, categoria.Nombre, "NO IMPLEMENTADO", partida.Id);
+                        PartidaNueva partidaHistorial = new PartidaNueva(mainWindow);
+                        string idioma = partida.IdiomaPartida == "es"? ResourceAccesor.GetString("IdiomaEsp"): ResourceAccesor.GetString("IdiomaIng");
+                        if (ResourceAccesor.GetIdiomaHilo() == Constantes.IDIOMA_ESPANOL)
+                            partidaHistorial = partidaNueva.ObternerPartidaNueva(jugadorAnfitrion.Nombre, dificultad.Nombre, categoria.Nombre, idioma, partida.Id);
+                        else
+                        {
+                            partidaHistorial = partidaNueva.ObternerPartidaNueva(jugadorAnfitrion.Nombre, dificultad.NombreIngles, categoria.NombreIngles, idioma, partida.Id);
+                        }
                         WPPanelPartidasNuevas.Children.Add(partidaHistorial);
                     }
                 }

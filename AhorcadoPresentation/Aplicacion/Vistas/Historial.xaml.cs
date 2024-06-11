@@ -20,11 +20,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     /// </summary>
     public partial class Historial : UserControl
     {
-        public Historial(string fecha, string usuarioContrincante, string palabra, string resultado, string puntaje)
+        public Historial(string fecha, string jugadorVencido, string palabra, string resultado, string puntaje)
         {
             InitializeComponent();
             lFechaPartida.Content = fecha;
-            lUsuarioContrincante.Content = usuarioContrincante;
+            lUsuarioContrincante.Content = jugadorVencido;
             lPalabraPartida.Content = palabra;
             lResultado.Content = resultado;
             lPuntaje.Content = puntaje;

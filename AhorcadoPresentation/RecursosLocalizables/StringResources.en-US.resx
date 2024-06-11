@@ -126,6 +126,9 @@
   <data name="GuiBuscarPartidaNuevaTbPartidasDisponibles" xml:space="preserve">
     <value>Available games</value>
   </data>
+  <data name="GuiErrorComunicacion" xml:space="preserve">
+    <value>Communication error with the server</value>
+  </data>
   <data name="GuiEsperandoJugadorTbEsperandoJugador" xml:space="preserve">
     <value>Waiting player</value>
   </data>
@@ -144,6 +147,12 @@
   <data name="GuiGenerarPartidaTbPalabra" xml:space="preserve">
     <value>Word:</value>
   </data>
+  <data name="GuiHistorialCancelada" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="GuiHistorialGanada" xml:space="preserve">
+    <value>Won</value>
+  </data>
   <data name="GuiHistorialLbFechaDePartida" xml:space="preserve">
     <value>Game date</value>
   </data>
@@ -157,13 +166,19 @@
     <value>Result</value>
   </data>
   <data name="GuiHistorialLbUsuarioContrincante" xml:space="preserve">
-    <value>Rival user</value>
+    <value>Defeated player</value>
+  </data>
+  <data name="GuiHistorialNoHayPartidas" xml:space="preserve">
+    <value>No matches found</value>
   </data>
   <data name="GuiHistorialPartidasBtnVerPuntaje" xml:space="preserve">
     <value>See score</value>
   </data>
   <data name="GuiHistorialPartidasTbHistorialDePartidas" xml:space="preserve">
     <value>Game history</value>
+  </data>
+  <data name="GuiHistorialPerdido" xml:space="preserve">
+    <value>Lost</value>
   </data>
   <data name="GuiHistorialPuntajeTbInformeDePuntos" xml:space="preserve">
     <value>Points report</value>
@@ -181,7 +196,7 @@
     <value>Score</value>
   </data>
   <data name="GuiHistorialPuntosLbUsuarioContrincante" xml:space="preserve">
-    <value>Rival user</value>
+    <value>Defeated player</value>
   </data>
   <data name="GuiJugarPartidaBtnBotonDeAyuda" xml:space="preserve">
     <value>Help button</value>
@@ -222,6 +237,9 @@
   <data name="GuiMenuPrincipalTbHistorialDeJugadas" xml:space="preserve">
     <value>Play history</value>
   </data>
+  <data name="GuiPartidaNuevaJugar" xml:space="preserve">
+    <value>Play</value>
+  </data>
   <data name="GuiPartidaNuevaLbCategoria" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -233,6 +251,12 @@
   </data>
   <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
     <value>Challenger player</value>
+  </data>
+  <data name="GuiPuntosGanados" xml:space="preserve">
+    <value>10 points</value>
+  </data>
+  <data name="GuiPuntosPerdido" xml:space="preserve">
+    <value>0 points</value>
   </data>
   <data name="GuiRegistrarActualizarInfo" xml:space="preserve">
     <value>Update Information</value>
@@ -299,6 +323,15 @@
   </data>
   <data name="GuiRegistrarUsuarioTtFechaDeNacimiento" xml:space="preserve">
     <value>The person must be between 10 and 74 years old.</value>
+  </data>
+  <data name="IdiomaEsp" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="IdiomaIng" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="MsgNoPartidas" xml:space="preserve">
+    <value>No matches found</value>
   </data>
   <data name="TituloJuego" xml:space="preserve">
     <value>The Hangman Game</value>
