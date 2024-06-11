@@ -130,7 +130,7 @@ namespace Ahorcado_Services.Aplicacion.DAO
         {
             PartidaRespuesta respuesta = new PartidaRespuesta();
             char[] palabraParcial = partida.PalabraParcial.ToCharArray();
-            if (partida.palabraSeleccionada.Contains(caracterIntento))
+            if (partida.palabraSeleccionada.ToLower().Contains(caracterIntento))
             {
                 for (int i = 0; i < partida.palabraSeleccionada.Length; i++)
                 {
