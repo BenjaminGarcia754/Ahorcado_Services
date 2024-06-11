@@ -136,7 +136,7 @@ namespace Ahorcado_Services.Aplicacion.DAO
                 {
                     if (partida.palabraSeleccionada.ToLower().ToCharArray()[i] == caracterIntento)
                     {
-                        palabraParcial[i] = caracterIntento;
+                        palabraParcial[i] = partida.palabraSeleccionada[i];
                     }
                 }
                 partida.PalabraParcial = new string(palabraParcial);

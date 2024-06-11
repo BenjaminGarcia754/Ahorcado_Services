@@ -46,25 +46,32 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     for (int i = 0; i < partidas.Count; i++)
                     {
                         Partida partida = partidas[i];
-                        string fecha = GenericGuiController.FormatearFecha(partida.FechaCreacionPartida);
-                        string palabra = partida.palabraSeleccionada;
-                        string jugadorVencido = "---";
-                        string resultado =ResourceAccesor.GetString("GuiHistorialCancelada");//Cancelada
-                        string puntaje = "---";
-                        if(partida.PartidaGanadaJugadorInvitado) 
+                        if (!(partida.IdEstadoPartida == 1 || partida.IdEstadoPartida == 2))
                         {
-                            jugadorVencido = obtenerNombreJugadorVencido(partida.IdJugadorInvitado);
-                            resultado = ResourceAccesor.GetString("GuiHistorialGanada"); //Ganada
-                            puntaje = ResourceAccesor.GetString("GuiPuntosGanados");
+                            if(partida.IdEstadoPartida == 1)
+                                GenericGuiController.MostrarMensajeBox("id estado partida tengo" + partida.IdEstadoPartida);
+                            if(partida.IdEstadoPartida == 2)
+                                GenericGuiController.MostrarMensajeBox("id estado partida tengo" + partida.IdEstadoPartida);
+                            string fecha = GenericGuiController.FormatearFecha(partida.FechaCreacionPartida);
+                            string palabra = partida.palabraSeleccionada;
+                            string jugadorVencido = "---";
+                            string resultado = ResourceAccesor.GetString("GuiHistorialCancelada");//Cancelada
+                            string puntaje = "---";
+                            if (partida.PartidaGanadaJugadorInvitado)
+                            {
+                                jugadorVencido = obtenerNombreJugadorVencido(partida.IdJugadorInvitado);
+                                resultado = ResourceAccesor.GetString("GuiHistorialGanada"); //Ganada
+                                puntaje = ResourceAccesor.GetString("GuiPuntosGanados");
+                            }
+                            else if (partida.PartidaGanadaJugadorAnfitrion)
+                            {
+                                jugadorVencido = obtenerNombreJugadorVencido(partida.IdJugadorAnfitrion);
+                                resultado = ResourceAccesor.GetString("GuiHistorialPerdido");//perdida
+                                puntaje = ResourceAccesor.GetString("GuiPuntosPerdido");
+                            }
+                            Historial partidaHistorial = new Historial(fecha, jugadorVencido, palabra, resultado, puntaje);
+                            WPPanelPartidas.Children.Add(partidaHistorial);
                         }
-                        else if (partida.PartidaGanadaJugadorAnfitrion)
-                        {
-                            jugadorVencido = obtenerNombreJugadorVencido(partida.IdJugadorAnfitrion);
-                            resultado = ResourceAccesor.GetString("GuiHistorialPerdido");
-                            puntaje = ResourceAccesor.GetString("GuiPuntosPerdido");
-                        }
-                        Historial partidaHistorial = new Historial(fecha, jugadorVencido, palabra, resultado, puntaje);
-                        WPPanelPartidas.Children.Add(partidaHistorial);
                     }
                 }else
                 {

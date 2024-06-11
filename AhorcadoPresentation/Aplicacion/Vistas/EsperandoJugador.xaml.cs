@@ -1,4 +1,5 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.RecursosLocalizables;
 using AutoMapper;
 using PartidaService;
 using System;
@@ -92,17 +93,17 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("Error al cancelar la partida");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorCancelar"));
                     }
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorTerminar"));
                 }
             }
             catch (Exception ex)
             {
-                GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorTerminar") + ex.Message); 
             }
         }
 
@@ -118,7 +119,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (CommunicationException)
             {
-                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiErrorComunicacion")); 
                 return null;
             }
         }

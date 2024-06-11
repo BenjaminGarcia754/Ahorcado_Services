@@ -61,7 +61,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (Exception)
             {
-                GenericGuiController.MostrarMensajeBox("No se pudo obtener las dificultades");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaErrorAlCargarDificultades"));
                 return null;
             }
         }
@@ -74,7 +74,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (Exception)
             {
-                GenericGuiController.MostrarMensajeBox("No se pudo obtener las categorías");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaErrorCategorias"));
                 return null;
             }
 
@@ -138,7 +138,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("No se encontraron palabras para la categoría y dificultad seleccionadas");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaNoPalabras"));
                     }
                 }
                 catch (Exception)
@@ -160,7 +160,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 partida.IdEstadoPartida = 1;//Creada
                 partida.palabraSeleccionada = idiomaHilo == "es" ? palabra.Nombre : palabra.NombreIngles; ;//Validar Idioma
                 partida.IntentosRestantes = 0;
-                partida.PalabraParcial = GenericGuiController.EnmascararFrase(palabra.Nombre);//Validar Idioma
+                partida.PalabraParcial = GenericGuiController.EnmascararFrase(partida.palabraSeleccionada);//Validar Idioma
                 partida.IdiomaPartida = idiomaHilo;
                 partida.FechaCreacionPartida = DateTime.Now;
                 try
@@ -169,7 +169,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     var respuesta = partidaServiceClient.CrearPartidaAsync(partida).Result;
                     if (respuesta != null)
                     {
-                        GenericGuiController.MostrarMensajeBox("Partida creada con éxito");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaExito"));
                         PartidaSingleton.Instance.Id = respuesta.Id;
                         PartidaSingleton.Instance.IdJugadorAnfitrion = respuesta.IdJugadorAnfitrion;
                         PartidaSingleton.Instance.IdEstadoPartida = respuesta.IdEstadoPartida;
@@ -183,18 +183,18 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("Error al crear la partida Else");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaError"));
                     }
                 }
                 catch (Exception)
                 {
-                    GenericGuiController.MostrarMensajeBox("Error al crear la partida Catch");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaErrorExcepcion"));
                     throw;
                 }
             }
             else
             {
-                GenericGuiController.MostrarMensajeBox("Debe seleccionar una dificultad, categoría y palabra");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiGenerarPartidaNoSeleccion"));
             }
         }
 

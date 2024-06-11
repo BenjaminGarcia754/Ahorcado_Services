@@ -74,7 +74,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         detenerTarea = true;
                         await Dispatcher.InvokeAsync(async () =>
                         {
-                            GenericGuiController.MostrarMensajeBox("La partida ha sido cancelada por el jugador anfitrion regresaras al menu principal");
+                            GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaCancelada"));
                             await CambiarVista();
                         });
 
@@ -114,8 +114,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 {
                     if (respuesta.respuesta)
                     {
-                        GenericGuiController.MostrarMensajeBox("La letra se encuentra en la palabra");
-                        GenericGuiController.MostrarMensajeBox(respuesta.partida.PalabraParcial);
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaLetraEnPalabra"));
                         GenericGuiController.imprimirPalabraParcial(WPPalabraContainer, respuesta.partida.PalabraParcial);
                         if (respuesta.partida.PalabraParcial.Equals(partida.palabraSeleccionada))
                         {
@@ -130,7 +129,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("La letra no se encuentra en la palabra");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaNoLetraEnPalabra"));
                         if (respuesta.partida.IntentosRestantes >= 6)
                         {
                             GenericGuiController.MostrarMensajeBox("Perdiste");
@@ -148,7 +147,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("Error al realizar el intento");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaErrorIntento"));
                 }
 
                 PartidaSingleton.Instance.IntentosRestantes = respuesta.partida.IntentosRestantes;
@@ -166,7 +165,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (Exception)
             {
-                GenericGuiController.MostrarMensajeBox("Error al realizar el intento");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaErrorIntento"));
                 throw;
             }
 
@@ -214,7 +213,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (CommunicationException)
             {
-                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiErrorComunicacion"));
                 return null;
             }
         }
@@ -253,17 +252,17 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("Error al cancelar la partida");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorCancelar"));
                     }
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorTerminar"));
                 }
             }
             catch (Exception ex)
             {
-                GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorTerminar") +": "+ ex.Message);
             }
         }
 
@@ -273,11 +272,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 if (ResourceAccesor.GetIdiomaHilo() == Constantes.IDIOMA_ESPANOL)
                 {
-                    GenericGuiController.MostrarMensajeBox(palabraEnJuego.Descripcion);
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaDescipcion") +":\n"+palabraEnJuego.Descripcion);
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox(palabraEnJuego.DescripcionIngles);
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugarPartidaDescipcion") + ":\n" + palabraEnJuego.DescripcionIngles);
                 }
             }
         }

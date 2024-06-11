@@ -83,7 +83,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     try
                     {
                         bool existeJugador = jugadorCliente.ExisteJugadorAsync(TbCorreo.Text).Result;
-                        if (existeJugador)
+                        if (!existeJugador)
                         {
                             bool respuesta = jugadorCliente.RegistrarJugadorAsync(jugador).Result;
                             if (respuesta)
@@ -107,11 +107,11 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                         //TODO: Corroborar mensaje
                         GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorRegistrar"));
                     }catch (Exception)
-                    { 
+                    {
                         //TODO: Corroborar mensaje
                         GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiRegistrarMsgErrorRegistrar"));
                     }
-                    
+
                 }
                 ClickRegresar(sender, e);
             }
@@ -125,6 +125,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             {
                 MenuPrincipal menuPrincipal = new MenuPrincipal();
                 mainWindow.CambiarVista(menuPrincipal);
+            }else
+            {
+                IniciarSesion login = new IniciarSesion();
+                mainWindow.CambiarVista(login);
             }
         }
 

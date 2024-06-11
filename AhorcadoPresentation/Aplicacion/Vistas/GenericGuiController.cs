@@ -225,7 +225,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
            }
            else
            {
-                return fecha.ToString("dd 'de' MMMM 'de' yyyy", CultureInfo.InvariantCulture);
+                return fecha.ToString("dd 'de' MMMM 'de' yyyy", new CultureInfo("es-MX"));
            }
            
         }

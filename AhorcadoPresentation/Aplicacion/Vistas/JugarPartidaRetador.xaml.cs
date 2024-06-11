@@ -1,4 +1,5 @@
 ﻿using AhorcadoPresentation.Modelo.Singleton;
+using AhorcadoPresentation.RecursosLocalizables;
 using AutoMapper;
 using PartidaService;
 using System;
@@ -47,7 +48,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                             detenerTarea = true;
                             await Dispatcher.InvokeAsync(async () =>
                             {
-                                GenericGuiController.MostrarMensajeBox("La partida ha Cancelada por el jugador invitado regresaras al menu principal");
+                                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugadorRetadorPartidaCancelada"));
                                 await CambiarVista();
                             });
                                 
@@ -66,7 +67,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                                 {
                                     Dispatcher.Invoke( () =>
                                     {
-                                        GenericGuiController.MostrarMensajeBox("Ganaste");
+                                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiPartidaRetadorGanaste"));
                                     });
                                     
                                 }
@@ -74,13 +75,13 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                                 {
                                     Dispatcher.Invoke(() =>
                                     {
-                                        GenericGuiController.MostrarMensajeBox("Gano el jugador invitado");
+                                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiPartidaRetadorJugadorInvitadoGana"));
                                     });       
                                 }
 
                                 await Dispatcher.InvokeAsync(async () =>
                                 {
-                                    MessageBox.Show("La partida ha finalizado");
+                                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiPartidaFinalizada"));
                                     await Task.Delay(2000);
                                     await CambiarVista();
                                 });
@@ -123,7 +124,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     ImgImagenIntento.Source = new BitmapImage(new Uri("/Aplicacion/Resources/SextoIntento.png", UriKind.Relative));
                     break;
                 default:
-                    GenericGuiController.MostrarMensajeBox("Superaste el numero de intentos");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiJugadorRetadorExcedido"));
                     break;
             }
         }
@@ -189,17 +190,17 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     }
                     else
                     {
-                        GenericGuiController.MostrarMensajeBox("Error al cancelar la partida");
+                        GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorCancelar"));
                     }
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("Error al terminar la partida");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorTerminar"));
                 }
             }
             catch (Exception ex)
             {
-                GenericGuiController.MostrarMensajeBox("Error al terminar la partida: " + ex.Message);
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiEsperandoErrorTerminar")+": " + ex.Message);
             }
         }
 

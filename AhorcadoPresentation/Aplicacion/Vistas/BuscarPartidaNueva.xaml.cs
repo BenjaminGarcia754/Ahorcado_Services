@@ -28,7 +28,6 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
     public partial class BuscarPartidaNueva : UserControl
     {
         public bool detenerTarea = false;
-        //public Jugador JugadorRetador { get; set; }
         public BuscarPartidaNueva()
         {
             InitializeComponent();
@@ -76,7 +75,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (CommunicationException)
             {
-                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiErrorComunicacion"));
                 return null;
             }
             
@@ -115,12 +114,12 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                 }
                 else
                 {
-                    GenericGuiController.MostrarMensajeBox("No hay partidas disponibles");
+                    GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiBuscarPartidaNoDisponibles"));
                 }
             }
             catch (CommunicationException)
             {
-                GenericGuiController.MostrarMensajeBox("Error al cargar las partidas");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiBuscarPartidasErrorAlCargar"));
             }
             
         }

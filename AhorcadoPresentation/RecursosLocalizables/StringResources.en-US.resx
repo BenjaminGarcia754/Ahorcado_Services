@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GuiBuscarPartidaNoDisponibles" xml:space="preserve">
+    <value>No matches available</value>
+  </data>
   <data name="GuiBuscarPartidaNuevaBtnJugar" xml:space="preserve">
     <value>Play</value>
   </data>
@@ -126,11 +129,41 @@
   <data name="GuiBuscarPartidaNuevaTbPartidasDisponibles" xml:space="preserve">
     <value>Available games</value>
   </data>
+  <data name="GuiBuscarPartidasErrorAlCargar" xml:space="preserve">
+    <value>Error loading matches</value>
+  </data>
   <data name="GuiErrorComunicacion" xml:space="preserve">
     <value>Communication error with the server</value>
   </data>
+  <data name="GuiEsperandoErrorCancelar" xml:space="preserve">
+    <value>Error cancelling the match</value>
+  </data>
+  <data name="GuiEsperandoErrorTerminar" xml:space="preserve">
+    <value>Error ending the match</value>
+  </data>
   <data name="GuiEsperandoJugadorTbEsperandoJugador" xml:space="preserve">
     <value>Waiting player</value>
+  </data>
+  <data name="GuiGenerarPartidaError" xml:space="preserve">
+    <value>Error creating the match in the service call</value>
+  </data>
+  <data name="GuiGenerarPartidaErrorAlCargarDificultades" xml:space="preserve">
+    <value>Could not retrieve difficulties</value>
+  </data>
+  <data name="GuiGenerarPartidaErrorCategorias" xml:space="preserve">
+    <value>Could not retrieve categories</value>
+  </data>
+  <data name="GuiGenerarPartidaErrorExcepcion" xml:space="preserve">
+    <value>Error creating the match exception</value>
+  </data>
+  <data name="GuiGenerarPartidaExito" xml:space="preserve">
+    <value>Match created successfully</value>
+  </data>
+  <data name="GuiGenerarPartidaNoPalabras" xml:space="preserve">
+    <value>No words found for the selected category and difficulty</value>
+  </data>
+  <data name="GuiGenerarPartidaNoSeleccion" xml:space="preserve">
+    <value>You must select a difficulty, category, and word</value>
   </data>
   <data name="GuiGenerarPartidaTbCategoria" xml:space="preserve">
     <value>Category:</value>
@@ -198,8 +231,29 @@
   <data name="GuiHistorialPuntosLbUsuarioContrincante" xml:space="preserve">
     <value>Defeated player</value>
   </data>
+  <data name="GuiJugadorRetadorExcedido" xml:space="preserve">
+    <value>You exceeded the number of attempts</value>
+  </data>
+  <data name="GuiJugadorRetadorPartidaCancelada" xml:space="preserve">
+    <value>The match has been canceled by the guest player. You will return to the main menu.</value>
+  </data>
   <data name="GuiJugarPartidaBtnBotonDeAyuda" xml:space="preserve">
     <value>Help button</value>
+  </data>
+  <data name="GuiJugarPartidaCancelada" xml:space="preserve">
+    <value>The match has been canceled by the host player, you will return to the main menu</value>
+  </data>
+  <data name="GuiJugarPartidaDescipcion" xml:space="preserve">
+    <value>Word description</value>
+  </data>
+  <data name="GuiJugarPartidaErrorIntento" xml:space="preserve">
+    <value>Error while making the attempt</value>
+  </data>
+  <data name="GuiJugarPartidaLetraEnPalabra" xml:space="preserve">
+    <value>The letter is in the word</value>
+  </data>
+  <data name="GuiJugarPartidaNoLetraEnPalabra" xml:space="preserve">
+    <value>The letter is not in the word</value>
   </data>
   <data name="GuiLoginBienvenido" xml:space="preserve">
     <value>Welcome</value>
@@ -237,6 +291,9 @@
   <data name="GuiMenuPrincipalTbHistorialDeJugadas" xml:space="preserve">
     <value>Play history</value>
   </data>
+  <data name="GuiPartidaFinalizada" xml:space="preserve">
+    <value>The match has ended</value>
+  </data>
   <data name="GuiPartidaNuevaJugar" xml:space="preserve">
     <value>Play</value>
   </data>
@@ -251,6 +308,12 @@
   </data>
   <data name="GuiPartidaNuevaLbJugadorRetador" xml:space="preserve">
     <value>Challenger player</value>
+  </data>
+  <data name="GuiPartidaRetadorGanaste" xml:space="preserve">
+    <value>You won</value>
+  </data>
+  <data name="GuiPartidaRetadorJugadorInvitadoGana" xml:space="preserve">
+    <value>The guest player won</value>
   </data>
   <data name="GuiPuntosGanados" xml:space="preserve">
     <value>10 points</value>
@@ -272,6 +335,9 @@
   </data>
   <data name="GuiRegistrarMsgContraseniaInvalida" xml:space="preserve">
     <value>Invalid password</value>
+  </data>
+  <data name="GuiRegistrarMsgCorreoExiste" xml:space="preserve">
+    <value>The email you are trying to register already exists in the database</value>
   </data>
   <data name="GuiRegistrarMsgErrorActualizar" xml:space="preserve">
     <value>Error updating the information</value>

@@ -88,7 +88,7 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
             }
             catch (CommunicationException)
             {
-                GenericGuiController.MostrarMensajeBox("Error de comunicación con el servidor");
+                GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiErrorComunicacion"));
                 return null;
             }
         }
