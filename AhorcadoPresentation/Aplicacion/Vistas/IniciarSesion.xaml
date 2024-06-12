@@ -31,7 +31,7 @@
             </Border>
             <Button Content="{resources:Resx Key=GuiLoginBtnIniciarSesion}" FontFamily="{StaticResource Inika}" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" FontSize="17" Margin="476,457,0,0" VerticalAlignment="Top" Height="40" Width="124" Grid.Row="1" Click="ClickIniciarSesion" IsDefault="True"/>
             <Button Content="{resources:Resx Key=GuiLoginBtnRegistrarse}" FontFamily="{StaticResource Inika}" Background="Transparent" FontSize="14" BorderThickness="0,0,0,2" Foreground="White" HorizontalAlignment="Left" Margin="493,525,0,0" VerticalAlignment="Top" Height="25" Width="90" Grid.Row="1" Click="ClickRegistrarse" RenderTransformOrigin="0.5,0.5"/>
-            <TextBlock Foreground="White" FontFamily="{StaticResource Inika}" FontSize="50" HorizontalAlignment="Left" Margin="289,32,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=TituloJuego}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186" Width="497"/>
+            <TextBlock Foreground="White" FontFamily="{StaticResource Inika}" FontSize="50" HorizontalAlignment="Left" Margin="275,30,0,0" TextWrapping="Wrap" Text="{resources:Resx Key=TituloJuego}" VerticalAlignment="Top" Grid.Row="1" RenderTransformOrigin="0.08,-1.186" Width="526"/>
         </Grid>
     </Border>
 </UserControl>
