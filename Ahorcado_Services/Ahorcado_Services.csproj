@@ -248,7 +248,7 @@
     <Content Include="Aplicacion\Implementacion\JugadorService.svc" />
     <Content Include="Aplicacion\Implementacion\PartidaService.svc" />
     <Content Include="Aplicacion\Implementacion\PalabraService.svc" />
-    <Content Include="Service1.svc" />
+    <Content Include="Aplicacion\Implementacion\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +260,10 @@
     <Compile Include="Aplicacion\DAO\PartidaDAO.cs" />
     <Compile Include="Aplicacion\Implementacion\EstadoPartidaService.svc.cs">
       <DependentUpon>EstadoPartidaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Aplicacion\Implementacion\IService1.cs" />
+    <Compile Include="Aplicacion\Implementacion\Service1.svc.cs">
+      <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="Aplicacion\Interfaces\IEstadoPartidaService.cs" />
     <Compile Include="Aplicacion\Implementacion\DificultadService.svc.cs">
@@ -358,10 +362,6 @@
     <Compile Include="Modelo\EntityFramework\Palabra.cs" />
     <Compile Include="Modelo\EntityFramework\Partida.cs" />
     <Compile Include="Modelo\Respuestas\PartidaRespuesta.cs" />
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

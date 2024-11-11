@@ -45,10 +45,10 @@ namespace AhorcadoPresentation.Aplicacion.Vistas
                     GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiLoginBienvenido") +" " +jugador.Nombre);
                     mapper.Map(jugador, JugadorSingleton.Instance);
                     mostrarMenuPrincipal();
-
                 }
                 else
                 {
+
                     GenericGuiController.MostrarMensajeBox(ResourceAccesor.GetString("GuiLoginCamposInvalidos"));
                 }
             }
